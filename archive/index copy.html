@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOYO - Mind Of Your Own®</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A framework for examining the forces that shape thought, identity, belief, and behavior, developed by C.T. Holland from thirty years of applied NLP, hypnosis, and behavioral study.">
+    <meta name="keywords" content="MOYO, Mind Of Your Own, NLP, consciousness, transformation, identity, perception, Neuro-Linguistic Programming">
+    <meta name="author" content="Christofer Holland">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mindofyourown.com/">
+    <meta property="og:title" content="MOYO - Mind Of Your Own®">
+    <meta property="og:description" content="A framework for examining the forces that shape thought, identity, belief, and behavior, developed by C.T. Holland from thirty years of applied NLP, hypnosis, and behavioral study.">
+    <meta property="og:image" content="https://mindofyourown.com/images/moyoblack.png">
+    <meta property="og:site_name" content="MOYO - Mind Of Your Own">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://mindofyourown.com/">
+    <meta name="twitter:title" content="MOYO - Mind Of Your Own®">
+    <meta name="twitter:description" content="A framework for examining the forces that shape thought, identity, belief, and behavior, developed by C.T. Holland from thirty years of applied NLP, hypnosis, and behavioral study.">
+    <meta name="twitter:image" content="https://mindofyourown.com/images/moyoblack.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #4169E1;
+            --dark-bg: #0A0A0A;
+            --light-text: #FFFFFF;
+            --accent-gray: #1A1A1A;
+            --hover-blue: #5A7FFF;
+            --gradient-start: #4169E1;
+            --gradient-end: #1E3A8A;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--light-text);
+            background: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px; /* Made larger */
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero-photo {
+            margin-bottom: 3rem;
+            animation: slideInUp 1s ease-out;
+            background: transparent !important;
+        }
+
+        .hero-photo img {
+            width: 200px; /* Back to original size */
+            height: 200px; /* Back to original size */
+            transition: all 0.3s ease;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .hero-photo img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-logo {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: -3px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; /* Made larger */
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            animation: slideInUp 1s ease-out 0.2s both;
+            font-weight: 900;
+        }
+
+        .hero-subtitle::after {
+            content: '®';
+            font-size: 1.5rem;
+            vertical-align: super;
+            margin-left: 0.3rem;
+            color: var(--primary-blue);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(65, 105, 225, 0.3);
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(65, 105, 225, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid - Always 3 per row on desktop, stack on mobile */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: var(--accent-gray);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            padding: 1.5rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo img {
+                height: 45px; /* Smaller on mobile but still bigger than before */
+            }
+
+            .hero-logo {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.8rem; /* Responsive scaling */
+            }
+
+            .hero-photo img {
+                width: 200px; /* Smaller on mobile */
+                height: 200px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Stack cards one by one on mobile */
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Interactive Elements */
+        .interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(65, 105, 225, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 30%;
+            animation-delay: -4s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/moyohorizcropped.png" alt="MOYO - Mind Of Your Own">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#home">About</a></li>
+                <li><a href="/guide">Guide</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-photo">
+                <img src="images/moyoblack.png" alt="Christofer Holland - MOYO Creator">
+            </div>
+            <h1 class="hero-subtitle">Mind Of Your Own</h1>
+            <div style="max-width:600px; margin:2rem auto 0; text-align:left;">
+                <p style="font-size:15px; line-height:1.75; color:#ddd;">
+                    Mind Of Your Own&reg; is a framework for examining the forces that shape thought, identity, belief, perception, and behavior long before most of us ever stop to question them. Developed by C.T. Holland from more than thirty years of applied work in NLP, investigative interviewing, Ericksonian hypnosis, persuasion, and behavioral study, MOYO draws from an intellectual lineage that includes Richard Bandler, Robert Dilts, Judith DeLozier, Milton Erickson, Julian Jaynes, Ernest Becker, Gurdjieff and Ouspensky, Paul Brunton, Robert Cialdini, and Richard Brodie. It brings those ideas into a practical system for recognizing inherited patterns, language frames, social roles, unconscious responses, and algorithmic influence &mdash; so you can see more clearly what is shaping you, interrupt what is automatic, and take greater authorship over what comes next.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is MOYO Section -->
+    
+    <!-- Guide Section -->
+    <section id="guide" class="section">
+        <div class="section-header">
+            <h2 class="section-title">A Survival Guide for Democracy</h2>
+            <p class="section-subtitle">
+                Special Publication No. I &middot; 2026 Edition
+            </p>
+        </div>
+        <div style="display:flex; justify-content:center;">
+            <div style="width:300px; height:420px; background:#0A0A0A; border:1px solid #333; padding:28px 26px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:flex-start; text-align:left;">
+                <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:900; margin-bottom:26px;"><span style="color:#fff;">MIND OF</span> <span style="color:#4169E1;">YOUR OWN</span><span style="color:#4169E1; font-size:9px; vertical-align:super;">&reg;</span></div>
+                <div>
+                    <div style="font-family:'Anton',sans-serif; font-size:42px; line-height:0.95; color:#fff; letter-spacing:-0.5px;">A<br>SURVIVAL<br><span style="color:#4169E1;">GUIDE</span></div>
+                    <div style="font-family:'Anton',sans-serif; font-size:42px; line-height:0.95; color:#fff; letter-spacing:-0.5px; margin-top:1px;">FOR<br>DEMOCRACY</div>
+                </div>
+                <div style="margin-top:36px;">
+                    <div style="font-family:'Oswald',sans-serif; font-size:10px; font-weight:600; letter-spacing:1px; color:#fff; margin-bottom:4px;">C.T. HOLLAND</div>
+                    <div style="font-family:'Oswald',sans-serif; font-size:9px; font-weight:500; letter-spacing:1.5px; color:#888;">SPECIAL PUBLICATION NO. I &middot; 2026</div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+            <p style="max-width:600px; margin:0 auto 2rem; color:rgba(255,255,255,0.8); line-height:1.8;">
+                Documented case studies in civic manipulation &mdash; across health, education, environment, religion, and immigration. Free to download, or pay what you want to support the work.
+            </p>
+            <a href="/guide" class="cta-button">Read the Guide</a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="section">
+        <div class="section-header">
+            <h2 style="font-size:1.4rem; font-weight:600; color:var(--light-text); margin-bottom:0.75rem;">Stay Connected</h2>
+            <p class="section-subtitle">
+                New writing, publications, and occasional updates.
+            </p>
+        </div>
+        <div style="max-width:500px; margin:0 auto; display:flex; gap:1rem; padding:0 2rem;">
+            <input type="email" placeholder="Enter your email" style="flex:1; padding:0.9rem 1.2rem; background:#1A1A1A; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:50px; font-size:1rem;">
+            <button type="submit" style="padding:0.9rem 2rem; background:linear-gradient(135deg, #4169E1, #1E3A8A); color:#fff; border:none; border-radius:50px; font-weight:600; cursor:pointer;">Stay Connected</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/moyohorizcroppedtrans.png" alt="MOYO - Mind Of Your Own" style="height: 40px; width: auto;">
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#home">About</a>
+                <a href="/guide">Guide</a>
+                <a href="#newsletter">Newsletter</a>
+            </div>
+            <p style="font-size:0.8rem; margin-bottom:1rem;">
+                <a href="/press" style="color:rgba(255,255,255,0.4); text-decoration:none;">Press &amp; Media</a>
+            </p>
+            <p class="footer-text">
+                &copy; 2026 Mind Of Your Own&reg;. Fairfield &amp; Co. LLC
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

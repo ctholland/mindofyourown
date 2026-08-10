@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOYO - Mind Of Your Own</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #4169E1;
+            --dark-bg: #0A0A0A;
+            --light-text: #FFFFFF;
+            --accent-gray: #1A1A1A;
+            --hover-blue: #5A7FFF;
+            --gradient-start: #4169E1;
+            --gradient-end: #1E3A8A;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--light-text);
+            background: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px; /* Made larger */
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero-photo {
+            margin-bottom: 3rem;
+            animation: slideInUp 1s ease-out;
+            background: transparent !important;
+        }
+
+        .hero-photo img {
+            width: 200px; /* Back to original size */
+            height: 200px; /* Back to original size */
+            transition: all 0.3s ease;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .hero-photo img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-logo {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: -3px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 2.5rem; /* Made larger */
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            animation: slideInUp 1s ease-out 0.2s both;
+            font-weight: 600;
+        }
+
+        .hero-subtitle::after {
+            content: '™'; /* Added trademark symbol */
+            font-size: 1.5rem;
+            vertical-align: super;
+            margin-left: 0.3rem;
+            color: var(--primary-blue);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(65, 105, 225, 0.3);
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(65, 105, 225, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid - Always 3 per row on desktop, stack on mobile */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: var(--accent-gray);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--accent-gray);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo img {
+                height: 45px; /* Smaller on mobile but still bigger than before */
+            }
+
+            .hero-logo {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.8rem; /* Responsive scaling */
+            }
+
+            .hero-photo img {
+                width: 200px; /* Smaller on mobile */
+                height: 200px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Stack cards one by one on mobile */
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Interactive Elements */
+        .interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(65, 105, 225, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 30%;
+            animation-delay: -4s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/moyohorizcropped.png" alt="MOYO - Mind Of Your Own">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#app">App</a></li>
+                <li><a href="#store">Store</a></li>
+                <li><a href="#events">Events & Trainings</a></li>
+                <li><a href="#podcast">Podcast</a></li>
+                <li><a href="#join">Join</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-photo">
+                <img src="images/moyoblack.png" alt="Christofer Holland - MOYO Creator">
+            </div>
+            <h1 class="hero-subtitle">Mind Of Your Own</h1>
+            <p class="hero-description">
+                A transformative system for rethinking identity, perception, and the unconscious patterns that shape our lives. 
+                Drawing from three decades of NLP expertise and integrating profound wisdom from visionary thinkers, 
+                MOYO offers a framework for building a self you can actually live with.
+            </p>
+            <a href="#about" class="cta-button">Discover Your Mind</a>
+        </div>
+    </section>
+
+    <!-- What is MOYO Section -->
+    <section id="about" class="section">
+        <div class="section-header">
+            <h2 class="section-title">What is MOYO?</h2>
+            <p class="section-subtitle">
+                More than a belief system — it's a practical framework for authentic transformation
+            </p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3 class="card-title">Consciousness Coaching</h3>
+                <p class="card-description">
+                    Advanced NLP techniques combined with Ericksonian Hypnotherapy to help you recognize and shift unconscious patterns that limit your potential.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3 class="card-title">Perceptual Positioning</h3>
+                <p class="card-description">
+                    Learn to shift your perspective dynamically, seeing situations from multiple angles to gain clarity and make empowered decisions.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔄</div>
+                <h3 class="card-title">Identity Rewiring</h3>
+                <p class="card-description">
+                    Break free from limiting beliefs and outdated self-concepts. Build a flexible, authentic identity that serves your highest aspirations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section id="app" class="section">
+        <div class="section-header">
+            <h2 class="section-title">MOYO App</h2>
+            <p class="section-subtitle">
+                Your personal consciousness coach, available 24/7
+            </p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3 class="card-title">Daily Awareness</h3>
+                <p class="card-description">
+                    Gentle prompts and questions designed to keep you conscious of your patterns and choices throughout the day.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎴</div>
+                <h3 class="card-title">Interactive Card System</h3>
+                <p class="card-description">
+                    Access the complete MOYO card deck with expanded meanings, guided reflections, and personalized insights.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3 class="card-title">Progress Tracking</h3>
+                <p class="card-description">
+                    Monitor your growth journey with insightful analytics and personalized recommendations for continued development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store" class="section">
+        <div class="section-header">
+            <h2 class="section-title">MOYO Store</h2>
+            <p class="section-subtitle">
+                Tools and resources for your transformation journey
+            </p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3 class="card-title">The MOYO Book</h3>
+                <p class="card-description">
+                    The complete guide to the Mind Of Your Own system, featuring core teachings, practical exercises, and real-world applications.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎴</div>
+                <h3 class="card-title">Card Decks</h3>
+                <p class="card-description">
+                    Physical and digital versions of the MOYO card system, including the optional CODE suit for advanced practitioners.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎧</div>
+                <h3 class="card-title">Audio Guides</h3>
+                <p class="card-description">
+                    Guided meditations, hypnotherapy sessions, and audio teachings to support your daily practice.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events & Trainings Section -->
+    <section id="events" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Events & Trainings</h2>
+            <p class="section-subtitle">
+                Live experiences for deeper transformation
+            </p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🏔️</div>
+                <h3 class="card-title">Intensive Retreats</h3>
+                <p class="card-description">
+                    Multi-day immersive experiences combining MOYO principles with NLP training in inspiring natural settings.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3 class="card-title">Workshops</h3>
+                <p class="card-description">
+                    Focused sessions on specific aspects of consciousness work, from beginner introductions to advanced techniques.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎓</div>
+                <h3 class="card-title">Certification Programs</h3>
+                <p class="card-description">
+                    Become a certified MOYO practitioner and help others transform their relationship with themselves.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Podcast Section -->
+    <section id="podcast" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Podcast & Interviews</h2>
+            <p class="section-subtitle">
+                Conversations that expand consciousness
+            </p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🎙️</div>
+                <h3 class="card-title">The MOYO Podcast</h3>
+                <p class="card-description">
+                    Regular episodes exploring consciousness, NLP, and the practical application of transformative principles in daily life.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💬</div>
+                <h3 class="card-title">Expert Interviews</h3>
+                <p class="card-description">
+                    Conversations with leading thinkers in consciousness, psychology, and personal development.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎧</div>
+                <h3 class="card-title">Audio Library</h3>
+                <p class="card-description">
+                    Access to our complete archive of recordings, including rare interviews and exclusive content.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join the Movement Section -->
+    <section id="join" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Join the Movement</h2>
+            <p class="section-subtitle">
+                Connect with a community of conscious creators and changemakers
+            </p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3 class="card-title">Global Community</h3>
+                <p class="card-description">
+                    Connect with MOYO practitioners worldwide, share experiences, and support each other's growth journey.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📬</div>
+                <h3 class="card-title">Newsletter</h3>
+                <p class="card-description">
+                    Weekly insights, practical exercises, and exclusive content delivered directly to your inbox.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3 class="card-title">Partner Program</h3>
+                <p class="card-description">
+                    Collaborate with us to bring MOYO principles to your organization, practice, or community.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/moyohorizcroppedtrans.png" alt="MOYO - Mind Of Your Own" style="height: 40px; width: auto;">
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#app">App</a>
+                <a href="#store">Store</a>
+                <a href="#events">Events</a>
+                <a href="#podcast">Podcast</a>
+                <a href="#join">Join</a>
+            </div>
+            <p class="footer-text">
+                &copy; 2025 MOYO - Mind Of Your Own™. Building frameworks for authentic transformation.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
