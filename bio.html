@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C.T. Holland — Mind Of Your Own®</title>
+<meta name="description" content="C.T. Holland is the creator of Mind Of Your Own®, an independent body of work examining how language, identity, inherited systems, and institutions shape what people experience as their own thinking.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://mindofyourown.com/bio.html">
+<meta property="og:title" content="C.T. Holland — Mind Of Your Own®">
+<meta property="og:description" content="Creator of Mind Of Your Own®. Thirty years studying language, belief formation, persuasion, and identity.">
+<meta property="og:image" content="https://mindofyourown.com/images/moyo-OG.png">
+<meta property="og:site_name" content="Mind Of Your Own">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="C.T. Holland — Mind Of Your Own®">
+<meta name="twitter:description" content="Creator of Mind Of Your Own®. Thirty years studying language, belief formation, persuasion, and identity.">
+<meta name="twitter:image" content="https://mindofyourown.com/images/moyo-OG.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; background:#0a0a0a; color:#fff; font-family:'Inter',sans-serif; }
+
+  .grid-wrap { max-width:1140px; margin:0 auto; padding:0 40px; }
+
+  .label { font-family:'Oswald',sans-serif; font-size:13px; font-weight:600; letter-spacing:2px; color:#3a7bd5; }
+  .footer-link { color:#fff; text-decoration:none; }
+  .footer-link:hover { color:#3a7bd5; }
+  .btn-primary { display:inline-block; padding:14px 32px; background:#3a7bd5; color:#fff; text-decoration:none; font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:1px; font-size:13px; white-space:nowrap; }
+  .btn-outline { display:inline-block; padding:14px 32px; background:transparent; border:1px solid #3a7bd5; color:#3a7bd5; text-decoration:none; font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:1px; font-size:13px; white-space:nowrap; }
+
+  /* Site nav */
+  nav { position:fixed; top:0; width:100%; background:rgba(10,10,10,0.95); backdrop-filter:blur(10px); z-index:1000; padding:31px 0; }
+  .nav-container { max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:0 40px; }
+  .nav-logo img { height:35px; width:auto; }
+  .nav-links { display:flex; list-style:none; gap:2.5rem; margin:0; padding:0; }
+  .nav-links a { color:#fff; text-decoration:none; font-family:'Inter',sans-serif; font-size:0.95rem; }
+  .nav-links a:hover { color:#3a7bd5; }
+
+  .main { padding:154px 0 90px; }
+
+  /* HERO: centered author-profile block */
+  .bio-hero { text-align:center; margin-bottom:70px; }
+  .bio-photo-panel { background:#141414; border:1px solid #262626; padding:20px; display:inline-block; max-width:340px; margin:32px auto 0; }
+  .bio-photo-panel img { width:100%; height:auto; display:block; }
+  .bio-name { font-family:'Inter',sans-serif; font-weight:700; font-size:40px; line-height:1.1; color:#fff; margin-bottom:8px; }
+  .bio-role { font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:2px; color:#3a7bd5; margin-bottom:22px; }
+  .bio-position { font-size:16px; line-height:1.7; color:#ddd; margin:0 auto; max-width:600px; }
+
+  /* BIOGRAPHY: centered column, prose left-aligned within it */
+  .bio-column-wrap { text-align:center; }
+  .section { max-width:700px; margin:0 auto; text-align:left; }
+  .section .label { margin-bottom:18px; display:block; }
+  .section p { font-size:16px; line-height:1.85; color:#ddd; margin:0 0 20px; }
+  .section p:last-child { margin-bottom:0; }
+
+  /* Featured pull-quote / principle block */
+  .principle-band { border-top:1px solid #1a1a1a; padding:70px 0; margin-bottom:10px; text-align:center; }
+  .principle-quote { font-family:'Inter',sans-serif; font-weight:700; font-size:28px; color:#f2f2f2; line-height:1.5; max-width:760px; margin:0 auto; }
+
+  /* Current work cards */
+  .work-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; max-width:1000px; margin-bottom:80px; }
+  .work-card { background:#141414; border:1px solid #262626; padding:28px 24px; }
+  .work-card h3 { font-family:'Inter',sans-serif; font-size:17px; font-weight:700; color:#fff; margin:0 0 12px; }
+  .work-card p { font-size:14px; line-height:1.7; color:#ccc; margin:0; }
+
+  /* Also / links - two-column closing band */
+  .also-band { border-top:1px solid #1a1a1a; padding-top:56px; }
+  .closing-cols { display:grid; grid-template-columns: 1fr 1fr; column-gap:64px; align-items:start; }
+  .also-text { max-width:520px; font-size:16px; line-height:1.85; color:#ddd; }
+  .bio-links { display:flex; flex-direction:column; gap:10px; }
+  .bio-links a { width:100%; height:52px; box-sizing:border-box; padding:0; display:flex; align-items:center; justify-content:center; }
+
+  /* FOOTER */
+  .footer-section { padding-top:60px; padding-bottom:38px; }
+  .footer-row { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; }
+  .footer-logo img { height:26px; width:auto; }
+  .footer-nav { font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:1px; text-align:right; }
+  .footer-copy { font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1px; color:#fff; margin-top:8px; }
+
+  @media (max-width: 860px) {
+    .work-grid { grid-template-columns:1fr; }
+    .closing-cols { grid-template-columns:1fr; row-gap:40px; text-align:center; }
+    .also-text { margin-left:auto; margin-right:auto; }
+    .bio-links { align-items:center; }
+  }
+
+  @media (max-width: 700px) {
+    nav { padding:19px 0; }
+    .nav-container { padding:0 20px; }
+    .nav-links { gap:1.25rem; }
+    .nav-links a { font-size:0.85rem; }
+    .main { padding-top:120px; }
+    .grid-wrap { padding:0 24px; }
+    .principle-quote { font-size:22px; }
+  }
+
+  @media (max-width: 560px) {
+    .footer-row { flex-direction:column; align-items:center; text-align:center; }
+    .footer-nav { text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- SITE NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo"><img src="images/moyo-wordmark-white.png" alt="MOYO" style="filter:brightness(1.12);"></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#home">About</a></li>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="guide.html">Guide</a></li>
+        <li><a href="index.html#newsletter">Newsletter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main">
+    <div class="grid-wrap">
+
+      <!-- SECTION 1: HERO - centered author profile -->
+      <div class="bio-hero">
+        <div class="bio-name">C.T. Holland</div>
+        <div class="bio-role">CREATOR OF MIND OF YOUR OWN&reg;</div>
+        <p class="bio-position">
+          C.T. Holland is the creator of Mind Of Your Own&reg;, an independent body of work examining how language, identity, inherited systems, social influence, technology and institutions shape what people experience as their own thinking.
+        </p>
+        <div class="bio-photo-panel">
+          <img src="images/ctholland.png" alt="C.T. Holland">
+        </div>
+      </div>
+
+      <!-- SECTION 2: BIOGRAPHY - centered column, prose left-aligned -->
+      <div class="bio-column-wrap">
+        <div class="section">
+          <span class="label">BIOGRAPHY</span>
+          <p>For more than three decades, Holland has studied and worked with language, belief formation, persuasion, identity, rapport, questioning and conscious change. His formal background includes Advanced Investigative Interviewing with Neuro-Linguistic Programming (NLP), NLP Practitioner training at NLP University under Robert Dilts and Judith DeLozier, Ericksonian Hypnosis, Generative NLP Master Practitioner training, Persuasion Engineering under Richard Bandler, and later trainer-level work in NLP.</p>
+          <p>That training became part of a broader intellectual lineage. Mind Of Your Own&reg; draws from the work of Gurdjieff and P.D. Ouspensky on mechanical behavior and self-observation; Julian Jaynes on the analog self, narratization and interior mind-space; Ernest Becker on mortality, meaning and borrowed power; the NLP lineage of Bandler, Grinder, Dilts, DeLozier, Satir, Erickson and Perls; Paul Brunton on the Overself, including The Quest of the Overself and The Hidden Teaching Beyond Yoga; Robert Cialdini on persuasion and influence; and Richard Brodie on memetics.</p>
+          <p>Mind Of Your Own&reg; brings these influences together with decades of observation, applied communication work, research and writing across psychology, philosophy, political identity, media, institutional behavior, artificial intelligence, memory, persuasion and systems of influence. Rather than asking people what they should believe, the work is designed to help them notice how beliefs are formed, reinforced, performed, defended and sometimes quietly supplied by the systems around them.</p>
+          <p>Holland's current framework includes the Five Selves &mdash; Embodied, Symbolic, Inherited, Performed and Algorithmic &mdash; as well as practical tools for detecting influence, examining language, interrupting automatic responses and separating agreement from allegiance. A central premise of the work is that influence itself is not the enemy because influence itself is unavoidable. The more useful question is whether we can become conscious of it while it is happening.</p>
+          <p>That distinction has become increasingly important as political identity, algorithmic systems and artificial intelligence take a larger role in shaping what people encounter, repeat, fear, desire and believe. Holland's work is not anti-technology and does not romanticize some untouched human mind that existed before outside influence. Instead, it focuses on authorship: the capacity to recognize what is acting on us and participate more deliberately in what happens next.</p>
+          <p>Alongside the development of Mind Of Your Own&reg;, Holland's professional life has included long-term executive work in medical research and healthcare, as well as independent work in writing, communications, music and digital media. Those environments have repeatedly placed him inside systems where language, information, hierarchy, persuasion and decision-making matter.</p>
+        </div>
+      </div>
+
+      <!-- Featured principle -->
+      <div class="principle-band">
+        <div class="principle-quote">
+          The first principle of having a mind of your own is realizing you don't.
+        </div>
+      </div>
+
+      <!-- SECTION 5: CURRENT WORK -->
+      <div class="section" style="max-width:1000px;">
+        <span class="label">CURRENT WORK</span>
+      </div>
+      <div class="work-grid">
+        <div class="work-card">
+          <h3>A Survival Guide for Democracy &mdash; In Development</h3>
+          <p>A book about authorship, influence, identity, language, institutional systems and conscious participation in an increasingly algorithmic world.</p>
+        </div>
+        <div class="work-card">
+          <h3>Essays &amp; Commentary</h3>
+          <p>Writing on political identity, persuasion, language, artificial intelligence, inherited belief and institutional behavior.</p>
+        </div>
+        <div class="work-card">
+          <h3>Live Work &mdash; In Development</h3>
+          <p>Developing live formats that translate Mind Of Your Own&reg; into practical experiences around language, influence, identity and authorship.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 6: CLOSING -->
+      <div class="also-band">
+        <div class="closing-cols">
+          <div>
+            <span class="label" style="display:block; margin-bottom:16px;">OTHER WORK</span>
+            <p class="also-text" style="margin-bottom:0;">Outside Mind Of Your Own&reg;, Holland is a recording artist and producer under the name NOAH&reg;. His independent creative work also includes Full Circle Media&trade; and Sunolicious&trade;. He is the founder of Fairfield and Company LLC.</p>
+          </div>
+          <div>
+            <span class="label" style="display:block; margin-bottom:16px;">EXPLORE</span>
+            <div class="bio-links">
+              <a href="guide.html" class="btn-primary">Mind Of Your Own&reg; Guide</a>
+              <a href="press.html" class="btn-outline">Press Kit</a>
+              <a href="index.html#newsletter" class="btn-outline">Essays &amp; Published Work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-section">
+    <div class="grid-wrap footer-row">
+      <div class="footer-logo"><img src="images/moyo-wordmark-white.png" alt="MOYO" style="filter:brightness(1.12);"></div>
+      <div>
+        <div class="footer-nav">
+          <a href="index.html" class="footer-link">Home</a>
+          &nbsp;&middot;&nbsp;
+          <a href="press.html" class="footer-link">Press &amp; Media</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://mindofyourown.com" class="footer-link">mindofyourown.com</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 Mind Of Your Own&reg;. Fairfield &amp; Co. LLC</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

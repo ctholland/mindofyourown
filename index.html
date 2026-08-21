@@ -64,55 +64,36 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 40px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 60px; /* Made larger */
+        .nav-logo img {
+            height: 35px;
             width: auto;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
-            color: var(--light-text);
+            color: #fff;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            color: #3a7bd5;
         }
 
         /* Hero Section */
@@ -349,16 +330,27 @@
             }
         }
 
+        /* Nav gets its own responsive treatment, independent of content breakpoint */
+        @media (max-width: 700px) {
+            nav {
+                padding: 19px 0;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .logo img {
-                height: 45px; /* Smaller on mobile but still bigger than before */
-            }
-
             .hero-logo {
                 font-size: 3rem;
             }
@@ -458,12 +450,13 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">
+            <div class="nav-logo">
                 <img src="images/moyo-wordmark-white.png" alt="MOYO - Mind Of Your Own" style="height:35px; width:auto; filter:brightness(1.12);">
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#home">About</a></li>
+                <li><a href="bio.html">Bio</a></li>
                 <li><a href="guide.html">Guide</a></li>
                 <li><a href="#newsletter">Newsletter</a></li>
             </ul>
@@ -482,7 +475,7 @@
                     Mind Of Your Own&reg; is a framework for examining the forces that shape thought, identity, belief, perception, and behavior &mdash; long before most of us ever stop to question them.
                 </p>
                 <p style="font-size:15px; line-height:1.75; color:#ddd;">
-                    Developed by C.T. Holland from more than thirty years of applied work in NLP, investigative interviewing, Ericksonian hypnosis, persuasion, and behavioral study, MOYO draws from an intellectual lineage that includes Richard Bandler, Robert Dilts, Judith DeLozier, Milton Erickson, Julian Jaynes, Ernest Becker, Gurdjieff and Ouspensky, Paul Brunton, Robert Cialdini, and Richard Brodie. It brings those ideas into a practical system for recognizing inherited patterns, language frames, social roles, unconscious responses, and algorithmic influence &mdash; so you can see more clearly what is shaping you, interrupt what is automatic, and take greater authorship over what comes next.
+                    Developed by C.T. Holland from more than thirty years of applied work in Neuro-Linguistic Programming (NLP), investigative interviewing, Ericksonian Hypnosis, persuasion, and behavioral study, MOYO draws from an intellectual lineage that includes Richard Bandler, Robert Dilts, Judith DeLozier, Milton Erickson, Julian Jaynes, Ernest Becker, Gurdjieff and Ouspensky, Paul Brunton, Robert Cialdini, and Richard Brodie. It brings those ideas into a practical system for recognizing inherited patterns, language frames, social roles, unconscious responses, and algorithmic influence &mdash; so you can see more clearly what is shaping you, interrupt what is automatic, and take greater authorship over what comes next.
                 </p>
             </div>
         </div>
