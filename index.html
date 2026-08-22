@@ -53,14 +53,10 @@
 
         /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
+            position: static;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+            background: #0a0a0a;
             padding: 31px 0;
-            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -96,9 +92,13 @@
             color: #3a7bd5;
         }
 
+        .nav-links a:visited {
+            color: #fff;
+        }
+
         /* Hero Section */
         .hero {
-            padding: 10rem 0 5rem;
+            padding: 3rem 0 5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -333,19 +333,28 @@
         /* Nav gets its own responsive treatment, independent of content breakpoint */
         @media (max-width: 700px) {
             nav {
-                padding: 19px 0;
+                padding: 16px 0;
             }
 
             .nav-container {
                 padding: 0 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .nav-logo img {
+                height: 26px;
             }
 
             .nav-links {
-                gap: 1.25rem;
+                gap: 1.1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .nav-links a {
-                font-size: 0.85rem;
+                font-size: 0.82rem;
             }
         }
 
