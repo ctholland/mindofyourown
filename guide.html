@@ -49,10 +49,10 @@
   }
 
   .hero-cover { width:100%; aspect-ratio:1/1.4; background:#ffffff; border:1px solid #ddd; padding:36px 31px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:space-between; text-align:left; }
-  .hero-cover-mark { height:28px; width:auto; align-self:flex-start; }
+  .hero-cover-mark { height:28px; width:auto; align-self:center; }
   .hero-cover-title { font-family:'Anton',sans-serif; font-size:58px; line-height:0.95; color:#0a0a0a; letter-spacing:-0.5px; }
   .hero-cover-byline { font-family:'Oswald',sans-serif; font-size:17px; font-weight:600; letter-spacing:1px; color:#0a0a0a; margin-bottom:6px; }
-  .hero-cover-edition { font-family:'Oswald',sans-serif; font-size:15px; font-weight:500; letter-spacing:2px; color:#555; }
+  .hero-cover-edition { font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; letter-spacing:2px; color:#555; }
 
   .right-col { text-align:left; padding-top:8px; }
   .hero-title { font-family:'Inter',sans-serif; font-weight:700; font-size:34px; line-height:1.15; color:#fff; margin-bottom:10px; }
@@ -82,7 +82,8 @@
       margin:0 auto;
       row-gap:45px;
     }
-    .hero-cover { max-width:330px; margin:0 auto; }
+    .hero-cover { max-width:380px; margin:0 auto; }
+    .hero-cover-title { font-size:50px; }
     .right-col { padding-top:0; text-align:center; }
     .hero-desc { margin-left:auto; margin-right:auto; }
     .about-block { text-align:center; }
@@ -103,7 +104,6 @@
 
   /* Small mobile: tighten type and cover further */
   @media (max-width: 520px) {
-    .hero-cover { max-width:295px; }
     .hero-title { font-size:29px; }
     .hero-desc, .about-block p.body { font-size:15px; }
   }
