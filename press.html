@@ -28,11 +28,12 @@
   .edition { font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:2px; color:#888; margin-bottom:48px; }
 
   .cols { display:flex; gap:59px; align-items:flex-start; margin-bottom:70px; }
-  .cover { width:385px; aspect-ratio:1/1.4; flex-shrink:0; background:#ffffff; border:1px solid #ddd; padding:32px 27px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:space-between; text-align:left; }
-  .cover-mark { height:25px; width:auto; align-self:center; }
-  .cover-title { font-family:'Anton',sans-serif; font-size:51px; line-height:0.95; color:#0a0a0a; letter-spacing:-0.5px; }
-  .cover-byline { font-family:'Oswald',sans-serif; font-size:15px; font-weight:600; letter-spacing:1px; color:#0a0a0a; margin-bottom:6px; }
-  .cover-edition { font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; letter-spacing:2px; color:#555; }
+
+  .cover { width:385px; aspect-ratio:1/1.4; flex-shrink:0; background:#ffffff; border:1px solid #ddd; padding:32px 27px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:space-between; text-align:left; container-type:inline-size; }
+  .cover-mark { height:7.55cqw; width:auto; align-self:flex-start; }
+  .cover-title { font-family:'Anton',sans-serif; font-size:15.41cqw; line-height:0.95; color:#0a0a0a; letter-spacing:-0.5px; }
+  .cover-byline { font-family:'Oswald',sans-serif; font-size:4.53cqw; font-weight:600; letter-spacing:1px; color:#0a0a0a; margin-bottom:1.81cqw; }
+  .cover-edition { font-family:'Oswald',sans-serif; font-size:4.23cqw; font-weight:500; letter-spacing:2px; color:#555; }
 
   .info { flex:1; max-width:625px; text-align:left; }
   .label { font-family:'Oswald',sans-serif; font-size:12px; font-weight:600; letter-spacing:2px; color:#3a7bd5; margin-bottom:12px; }
@@ -53,10 +54,10 @@
 
   @media (max-width: 860px) {
     .cols { flex-direction:column; gap:36px; }
-    .cover { width:100%; max-width:380px; height:auto; aspect-ratio:1/1.4; margin:0 auto; }
     .info { max-width:100%; }
     .below { margin-left:0; max-width:100%; }
   }
+
 </style>
 </head>
 <body>
@@ -110,7 +111,7 @@
 
   <div class="below">
     <div class="label">ABOUT THE AUTHOR</div>
-    <p class="body-copy">C.T. Holland is the creator of Mind Of Your Own&reg;, an independent body of work on authorship, perception and influence. His background includes more than three decades of applied work in Neuro-Linguistic Programming (NLP), Ericksonian Hypnosis and persuasion, alongside an intellectual lineage spanning Gurdjieff and P.D. Ouspensky, Julian Jaynes, Ernest Becker, the NLP lineage of Bandler, Grinder, Dilts, DeLozier, Satir, Erickson and Perls, Paul Brunton, Robert Cialdini and Richard Brodie.</p>
+    <p class="body-copy">C.T. Holland is the creator of Mind Of Your Own&reg;, an independent body of work on authorship, perception and influence. His background includes more than three decades of applied work in Neuro-Linguistic Programming (NLP), Ericksonian Hypnosis and persuasion, alongside an intellectual lineage spanning Gurdjieff and P.D. Ouspensky, Julian Jaynes, Ernest Becker, Joseph Campbell, Alan Watts, the NLP lineage of Bandler, Grinder, Dilts, DeLozier, Satir, Erickson and Perls, Paul Brunton, Robert Cialdini and Richard Brodie.</p>
 
     <div class="label">PRESS USE & CONTACT</div>
     <p class="body-copy" style="margin-bottom:0;">Quotes and excerpts may be used with attribution to Mind Of Your Own&reg; and C.T. Holland.</p>
