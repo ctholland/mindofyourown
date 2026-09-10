@@ -83,7 +83,7 @@
     .ch-overlay.is-open { opacity: 1; pointer-events: auto; }
     .ch-panel {
       position: fixed; top: 0; right: 0; height: 100%;
-      width: min(320px, 82vw);
+      width: min(360px, 88vw);
       background: #000000; border-left: 1px solid rgba(255,255,255,0.1);
       color: #fff; z-index: 9999;
       transform: translateX(100%);
@@ -117,48 +117,43 @@
       .site-nav .nav-logo img { height: 24px; }
     }
 
-    /* ============ SHARED FOOTER — compact ============ */
+    /* ============ SHARED FOOTER ============ */
     .site-footer {
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 32px 40px 24px;
+      padding: 56px 40px 40px;
       background: #000;
     }
     .sf-grid {
       max-width: 1300px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap;
+      display: grid; grid-template-columns: 1.1fr 1fr 1.1fr; gap: 40px;
+      align-items: start;
     }
-    .sf-brand { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .sf-brand img { height: 20px; width: auto; filter: brightness(1.12); }
-    .sf-tagline { font-family: var(--font-body, 'Inter', sans-serif); font-size: 12.5px; color: rgba(255,255,255,0.45); }
-    .sf-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+    .sf-brand img { height: 24px; width: auto; margin-bottom: 12px; filter: brightness(1.12); }
+    .sf-tagline { font-family: var(--font-body, 'Inter', sans-serif); font-size: 13.5px; color: rgba(255,255,255,0.5); }
+    .sf-links { display: flex; flex-direction: column; gap: 11px; }
     .sf-links a {
-      font-family: var(--font-body, 'Inter', sans-serif); font-size: 13px; font-weight: 500;
-      color: rgba(255,255,255,0.65); text-decoration: none; white-space: nowrap;
+      font-family: var(--font-body, 'Inter', sans-serif); font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.7); text-decoration: none;
     }
     .sf-links a:hover { color: #4169E1; }
-    .sf-right { display: flex; align-items: center; gap: 10px; }
-    .sf-loop-label { font-family: var(--font-body, 'Inter', sans-serif); font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.7); white-space: nowrap; }
-    .sf-form { display: flex; gap: 6px; }
+    .sf-loop-label { font-family: var(--font-body, 'Inter', sans-serif); font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 12px; }
+    .sf-form { display: flex; gap: 8px; }
     .sf-form input {
-      width: 160px; padding: 8px 12px; background: #0c0d10; border: 1px solid rgba(255,255,255,0.15);
-      color: #fff; border-radius: 4px; font-size: 12.5px; font-family: var(--font-body, 'Inter', sans-serif);
+      flex: 1; min-width: 0; padding: 11px 14px; background: #0c0d10; border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; border-radius: 4px; font-size: 13.5px; font-family: var(--font-body, 'Inter', sans-serif);
     }
     .sf-form button {
-      padding: 8px 16px; background: #4169E1; color: #fff; border: none; border-radius: 4px;
-      font-weight: 600; font-size: 12.5px; cursor: pointer; font-family: var(--font-body, 'Inter', sans-serif); white-space: nowrap;
+      padding: 11px 20px; background: #4169E1; color: #fff; border: none; border-radius: 4px;
+      font-weight: 600; font-size: 13.5px; cursor: pointer; font-family: var(--font-body, 'Inter', sans-serif); white-space: nowrap;
     }
     .sf-bottom {
-      max-width: 1300px; margin: 20px auto 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);
-      font-family: var(--font-body, 'Inter', sans-serif); font-size: 11px; color: rgba(255,255,255,0.3);
+      max-width: 1300px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+      font-family: var(--font-body, 'Inter', sans-serif); font-size: 12px; color: rgba(255,255,255,0.35);
     }
 
     @media (max-width: 900px) {
-      .sf-grid { flex-direction: column; align-items: flex-start; gap: 22px; }
-      .sf-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; width: 100%; }
-      .sf-right { width: 100%; flex-direction: column; align-items: flex-start; gap: 10px; }
-      .sf-form { width: 100%; }
-      .sf-form input { flex: 1; width: auto; }
-      .site-footer { padding: 28px 24px 20px; }
+      .sf-grid { grid-template-columns: 1fr; gap: 32px; }
+      .site-footer { padding: 44px 24px 32px; }
     }
   `;
 
@@ -200,7 +195,7 @@
       '<div class="sf-grid">' +
         '<div class="sf-brand">' +
           '<img src="' + root + 'images/moyo-wordmark-white.png" alt="Mind Of Your Own">' +
-          '<span class="sf-tagline">A more conscious world is possible.</span>' +
+          '<div class="sf-tagline">A more conscious world is possible.</div>' +
         '</div>' +
         '<div class="sf-links">' +
           '<a href="mailto:info@mindofyourown.com">Contact</a>' +
@@ -210,8 +205,8 @@
           '<a href="#" title="Not yet published">Privacy</a>' +
           '<a href="#" title="Not yet published">Terms</a>' +
         '</div>' +
-        '<div class="sf-right" id="newsletter">' +
-          '<span class="sf-loop-label">Stay in the loop.</span>' +
+        '<div>' +
+          '<div class="sf-loop-label">Stay in the loop.</div>' +
           '<div class="sf-form">' +
             '<input type="email" placeholder="Your email">' +
             '<button type="button">Join</button>' +

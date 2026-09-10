@@ -116,7 +116,6 @@
         .module-card h3 { font-family: var(--font-body); font-size: 19px; font-weight: 700; margin: 12px 0 8px; }
         .module-card p { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.6); margin: 0 0 14px; }
         .module-link { font-family: var(--font-label); font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--primary-blue); text-transform: uppercase; }
-        .module-status { font-family: var(--font-label); font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-left: 10px; }
 
         /* ============ FRAMEWORK STRIP — white editorial ============ */
         .framework-strip { background: #f2efe9; color: #111; padding: 70px 0; }
@@ -195,7 +194,6 @@
             <a href="book.html" class="module-card">
                 <div class="module-photo"><img src="images/mindofyourown.png" alt="Mind Of Your Own — the book"></div>
                 <span class="label accent">The Book</span>
-                <span class="module-status">Forthcoming</span>
                 <h3>Mind Of Your Own&reg;</h3>
                 <p>A deeper look at the architecture of your mind and the systems that shape it.</p>
                 <span class="module-link">Learn More &rarr;</span>
@@ -205,7 +203,7 @@
                 <span class="label accent">The Guide</span>
                 <h3>A Survival Guide for Democracy</h3>
                 <p>Clearer context. Sharper questions. A more informed you.</p>
-                <span class="module-link">Read the Guide &rarr;</span>
+                <span class="module-link">Learn More &rarr;</span>
             </a>
             <a href="ai-consulting.html" class="module-card">
                 <div class="module-photo"><img src="images/table.png" alt="AI Consulting and Training"></div>
@@ -269,6 +267,37 @@
             </div>
         </div>
     </div>
+
+    <!-- GUIDE DETAIL SECTION -->
+    <section id="guide-detail" class="section">
+        <div class="section-header">
+            <h2 class="section-title">A Survival Guide for Democracy</h2>
+            <p class="section-subtitle">Special Publication No. I &middot; 2026 Edition</p>
+        </div>
+        <div style="display:flex; justify-content:center;">
+            <div style="width:260px; aspect-ratio:2/3; overflow:hidden; border-radius:2px;">
+                <img src="images/moyosurvivalguide.png" alt="A Survival Guide for Democracy cover" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+            <p style="max-width:600px; margin:0 auto 2rem; color:rgba(255,255,255,0.75); line-height:1.8; font-size:15px;">
+                Documented case studies in civic manipulation &mdash; across health, education, environment, religion, and immigration. Free to download, or pay what you want to support the work.
+            </p>
+            <a href="guide.html" class="btn-primary">Read the Guide</a>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter" class="section">
+        <div class="section-header">
+            <h2 style="font-size:1.4rem; font-weight:600; margin-bottom:0.75rem;">Stay Connected</h2>
+            <p class="section-subtitle">New writing, publications, and occasional updates.</p>
+        </div>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="newsletter-input">
+            <button type="submit" class="newsletter-btn">Stay Connected</button>
+        </div>
+    </section>
 
     <script src="nav.js"></script>
     <script>
