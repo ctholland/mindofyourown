@@ -50,20 +50,20 @@
   .hero-accent-strip img { width:220px; height:100%; object-fit:cover; object-position:20% 50%; opacity:0.55; filter:saturate(1.3); margin-left:-70px; }
 
   /* OPPORTUNITY + BLACK-BOX SECTIONS */
-  .opp { padding:100px 0 0; border-top:1px solid rgba(255,255,255,0.08); }
-  .opp h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:38px; line-height:1.2; margin:18px 0 0; max-width:620px; }
-  .opp-checklist { margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; }
+  .opp { padding:100px 0 0; position:relative; }
+  .opp h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(26px, 3.6vw, 38px); line-height:1.2; margin:18px 0 0; max-width:620px; position:relative; z-index:2; }
+  .opp-checklist { margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-top:30px; position:relative; z-index:2; }
   .opp-checklist div { font-size:14px; color:rgba(255,255,255,0.7); display:flex; align-items:flex-start; gap:10px; }
   .opp-checklist div::before { content:''; width:6px; height:6px; border-radius:50%; background:#6f8ded; margin-top:6px; flex-shrink:0; }
 
-  .blackbox { padding:90px 0 100px; }
-  .blackbox h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:32px; line-height:1.25; max-width:640px; margin:0 0 50px; }
-  .bb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .blackbox { padding:90px 0 100px; position:relative; }
+  .blackbox h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(22px, 3vw, 32px); line-height:1.28; max-width:640px; margin:0 0 50px; position:relative; z-index:2; }
+  .bb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; position:relative; z-index:2; }
   .bb-card h3 { font-size:18px; font-weight:700; margin:0 0 10px; color:#8fa3e6; }
   .bb-card p { font-size:14.5px; line-height:1.65; color:rgba(255,255,255,0.65); margin:0; }
 
   /* IMPLEMENTATION */
-  .impl { padding:110px 0; border-top:1px solid rgba(255,255,255,0.08); }
+  .impl { padding:110px 0; }
   .impl-grid { display:grid; grid-template-columns: 1fr 1fr; gap:70px; align-items:center; }
   .impl-photo { aspect-ratio:4/3; border-radius:4px; overflow:hidden; }
   .impl-photo img { width:100%; height:100%; object-fit:cover; object-position:70% 30%; filter:saturate(0.82) brightness(0.85); }
@@ -74,15 +74,59 @@
   .impl-list li::before { content:''; width:8px; height:8px; border-radius:50%; background:#6f8ded; flex-shrink:0; }
 
   /* FOUR TRACKS */
-  .tracks { padding:110px 0 130px; background:linear-gradient(180deg,#000 0%,#0a0c12 100%); border-top:1px solid rgba(255,255,255,0.08); }
+  .tracks { padding:110px 0 130px; background:linear-gradient(180deg,#000 0%,#0a0c12 100%); }
   .tracks-head { text-align:center; max-width:640px; margin:0 auto 70px; }
-  .tracks-head .kicker { font-family:var(--font-display); font-style:italic; font-weight:600; font-size:30px; color:rgba(255,255,255,0.92); margin:18px 0 0; }
-  .track-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
-  .track-card { background:#0e111c; border:1px solid rgba(140,150,190,0.22); border-radius:6px; padding:36px 26px; position:relative; overflow:hidden; }
-  .track-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#6f8ded,#8b7cf6); }
-  .track-letter { font-family:var(--font-display); font-style:italic; font-weight:700; font-size:34px; color:#6f8ded; margin-bottom:18px; display:block; }
-  .track-card h3 { font-size:19px; font-weight:700; margin:0 0 12px; overflow-wrap:break-word; }
-  .track-card p { font-size:14.5px; line-height:1.65; color:rgba(255,255,255,0.62); margin:0; }
+  .tracks-head .kicker { font-family:var(--font-display); font-style:italic; font-weight:600; font-size:30px; color:rgba(255,255,255,0.92); margin:18px 0 12px; }
+  .tracks-head .subline { font-size:15px; color:rgba(255,255,255,0.55); margin:0; }
+  .track-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  .track-card {
+    container-type: inline-size;
+    aspect-ratio: 1 / 1;
+    position:relative;
+    border-radius:8px;
+    overflow:hidden;
+    background:#0b0d15;
+    border:1px solid rgba(111,141,237,0.3);
+  }
+  .track-card .card-bg {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; display:block;
+  }
+  .track-copy {
+    position:absolute; left:10.5%; top:44%; width:57%; z-index:2;
+  }
+  .track-copy p {
+    font-size:5cqw; line-height:1.42; color:rgba(255,255,255,0.9); margin:0;
+  }
+  .track-card .card-bg {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; display:block;
+  }
+  .track-content {
+    position:relative; z-index:2; height:100%;
+    display:flex; flex-direction:column;
+    padding:8% 7%;
+  }
+  .track-letter {
+    font-family:var(--font-display); font-style:italic; font-weight:700;
+    font-size:10cqw; color:#7c93f0; line-height:1; margin:1% 0 2%;
+  }
+  .track-letter-rule { width:16%; height:0.5cqw; background:#5b7ce8; margin-bottom:5%; }
+  .track-title {
+    font-family:var(--font-display); font-weight:700; font-style:normal;
+    font-size:9.6cqw; color:#fff; line-height:1.05; margin:0 0 4%; max-width:92%; white-space:nowrap;
+  }
+  .track-body {
+    font-size:4.8cqw; line-height:1.38; color:rgba(255,255,255,0.88);
+    max-width:60%; margin:0; flex-grow:1;
+  }
+  .track-meta { display:flex; align-items:center; gap:3.5%; margin-top:auto; }
+  .track-meta svg { width:7cqw; height:7cqw; color:#6f8ded; flex-shrink:0; }
+  .track-meta-rule { width:1px; height:9cqw; background:rgba(255,255,255,0.22); flex-shrink:0; }
+  .track-meta-words {
+    font-family:var(--font-label); font-size:2.3cqw; font-weight:500; letter-spacing:0.15em;
+    color:rgba(255,255,255,0.5); line-height:1.9; text-transform:uppercase;
+  }
 
   /* QUOTE STRIP */
   .quote-strip { position:relative; padding:130px 0; text-align:center; overflow:hidden; }
@@ -98,11 +142,14 @@
     .hero-grid, .impl-grid { grid-template-columns:1fr; }
     .hero h1 { font-size:40px; }
     .hero-photo-frame { height:340px; }
-    .track-grid { grid-template-columns:1fr 1fr; }
+    .track-grid { grid-template-columns:1fr 1fr; gap:16px; }
     .impl h2 { font-size:28px; }
     .opp-checklist { grid-template-columns:1fr 1fr; }
     .bb-grid { grid-template-columns:1fr; }
-    .opp h2, .blackbox h2 { font-size:26px; }
+  }
+
+  @media (max-width: 560px) {
+    .track-grid { grid-template-columns:1fr; max-width:320px; margin:0 auto; }
   }
 </style>
 </head>
@@ -128,7 +175,7 @@
     </div>
   </section>
 
-  <section class="opp">
+  <section class="opp dotgrid">
     <div class="wrap">
       <div class="label">The Opportunity</div>
       <h2>More capability. More authorship.</h2>
@@ -141,10 +188,10 @@
     </div>
   </section>
 
-  <section class="blackbox">
+  <section class="blackbox dotgrid">
     <div class="wrap">
       <div class="label">For Individuals and Organizations</div>
-      <h2>Turn AI from a black box into a working advantage.</h2>
+      <h2>Turn AI from a black box<br>into a working advantage.</h2>
       <div class="bb-grid">
         <div class="bb-card">
           <h3>Clarity</h3>
@@ -165,7 +212,7 @@
   <section class="impl" id="approach">
     <div class="wrap">
       <div class="impl-grid">
-        <div class="impl-photo"><img src="images/table.png" alt="Working session"></div>
+        <div class="impl-photo"><img src="images/officedesk.png" alt="Working session"></div>
         <div>
           <div class="label">Real-World Application</div>
           <h2>From insight to implementation.</h2>
@@ -187,27 +234,20 @@
       <div class="tracks-head">
         <div class="label">The Framework</div>
         <div class="kicker">Four tracks. Start where you are.</div>
+        <p class="subline">Practical paths. Real progress. Greater agency.</p>
       </div>
       <div class="track-grid">
         <div class="track-card">
-          <span class="track-letter">A</span>
-          <h3>AI Fluency</h3>
-          <p>Practical grounding. What these tools are, what they aren't, and how to use them well.</p>
+          <img class="card-bg" src="images/A_AIFluency.png" alt="AI Fluency">
         </div>
         <div class="track-card">
-          <span class="track-letter">B</span>
-          <h3>Human Agency</h3>
-          <p>Discernment, authorship, judgment, identity &mdash; staying in charge as machines take on more thinking.</p>
+          <img class="card-bg" src="images/B_HumanAgency.png" alt="Human Agency">
         </div>
         <div class="track-card">
-          <span class="track-letter">C</span>
-          <h3>The Next Chapter</h3>
-          <p>Work and role transition. A function you performed changed. You did not.</p>
+          <img class="card-bg" src="images/C_TheNextChapter.png" alt="The Next Chapter">
         </div>
         <div class="track-card">
-          <span class="track-letter">D</span>
-          <h3>Implementation</h3>
-          <p>Hands-on consulting for organizations actually deploying AI.</p>
+          <img class="card-bg" src="images/D_Implementation.png" alt="Implementation">
         </div>
       </div>
     </div>

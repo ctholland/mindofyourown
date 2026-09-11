@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C.T. Holland — About — Mind Of Your Own<sup>&reg;</sup></title>
+<meta name="description" content="C.T. Holland is the creator of Mind Of Your Own®, an independent body of work examining how language, identity, inherited systems, social influence, technology and institutions shape what people experience as their own thinking.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  :root {
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-label: 'Oswald', sans-serif;
+    --primary-blue: #4169E1;
+  }
+  body { margin:0; background:#000; color:#fff; font-family:var(--font-body); }
+  .wrap { max-width:1300px; margin:0 auto; padding:0 48px; }
+  .label { font-family:var(--font-label); font-size:12px; font-weight:600; letter-spacing:2.5px; color:#8fa3e6; text-transform:uppercase; }
+  sup { font-size:0.62em; }
+
+  /* HERO */
+  .hero { padding:64px 0 84px; position:relative; overflow:hidden; }
+  .hero::before {
+    content:''; position:absolute; top:-200px; left:-250px; width:900px; height:900px; z-index:0;
+    background:radial-gradient(circle, rgba(65,105,225,0.35) 0%, rgba(65,105,225,0.15) 40%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-accent {
+    position:absolute; top:-70px; left:-140px; width:600px; height:auto; z-index:0;
+    opacity:0.92;
+    -webkit-mask-image: linear-gradient(115deg, #000 58%, rgba(0,0,0,0.6) 80%, transparent 98%);
+    mask-image: linear-gradient(115deg, #000 58%, rgba(0,0,0,0.6) 80%, transparent 98%);
+    pointer-events:none;
+  }
+  .hero-grid { display:grid; grid-template-columns:1fr 0.85fr; gap:36px; align-items:start; position:relative; z-index:2; max-width:1220px; margin:0 auto; }
+  .hero-text-inset { padding-left:50px; }
+  .hero-eyebrow { display:block; margin-bottom:12px; }
+  .hero-name { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:32px; letter-spacing:2px; line-height:1.15; margin:0 0 18px; }
+  .hero-desc { font-size:13.5px; line-height:1.62; color:rgba(255,255,255,0.78); max-width:440px; margin:0 0 36px; }
+  .hero-tagline { font-family:var(--font-label); font-size:11px; font-weight:500; letter-spacing:1.5px; color:#4f8dfd; text-transform:uppercase; line-height:1.9; }
+  .hero-tagline-rule { width:24px; height:1px; background:rgba(79,141,253,0.8); margin-top:10px; }
+
+  .hero-photo-wrap { display:flex; align-items:flex-start; gap:22px; margin-top:-50px; }
+  .hero-photo {
+    aspect-ratio: 0.94; border-radius:4px; overflow:hidden; background:#000; flex:1;
+    border:1px solid rgba(111,141,237,0.5); position:relative;
+    box-shadow: 0 0 130px 34px rgba(65,105,225,0.5), 0 30px 70px rgba(0,0,0,0.6);
+  }
+  .hero-photo img {
+    position:absolute; left:50%; top:-30.3%;
+    width:133.2%; height:auto;
+    transform:translateX(-50%);
+    display:block; z-index:1;
+  }
+  .hero-side-labels-block { align-self:center; }
+  .hero-side-labels { font-family:var(--font-label); font-size:11px; font-weight:500; letter-spacing:1.5px; color:#4f8dfd; text-transform:uppercase; line-height:2; white-space:nowrap; }
+  .hero-side-labels-rule { width:32px; height:1px; background:rgba(79,141,253,0.8); margin-top:12px; }
+
+  /* BIOGRAPHY */
+  .bio { padding:0 0 72px; }
+  .bio-inner { max-width:1120px; margin:0 auto; }
+  .bio-inner .label { display:block; margin-bottom:22px; }
+  .bio-inner p { font-size:13.5px; line-height:1.42; color:rgba(255,255,255,0.8); margin:0 0 17px; }
+  .bio-inner p:last-child { margin-bottom:0; }
+
+  /* PRINCIPLE */
+  .principle { padding:0 0 80px; }
+  .principle-row { display:flex; align-items:center; justify-content:center; gap:28px; }
+  .principle-rule { flex:1; max-width:90px; height:1px; background:linear-gradient(to right, transparent, #4f8dfd); box-shadow:0 0 6px rgba(79,141,253,0.6); }
+  .principle-row .principle-rule:last-child { background:linear-gradient(to left, transparent, #4f8dfd); }
+  .principle blockquote {
+    font-family:var(--font-display); font-style:italic; font-weight:400;
+    font-size:25px; line-height:1.4; color:#fff; max-width:680px; margin:0; text-align:center; flex-shrink:0;
+  }
+
+  /* CURRENT WORK */
+  .current-work { padding:0 0 84px; }
+  .current-work .label { display:block; margin-bottom:22px; }
+  .cw-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .cw-card {
+    border:1px solid rgba(111,141,237,0.3); border-radius:8px; overflow:hidden; position:relative;
+    min-height:270px; display:flex; flex-direction:column; justify-content:flex-end; padding:26px 24px;
+  }
+  .cw-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#6f8ded,#8b7cf6); z-index:3; }
+  .cw-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  .cw-scrim { position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,7,12,0.35) 0%, rgba(6,7,12,0.88) 78%, #06070c 100%); z-index:1; }
+  .cw-card h3 { font-family:var(--font-display); font-weight:700; font-size:19px; margin:0 0 10px; position:relative; z-index:2; }
+  .cw-icon {
+    width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(159,176,245,0.5);
+    display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+    color:#9fb0f5; position:relative; z-index:2; background:rgba(6,7,12,0.4);
+  }
+  .cw-card p { font-size:13.5px; line-height:1.62; color:rgba(255,255,255,0.75); margin:0 0 16px; position:relative; z-index:2; }
+  .cw-explore { font-family:var(--font-label); font-size:11px; font-weight:600; letter-spacing:1.5px; color:#9fb0f5; text-transform:uppercase; text-decoration:none; position:relative; z-index:2; }
+  .cw-explore:hover { color:#fff; }
+
+  /* OTHER WORK */
+  .other-work { padding:0 0 72px; }
+  .other-work .label { display:block; margin-bottom:18px; }
+  .other-work p { font-size:14px; line-height:1.65; color:rgba(255,255,255,0.6); max-width:640px; margin:0; }
+
+  /* EXPLORE */
+  .explore { padding:0 0 90px; }
+  .explore .label { display:block; margin-bottom:20px; }
+  .explore-links { display:flex; gap:14px; flex-wrap:wrap; }
+  .explore-links a {
+    display:inline-flex; align-items:center; gap:12px; padding:13px 24px;
+    border:1px solid rgba(111,141,237,0.35); border-radius:50px;
+    background:linear-gradient(135deg, rgba(111,141,237,0.1), rgba(139,124,246,0.04));
+    color:#fff; text-decoration:none; font-size:13.5px; font-weight:600;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+  }
+  .explore-links a:hover {
+    border-color:var(--primary-blue);
+    box-shadow: 0 0 24px rgba(65,105,225,0.35);
+    background:linear-gradient(135deg, rgba(111,141,237,0.2), rgba(139,124,246,0.1));
+  }
+  .explore-links a .arrow {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px; border-radius:50%; background:rgba(111,141,237,0.2);
+    color:#9fb0f5; font-size:11px; flex-shrink:0; transition: background .2s, color .2s;
+  }
+  .explore-links a:hover .arrow { background:var(--primary-blue); color:#fff; }
+
+  /* DESKTOP-ONLY HERO COHESION PASS — scoped so mobile is untouched */
+  @media (min-width:901px) {
+    .hero-grid { gap:26px; }
+    .hero-eyebrow { margin-bottom:8px; }
+    .hero-name { margin-bottom:14px; }
+    .hero-accent {
+      width:630px;
+      opacity:0.95;
+      -webkit-mask-image: radial-gradient(circle at 24% 30%, #000 32%, rgba(0,0,0,0.45) 58%, transparent 82%);
+      mask-image: radial-gradient(circle at 24% 30%, #000 32%, rgba(0,0,0,0.45) 58%, transparent 82%);
+    }
+    .hero::after {
+      content:''; position:absolute; left:0; right:0; bottom:0; height:200px; z-index:1;
+      background:linear-gradient(to bottom, transparent, #000 88%);
+      pointer-events:none;
+    }
+  }
+
+  @media (max-width:900px) {
+    .wrap { padding:0 24px; }
+    .hero-grid { grid-template-columns:1fr; gap:36px; }
+    .hero-photo-wrap { width:100%; max-width:340px; margin:0 auto; margin-top:0; order:-1; flex-direction:column; align-items:center; }
+    .hero-photo { width:100%; flex:none; }
+    .hero-text-inset { padding-left:0; }
+    .hero-side-labels-block { display:none; }
+    .hero-name { font-size:32px; text-align:center; }
+    .hero-eyebrow { text-align:center; }
+    .hero-desc { max-width:100%; text-align:center; margin:0 auto 32px; }
+    .hero-tagline { text-align:center; }
+    .hero-tagline-rule { margin-left:auto; margin-right:auto; }
+    .bio-inner { max-width:100%; }
+    .cw-grid { grid-template-columns:1fr; }
+    .principle blockquote { font-size:20px; flex-shrink:1; }
+    .principle-rule { flex:0 0 36px; max-width:36px; }
+    .hero-accent {
+      top:-35px; left:-55px; width:330px; opacity:0.75;
+      -webkit-mask-image: linear-gradient(115deg, #000 62%, rgba(0,0,0,0.7) 84%, transparent 99%);
+      mask-image: linear-gradient(115deg, #000 62%, rgba(0,0,0,0.7) 84%, transparent 99%);
+    }
+  }
+
+  @media (max-width:480px) {
+    .hero-photo-wrap { max-width:280px; }
+    .principle blockquote { font-size:17px; }
+    .principle-rule { flex:0 0 20px; max-width:20px; }
+    .principle-row { gap:14px; }
+    .hero-accent { top:-20px; left:-30px; width:250px; opacity:0.7; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <img class="hero-accent" src="images/about_top_left_planetary_accent.png" alt="">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-text-inset">
+          <span class="label hero-eyebrow">Creator of Mind Of Your Own<sup>&reg;</sup></span>
+          <h1 class="hero-name">C.T. Holland</h1>
+          <p class="hero-desc">C.T. Holland is the creator of Mind Of Your Own<sup>&reg;</sup>, an independent body of work examining how language, identity, inherited systems, social influence, technology and institutions shape what people experience as their own thinking.</p>
+        </div>
+        <div class="hero-tagline">A more<br>conscious<br>world is<br>possible.</div>
+        <div class="hero-tagline-rule"></div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img src="images/cthollandfront.png" alt="C.T. Holland">
+        </div>
+        <div class="hero-side-labels-block">
+          <div class="hero-side-labels">Language<br>Systems<br>People<br>Possibilities</div>
+          <div class="hero-side-labels-rule"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio">
+    <div class="wrap bio-inner">
+      <span class="label">Biography</span>
+      <p>For more than three decades, Holland has studied and worked with language, belief formation, persuasion, identity, rapport, questioning, generative learning and conscious change. His formal background includes Advanced Investigative Interviewing with Neuro-Linguistic Programming (NLP), NLP Practitioner training at NLP University under Robert Dilts and Judith DeLozier, Ericksonian Hypnosis, Generative NLP Master Practitioner training, and Persuasion Engineering and NLP Trainer&rsquo;s Training under Richard Bandler and John La Valle.</p>
+      <p>That training became part of a broader intellectual lineage. Mind Of Your Own<sup>&reg;</sup> draws from the work of Gurdjieff and P.D. Ouspensky on mechanical behavior and self-observation; Julian Jaynes on the analog self, narratization and interior mind-space; Ernest Becker on mortality, meaning and borrowed power; Joseph Campbell on myth, the hero&rsquo;s journey and the power of story; Alan Watts on consciousness and the nature of self; the NLP lineage of Bandler, Grinder, Dilts, DeLozier, Satir, Erickson and Perls; Paul Brunton on the Overself; Robert Cialdini on persuasion and influence; and Richard Brodie on memetics.</p>
+      <p>Mind Of Your Own<sup>&reg;</sup> brings these influences together with decades of observation, applied communication work, research and writing across psychology, philosophy, political identity, media, institutional behavior, artificial intelligence, memory, persuasion and systems of influence. Rather than asking people what they should believe, the work is designed to help them notice how beliefs are formed, reinforced, performed, defended and sometimes quietly supplied by the systems around them.</p>
+      <p>Holland&rsquo;s current framework includes the Five Selves &mdash; Embodied, Symbolic, Inherited, Performed and Algorithmic &mdash; as well as practical tools for detecting influence, examining language, interrupting automatic responses and separating agreement from allegiance. A central premise of the work is that influence itself is unavoidable. The more useful question is whether we can become conscious of it while it is happening.</p>
+      <p>Artificial intelligence has made that question more immediate. Systems trained on human language, behavior and creative work are increasingly participating in how people learn, write, decide, organize, create and understand the world. Holland&rsquo;s AI work focuses on keeping the human at the center: developing practical AI fluency while strengthening judgment, authorship, discernment and the ability to use these systems without quietly surrendering decision-making to them.</p>
+      <p>His current AI consulting and training work includes AI fluency, human agency, generative learning with AI, creative collaboration and provenance, workforce transition, and practical implementation for individuals and organizations. The work treats AI not simply as software to master, but as a new cognitive environment &mdash; one capable of accelerating learning and creative development when the person remains an active participant rather than becoming a passive recipient.</p>
+      <p>This connects directly back to Holland&rsquo;s early work in generative learning: learning how to generate better questions, make connections across fields, test assumptions and create new possibilities rather than merely acquire more information. AI expands the scale of that process dramatically. The technology can generate more material, more quickly; the human still has to determine what matters.</p>
+      <p>Alongside the development of Mind Of Your Own<sup>&reg;</sup>, Holland&rsquo;s professional life has included long-term executive work in medical research and healthcare, as well as independent work in writing, communications, music and digital media. Those environments have repeatedly placed him inside systems where language, information, hierarchy, persuasion, creativity and decision-making matter.</p>
+    </div>
+  </section>
+
+  <section class="principle">
+    <div class="wrap principle-row">
+      <div class="principle-rule"></div>
+      <blockquote>The first principle of having a mind of your own is realizing you don&rsquo;t.</blockquote>
+      <div class="principle-rule"></div>
+    </div>
+  </section>
+
+  <section class="current-work">
+    <div class="wrap">
+      <span class="label">Current Work</span>
+      <div class="cw-grid">
+        <div class="cw-card">
+          <img class="cw-bg" src="images/about_current_work_01_moyo.png" alt="">
+          <div class="cw-scrim"></div>
+          <div class="cw-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z"/><path d="M4 19a2.5 2.5 0 0 1 2.5-2.5H20"/></svg></div>
+          <h3>Mind Of Your Own<sup>&reg;</sup></h3>
+          <p>Book, Guide, essays, research and the broader body of work examining authorship, influence, identity, systems and conscious participation.</p>
+          <a href="index.html#work" class="cw-explore">Explore &rarr;</a>
+        </div>
+        <div class="cw-card">
+          <img class="cw-bg" src="images/about_current_work_02_ai_consulting.png" alt="">
+          <div class="cw-scrim"></div>
+          <div class="cw-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div>
+          <h3>AI Consulting &amp; Training</h3>
+          <p>Practical AI fluency, human agency, generative learning, creative collaboration, workforce transition and real-world implementation.</p>
+          <a href="ai-consulting.html" class="cw-explore">Explore &rarr;</a>
+        </div>
+        <div class="cw-card">
+          <img class="cw-bg" src="images/about_current_work_03_conversations.png" alt="">
+          <div class="cw-scrim"></div>
+          <div class="cw-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-5a3.5 3.5 0 0 0-7 0v5A3.5 3.5 0 0 0 12 15Z"/><path d="M6.5 11.5a5.5 5.5 0 0 0 11 0"/><path d="M12 17v3.5M9 20.5h6"/></svg></div>
+          <h3>Conversations &amp; Media</h3>
+          <p>Interviews and discussions across AI, psychology, culture, entertainment, politics and the forces shaping how people think and participate.</p>
+          <a href="index.html#work" class="cw-explore">Explore &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="other-work">
+    <div class="wrap">
+      <span class="label">Other Work</span>
+      <p>Outside Mind Of Your Own<sup>&reg;</sup>, Holland is a recording artist and producer under the name NOAH<sup>&reg;</sup>. His independent creative work also includes Full Circle Media&trade; and Sunolicious&trade;. He is the founder of Fairfield and Company LLC.</p>
+    </div>
+  </section>
+
+  <section class="explore">
+    <div class="wrap">
+      <span class="label">Explore</span>
+      <div class="explore-links">
+        <a href="guide.html">Mind Of Your Own<sup>&reg;</sup> Guide <span class="arrow">&rarr;</span></a>
+        <a href="ai-consulting.html">AI Consulting &amp; Training <span class="arrow">&rarr;</span></a>
+        <a href="about.html">NLP &amp; Influences <span class="arrow">&rarr;</span></a>
+        <a href="press.html">Press <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <script src="nav.js"></script>
+</body>
+</html>

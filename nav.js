@@ -11,8 +11,8 @@
     { label: 'Interviews', href: root + 'index.html#work' },
     { label: 'Books', href: root + 'book.html' },
     { label: 'Guide', href: root + 'guide.html' },
-    { label: 'NLP & Influences', href: root + 'bio.html' },
-    { label: 'About', href: root + 'bio.html' }
+    { label: 'NLP & Influences', href: root + 'about.html' },
+    { label: 'About', href: root + 'about.html' }
   ];
 
   function buildDesktopLinks() {
@@ -95,13 +95,11 @@
     .ch-panel.is-open { transform: translateX(0); }
     .ch-link {
       display: block; width: 100%; padding: 15px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
       color: #fff; text-decoration: none;
       font-family: var(--font-body, 'Inter', sans-serif);
       font-size: 0.92rem; font-weight: 500;
       transition: color .15s;
     }
-    .ch-link:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
     .ch-link:hover { color: #4169E1; }
     .ch-cta {
       margin-top: 24px; text-align: center;
@@ -119,7 +117,6 @@
 
     /* ============ SHARED FOOTER — compact ============ */
     .site-footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
       padding: 32px 40px 24px;
       background: #000;
     }
@@ -148,7 +145,7 @@
       font-weight: 600; font-size: 12.5px; cursor: pointer; font-family: var(--font-body, 'Inter', sans-serif); white-space: nowrap;
     }
     .sf-bottom {
-      max-width: 1300px; margin: 20px auto 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);
+      max-width: 1300px; margin: 20px auto 0; padding-top: 16px;
       font-family: var(--font-body, 'Inter', sans-serif); font-size: 11px; color: rgba(255,255,255,0.3);
     }
 
