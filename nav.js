@@ -165,7 +165,7 @@
     }
     .sf-form-message.is-error { color: #ff8a8a; }
     .sf-success {
-      font-family: var(--font-body, 'Inter', sans-serif); font-size: 13px; font-weight: 600; color: #8fd18f;
+      font-family: var(--font-body, 'Inter', sans-serif); font-size: 13px; font-weight: 600; color: #8fa3e6;
       line-height: 1.5;
     }
 
@@ -211,7 +211,7 @@
     .nl-modal-privacy { font-size: 12px; color: rgba(255,255,255,0.45); margin: 16px 0 0; font-family: var(--font-body, 'Inter', sans-serif); }
     .nl-modal-message { font-size: 13.5px; margin-top: 16px; font-family: var(--font-body, 'Inter', sans-serif); }
     .nl-modal-message.is-error { color: #ff8a8a; }
-    .nl-modal-message.is-success { color: #8fd18f; font-weight: 600; }
+    .nl-modal-message.is-success { color: #8fa3e6; font-weight: 600; }
     .nl-modal h3 sup, .sf-success sup, .nl-modal-message sup { font-size: 0.6em; }
 
     @media (max-width: 480px) {
