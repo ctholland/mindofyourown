@@ -32,10 +32,10 @@
   .hero { position:relative; padding:70px 0 100px; overflow:hidden; }
   .hero-grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap:60px; align-items:center; }
   .hero h1 {
-    font-family:var(--font-display); font-style:normal; font-weight:600;
+    font-family:var(--font-display); font-style:italic; font-weight:600;
     font-size:60px; line-height:1.1; margin:22px 0 26px; letter-spacing:-0.5px;
   }
-  .hero h1 .accent { color:var(--accent-violet); font-style:italic; }
+  .hero h1 .accent { color:var(--accent-violet); }
   .hero-desc { font-size:18px; line-height:1.65; color:rgba(255,255,255,0.72); max-width:480px; margin:0 0 38px; }
   .cta-row { display:flex; gap:16px; flex-wrap:wrap; }
   .btn-fill { display:inline-block; padding:16px 30px; background:#4c5fd6; color:#fff; text-decoration:none; font-weight:600; font-size:15px; border-radius:3px; }
@@ -50,35 +50,15 @@
   .hero-accent-strip img { width:220px; height:100%; object-fit:cover; object-position:20% 50%; opacity:0.55; filter:saturate(1.3); margin-left:-70px; }
 
   /* OPPORTUNITY + BLACK-BOX SECTIONS */
-  .mid-glow { position:relative; }
-  .mid-glow::before {
-    content:''; position:absolute; inset:-60px 0 -60px 0; z-index:0; pointer-events:none;
-    background: radial-gradient(ellipse 900px 520px at 26% 15%, rgba(65,105,225,0.11), transparent 60%),
-                radial-gradient(ellipse 760px 520px at 78% 85%, rgba(139,124,246,0.09), transparent 60%);
-  }
-
-  .rail { position:relative; padding-left:26px; display:flex; flex-direction:column; }
-  .rail::before { content:''; position:absolute; left:3px; top:6px; bottom:6px; width:1px; background:rgba(140,150,190,0.28); }
-  .rail-item { position:relative; padding:11px 0; }
-  .rail-item::before {
-    content:''; position:absolute; left:-26px; top:50%; transform:translateY(-50%);
-    width:8px; height:8px; border-radius:50%; background:#6f8ded; box-shadow:0 0 8px rgba(111,141,237,0.55);
-  }
-
   .opp { padding:100px 0 0; position:relative; }
-  .opp-grid { display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center; position:relative; z-index:2; }
-  .opp h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(26px, 3.6vw, 38px); line-height:1.2; margin:18px 0 0; max-width:520px; }
-  .opp-rail .rail-item { font-size:14.5px; color:rgba(255,255,255,0.75); }
+  .opp h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(26px, 3.6vw, 38px); line-height:1.2; margin:18px 0 0; max-width:620px; position:relative; z-index:2; }
+  .opp-checklist { margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-top:30px; position:relative; z-index:2; }
+  .opp-checklist div { font-size:14px; color:rgba(255,255,255,0.7); display:flex; align-items:flex-start; gap:10px; }
+  .opp-checklist div::before { content:''; width:6px; height:6px; border-radius:50%; background:#6f8ded; margin-top:6px; flex-shrink:0; }
 
   .blackbox { padding:90px 0 100px; position:relative; }
-  .blackbox h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(22px, 3vw, 32px); line-height:1.28; max-width:640px; margin:0 0 54px; position:relative; z-index:2; }
-  .bb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative; z-index:2; }
-  .bb-card { padding:0 34px; }
-  .bb-card:first-child { padding-left:0; }
-  .bb-card:last-child { padding-right:0; }
-  .bb-card:not(:last-child) { border-right:1px solid rgba(140,150,190,0.18); }
-  .bb-icon { width:32px; height:32px; margin-bottom:18px; color:#8fa3e6; }
-  .bb-icon svg { width:100%; height:100%; display:block; }
+  .blackbox h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(22px, 3vw, 32px); line-height:1.28; max-width:640px; margin:0 0 50px; position:relative; z-index:2; }
+  .bb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; position:relative; z-index:2; }
   .bb-card h3 { font-size:18px; font-weight:700; margin:0 0 10px; color:#8fa3e6; }
   .bb-card p { font-size:14.5px; line-height:1.65; color:rgba(255,255,255,0.65); margin:0; }
 
@@ -89,9 +69,9 @@
   .impl-photo img { width:100%; height:100%; object-fit:cover; object-position:70% 30%; filter:saturate(0.82) brightness(0.85); }
   .impl h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:36px; line-height:1.2; margin:18px 0 22px; }
   .impl p { font-size:17px; line-height:1.75; color:rgba(255,255,255,0.68); max-width:440px; margin:0 0 30px; }
-  .impl-list.rail { padding-left:24px; list-style:none; margin:0; }
-  .impl-list .rail-item { font-size:15px; font-weight:600; color:#fff; padding:9px 0; }
-  .impl-list .rail-item::before { background:#6f8ded; }
+  .impl-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+  .impl-list li { font-size:15px; font-weight:600; color:#fff; display:flex; align-items:center; gap:14px; }
+  .impl-list li::before { content:''; width:8px; height:8px; border-radius:50%; background:#6f8ded; flex-shrink:0; }
 
   /* FOUR TRACKS */
   .tracks { padding:110px 0 130px; background:linear-gradient(180deg,#000 0%,#0a0c12 100%); }
@@ -164,10 +144,8 @@
     .hero-photo-frame { height:340px; }
     .track-grid { grid-template-columns:1fr 1fr; gap:16px; }
     .impl h2 { font-size:28px; }
-    .opp-grid { grid-template-columns:1fr; gap:36px; }
-    .opp-rail { padding-top:6px; }
-    .bb-grid { grid-template-columns:1fr; gap:36px; }
-    .bb-card { padding:0 !important; border-right:none !important; }
+    .opp-checklist { grid-template-columns:1fr 1fr; }
+    .bb-grid { grid-template-columns:1fr; }
   }
 
   @media (max-width: 560px) {
@@ -197,18 +175,15 @@
     </div>
   </section>
 
-  <div class="mid-glow">
   <section class="opp dotgrid">
-    <div class="wrap opp-grid">
-      <div>
-        <div class="label">The Opportunity</div>
-        <h2>More capability. More authorship.</h2>
-      </div>
-      <div class="opp-rail rail">
-        <div class="rail-item">Understand the landscape</div>
-        <div class="rail-item">Build real-world skills</div>
-        <div class="rail-item">Apply with your context</div>
-        <div class="rail-item">Stay in charge</div>
+    <div class="wrap">
+      <div class="label">The Opportunity</div>
+      <h2>More capability. More authorship.</h2>
+      <div class="opp-checklist">
+        <div>Understand the landscape</div>
+        <div>Build real-world skills</div>
+        <div>Apply with your context</div>
+        <div>Stay in charge</div>
       </div>
     </div>
   </section>
@@ -219,24 +194,20 @@
       <h2>Turn AI from a black box<br>into a working advantage.</h2>
       <div class="bb-grid">
         <div class="bb-card">
-          <div class="bb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5v.6A3.5 3.5 0 0 0 4 9.5a3.5 3.5 0 0 0 1 6.1V17a3.5 3.5 0 0 0 3.5 3.5h1V2h-2Z"/><path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5v.6A3.5 3.5 0 0 1 20 9.5a3.5 3.5 0 0 1-1 6.1V17a3.5 3.5 0 0 1-3.5 3.5h-1V2h2Z"/></svg></div>
           <h3>Clarity</h3>
           <p>Separate capability from hype.</p>
         </div>
         <div class="bb-card">
-          <div class="bb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div>
           <h3>Strategy</h3>
           <p>Identify real use cases and measurable value.</p>
         </div>
         <div class="bb-card">
-          <div class="bb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.3"/><path d="M15 20c.2-2.8 1.9-5 4.5-5.5"/></svg></div>
           <h3>People</h3>
           <p>Build skills, confidence, judgment, and responsible adoption.</p>
         </div>
       </div>
     </div>
   </section>
-  </div>
 
   <section class="impl" id="approach">
     <div class="wrap">
@@ -246,12 +217,12 @@
           <div class="label">Real-World Application</div>
           <h2>From insight to implementation.</h2>
           <p>We meet you where you are &mdash; whether you're AI-curious, already experimenting, or ready to deploy across your organization.</p>
-          <ul class="impl-list rail">
-            <li class="rail-item">Assess</li>
-            <li class="rail-item">Design</li>
-            <li class="rail-item">Implement</li>
-            <li class="rail-item">Validate</li>
-            <li class="rail-item">Evolve</li>
+          <ul class="impl-list">
+            <li>Assess</li>
+            <li>Design</li>
+            <li>Implement</li>
+            <li>Validate</li>
+            <li>Evolve</li>
           </ul>
         </div>
       </div>
