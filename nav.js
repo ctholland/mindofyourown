@@ -214,6 +214,7 @@
       max-width: 1300px; margin: 20px auto 0; padding-top: 16px;
       font-family: var(--font-body, 'Inter', sans-serif); font-size: 11px; color: rgba(255,255,255,0.3);
     }
+    .sf-ai-disclosure { color: rgba(255,255,255,0.22); font-style: italic; }
 
     @media (max-width: 900px) {
       .sf-grid { flex-direction: column; align-items: flex-start; gap: 22px; }
@@ -442,7 +443,7 @@
           '<div class="sf-form-message" id="sfMessage" role="status" aria-live="polite"></div>' +
         '</div>' +
       '</div>' +
-      '<div class="sf-bottom">&copy; 2026 Mind Of Your Own&reg;. Fairfield &amp; Co. LLC</div>' +
+      '<div class="sf-bottom">&copy; 2026 Mind Of Your Own&reg;. Fairfield &amp; Co. LLC &nbsp;&middot;&nbsp; <span class="sf-ai-disclosure">AI-augmented imagery. Human-authored ideas.</span></div>' +
     '</footer>' +
     '<div class="nl-overlay" id="nlOverlay">' +
       '<div class="nl-modal" id="nlModal" role="dialog" aria-modal="true" aria-labelledby="nlModalTitle">' +
