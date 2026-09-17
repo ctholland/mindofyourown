@@ -686,15 +686,7 @@
               '<label class="cm-radio"><input type="radio" name="client-type" value="Organization"> Organization</label>' +
             '</div>' +
           '</div>' +
-          '<div class="cm-field"><label>I\u2019m interested in</label>' +
-            '<div class="cm-check-grid">' +
-              '<label class="cm-check"><input type="checkbox" value="AI Fluency"> AI Fluency</label>' +
-              '<label class="cm-check"><input type="checkbox" value="Human Agency"> Human Agency</label>' +
-              '<label class="cm-check"><input type="checkbox" value="The Next Chapter"> The Next Chapter</label>' +
-              '<label class="cm-check"><input type="checkbox" value="Implementation"> Implementation</label>' +
-            '</div>' +
-          '</div>' +
-          '<div class="cm-field"><label>What are you working on?</label><textarea name="message" rows="3" placeholder="A sentence or two is plenty."></textarea></div>' +
+          '<div class="cm-field"><label>What are you working on?</label><textarea name="message" rows="4" placeholder="Tell me what\u2019s going on. No need to be formal."></textarea></div>' +
           '<button class="cm-submit" type="button" data-cm-submit>Send My Inquiry \u2192</button>' +
           '<div class="cm-status" role="status"></div>' +
         '</div>' +
