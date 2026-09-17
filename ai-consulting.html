@@ -66,8 +66,8 @@
   }
 
   .opp { padding:100px 0 0; position:relative; }
-  .opp-grid { display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center; position:relative; z-index:2; }
-  .opp h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(26px, 3.6vw, 38px); line-height:1.2; margin:18px 0 0; max-width:520px; }
+  .opp-grid { display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:end; position:relative; z-index:2; }
+  .opp h2 { font-family:var(--font-display); font-weight:700; font-style:normal; font-size:clamp(26px, 3.6vw, 38px); line-height:1.2; margin:18px 0 48px; max-width:520px; }
   .opp-rail .rail-item { font-size:14.5px; color:rgba(255,255,255,0.75); }
 
   .blackbox { padding:90px 0 100px; position:relative; }
@@ -98,54 +98,80 @@
   .tracks-head { text-align:center; max-width:640px; margin:0 auto 70px; }
   .tracks-head .kicker { font-family:var(--font-display); font-style:italic; font-weight:600; font-size:30px; color:rgba(255,255,255,0.92); margin:18px 0 12px; }
   .tracks-head .subline { font-size:15px; color:rgba(255,255,255,0.55); margin:0; }
-  .track-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  .track-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+
   .track-card {
-    container-type: inline-size;
-    aspect-ratio: 1 / 1;
-    position:relative;
-    border-radius:8px;
-    overflow:hidden;
-    background:#0b0d15;
-    border:1px solid rgba(111,141,237,0.3);
+    position: relative; overflow: hidden;
+    background: #06060a;
+    border: 1px solid rgba(111,141,237,0.32);
+    border-radius: 2px;
+    display: flex; flex-direction: column;
+    min-height: 240px;
+    transition: border-color 0.2s;
   }
-  .track-card .card-bg {
-    position:absolute; inset:0; width:100%; height:100%;
-    object-fit:cover; display:block;
+  /* Right-side visual from PNG — shows only the visual portion */
+  .track-bg {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 62%; height: 100%;
+    object-fit: cover; object-position: right center;
+    opacity: 0.92; pointer-events: none; z-index: 0;
   }
-  .track-copy {
-    position:absolute; left:10.5%; top:44%; width:57%; z-index:2;
+  /* Gradient masks the left edge so text stays clean */
+  .track-card::before {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(to right, #06060a 28%, rgba(6,6,10,0.55) 48%, transparent 100%);
   }
-  .track-copy p {
-    font-size:5cqw; line-height:1.42; color:rgba(255,255,255,0.9); margin:0;
+  /* Teal/violet top reveal on hover */
+  .track-card::after {
+    content: ''; position: absolute; top: -1px; left: -1px; right: -1px; height: 2px;
+    background: #7c93f0; z-index: 3;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.28s ease;
   }
-  .track-card .card-bg {
-    position:absolute; inset:0; width:100%; height:100%;
-    object-fit:cover; display:block;
-  }
+  .track-card:hover { border-color: rgba(111,141,237,0.6); }
+  .track-card:hover::after { transform: scaleX(1); }
+
   .track-content {
-    position:relative; z-index:2; height:100%;
-    display:flex; flex-direction:column;
-    padding:8% 7%;
+    position: relative; z-index: 2;
+    padding: 26px 22px 22px;
+    display: flex; flex-direction: column; flex-grow: 1;
   }
-  .track-letter {
-    font-family:var(--font-display); font-style:italic; font-weight:700;
-    font-size:10cqw; color:#7c93f0; line-height:1; margin:1% 0 2%;
+  .track-letter-badge {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(111,141,237,0.4); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; flex-shrink: 0;
+    font-family: var(--font-display); font-style: italic; font-weight: 700;
+    font-size: 16px; color: #7c93f0;
   }
-  .track-letter-rule { width:16%; height:0.5cqw; background:#5b7ce8; margin-bottom:5%; }
-  .track-title {
-    font-family:var(--font-display); font-weight:700; font-style:normal;
-    font-size:9.6cqw; color:#fff; line-height:1.05; margin:0 0 4%; max-width:92%; white-space:nowrap;
+  .track-card h3 {
+    font-family: var(--font-display); font-weight: 700; font-style: normal;
+    font-size: 16px; line-height: 1.25; color: #fff; margin: 0 0 10px;
   }
-  .track-body {
-    font-size:4.8cqw; line-height:1.38; color:rgba(255,255,255,0.88);
-    max-width:60%; margin:0; flex-grow:1;
+  .track-card p {
+    font-size: 12.5px; line-height: 1.65;
+    color: rgba(255,255,255,0.60); margin: 0;
+    flex-grow: 1; max-width: 72%;
   }
-  .track-meta { display:flex; align-items:center; gap:3.5%; margin-top:auto; }
-  .track-meta svg { width:7cqw; height:7cqw; color:#6f8ded; flex-shrink:0; }
-  .track-meta-rule { width:1px; height:9cqw; background:rgba(255,255,255,0.22); flex-shrink:0; }
+  /* Bottom meta row: icon | rule | stacked keywords */
+  .track-meta {
+    display: flex; align-items: center; gap: 11px;
+    margin-top: 18px; padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .track-meta svg {
+    width: 17px; height: 17px; flex-shrink: 0;
+    stroke: #6f8ded; fill: none;
+    stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .track-meta-rule {
+    width: 1px; height: 30px; flex-shrink: 0;
+    background: rgba(255,255,255,0.14);
+  }
   .track-meta-words {
-    font-family:var(--font-label); font-size:2.3cqw; font-weight:500; letter-spacing:0.15em;
-    color:rgba(255,255,255,0.5); line-height:1.9; text-transform:uppercase;
+    font-family: var(--font-label); font-size: 7.5px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.42); line-height: 2;
   }
 
   /* QUOTE STRIP */
@@ -157,21 +183,40 @@
   .quote-strip blockquote { font-family:var(--font-display); font-style:italic; font-weight:600; font-size:36px; line-height:1.4; max-width:720px; margin:0 auto 22px; color:#fff; }
   .quote-strip cite { font-family:var(--font-label); font-size:13px; letter-spacing:1.5px; color:rgba(255,255,255,0.6); font-style:normal; text-transform:uppercase; }
 
+  /* CLOSING CTA */
+  .ai-cta { position:relative; padding:130px 0; text-align:center; overflow:hidden; background:linear-gradient(180deg,#0a0c12 0%,#000 100%); }
+  .ai-cta::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(ellipse 700px 500px at 50% 50%, rgba(65,105,225,0.10), transparent 70%);
+  }
+  .ai-cta-inner { position:relative; z-index:2; max-width:760px; margin:0 auto; padding:0 48px; }
+  .ai-cta h2 { font-family:var(--font-display); font-weight:700; font-size:clamp(20px,2.2vw,28px); line-height:1.2; margin:0 0 18px; white-space:nowrap; }
+  .ai-cta p { font-size:15px; line-height:1.72; color:rgba(255,255,255,0.68); max-width:520px; margin:0 auto 34px; }
+  .ai-cta .cta-row { justify-content:center; }
+  .ai-cta-sides { position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; padding:0 48px; pointer-events:none; z-index:1; }
+  .ai-cta-side { display:flex; flex-direction:column; align-items:flex-start; }
+  .ai-cta-side-right { align-items:flex-end; text-align:right; }
+  .ai-cta-label { font-family:var(--font-label); font-size:9px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.5); line-height:2.2; }
+  .ai-cta-rule { width:22px; height:1px; background:#4169E1; margin-top:6px; }
+
   @media (max-width: 900px) {
     .wrap { padding:0 24px; }
     .hero-grid, .impl-grid { grid-template-columns:1fr; }
     .hero h1 { font-size:40px; }
     .hero-photo-frame { height:340px; }
-    .track-grid { grid-template-columns:1fr 1fr; gap:16px; }
+    .track-grid { grid-template-columns:1fr 1fr; gap:12px; }
     .impl h2 { font-size:28px; }
-    .opp-grid { grid-template-columns:1fr; gap:36px; }
+    .opp-grid { grid-template-columns:1fr; gap:36px; align-items:start; }
     .opp-rail { padding-top:6px; }
     .bb-grid { grid-template-columns:1fr; gap:36px; }
     .bb-card { padding:0 !important; border-right:none !important; }
-  }
+    .ai-cta-sides { display:none; }
+    .ai-cta h2 { white-space:normal; font-size:22px; }
+    .ai-cta-inner { padding:0 24px; }}
 
   @media (max-width: 560px) {
-    .track-grid { grid-template-columns:1fr; max-width:320px; margin:0 auto; }
+    .track-grid { grid-template-columns:1fr; }
+    .ai-cta-inner { padding:0 24px; }
   }
 </style>
 </head>
@@ -185,7 +230,7 @@
           <h1>AI literacy for people<br>who want the <span class="accent">cognitive</span><br>edge.</h1>
           <p class="hero-desc">Practical fluency. Deeper agency. Real-world implementation. Human judgment remains in the loop.</p>
           <div class="cta-row">
-            <a href="index.html#newsletter" class="btn-fill">Work With Us</a>
+            <a href="index.html#newsletter" class="btn-fill">Work With Me</a>
             <a href="#approach" class="btn-outline">Explore the Approach</a>
           </div>
         </div>
@@ -266,18 +311,84 @@
         <p class="subline">Practical paths. Real progress. Greater agency.</p>
       </div>
       <div class="track-grid">
+
         <div class="track-card">
-          <img class="card-bg" src="images/A_AIFluency.png" alt="AI Fluency">
+          <img class="track-bg" src="images/Ablockbckgrnd.png" alt="">
+          <div class="track-content">
+            <div class="track-letter-badge">A</div>
+            <h3>AI Fluency</h3>
+            <p>Practical grounding. What these tools are, what they aren't, and how to use them well.</p>
+            <div class="track-meta">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <div class="track-meta-rule"></div>
+              <div class="track-meta-words">Knowledge<br>Perspective<br>Clarity</div>
+            </div>
+          </div>
         </div>
+
         <div class="track-card">
-          <img class="card-bg" src="images/B_HumanAgency.png" alt="Human Agency">
+          <img class="track-bg" src="images/Bblockbckgrnd.png" alt="">
+          <div class="track-content">
+            <div class="track-letter-badge">B</div>
+            <h3>Human Agency</h3>
+            <p>Discernment, authorship, judgment, identity, and staying in charge with machine collaboration.</p>
+            <div class="track-meta">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <div class="track-meta-rule"></div>
+              <div class="track-meta-words">Skills<br>Confidence<br>Ownership</div>
+            </div>
+          </div>
         </div>
+
         <div class="track-card">
-          <img class="card-bg" src="images/C_TheNextChapter.png" alt="The Next Chapter">
+          <img class="track-bg" src="images/Cblockbckgrnd.png" alt="">
+          <div class="track-content">
+            <div class="track-letter-badge">C</div>
+            <h3>The Next Chapter</h3>
+            <p>Work and role transition. Preparing your next steps with modern tools.</p>
+            <div class="track-meta">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="#6f8ded" stroke="none"/></svg>
+              <div class="track-meta-rule"></div>
+              <div class="track-meta-words">Context<br>Application<br>Impact</div>
+            </div>
+          </div>
         </div>
+
         <div class="track-card">
-          <img class="card-bg" src="images/D_Implementation.png" alt="Implementation">
+          <img class="track-bg" src="images/Dblockbckgrnd.png" alt="">
+          <div class="track-content">
+            <div class="track-letter-badge">D</div>
+            <h3>Implementation</h3>
+            <p>Hands-on support for individuals and organizations moving from experimentation to real implementation.</p>
+            <div class="track-meta">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <div class="track-meta-rule"></div>
+              <div class="track-meta-words">People<br>Systems<br>Progress</div>
+            </div>
+          </div>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-cta">
+    <div class="ai-cta-sides">
+      <div class="ai-cta-side">
+        <div class="ai-cta-label">People<br>Ideas<br>Possibilities</div>
+        <div class="ai-cta-rule"></div>
+      </div>
+      <div class="ai-cta-side ai-cta-side-right">
+        <div class="ai-cta-label">Greater<br>Capability<br>A Brighter<br>Tomorrow</div>
+        <div class="ai-cta-rule"></div>
+      </div>
+    </div>
+    <div class="ai-cta-inner">
+      <h2>Ready to work with AI more deliberately?</h2>
+      <p>Gain practical fluency, strengthen human judgment, and get hands-on support to turn insight into real-world impact &mdash; for yourself or your organization.</p>
+      <div class="cta-row">
+        <a href="index.html#newsletter" class="btn-fill">Work With Me &rarr;</a>
+        <a href="#approach" class="btn-outline">Explore the Approach &rsaquo;</a>
       </div>
     </div>
   </section>
