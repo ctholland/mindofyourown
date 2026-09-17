@@ -62,7 +62,9 @@
   .rail-item { position:relative; padding:11px 0; }
   .rail-item::before {
     content:''; position:absolute; left:-26px; top:50%; transform:translateY(-50%);
-    width:8px; height:8px; border-radius:50%; background:#6f8ded; box-shadow:0 0 8px rgba(111,141,237,0.55);
+    width:9px; height:9px; border-radius:50%;
+    background: radial-gradient(circle at 35% 35%, #a0b8ff 0%, #4169E1 55%, #2a4fc4 100%);
+    box-shadow:0 0 0 2px rgba(65,105,225,0.18), 0 0 10px 3px rgba(65,105,225,0.65), 0 0 22px 5px rgba(65,105,225,0.25);
   }
 
   .opp { padding:100px 0 0; position:relative; }
@@ -209,7 +211,8 @@
     .opp-grid { grid-template-columns:1fr; gap:36px; align-items:start; }
     .opp-rail { padding-top:6px; }
     .bb-grid { grid-template-columns:1fr; gap:36px; }
-    .bb-card { padding:0 !important; border-right:none !important; }
+    .bb-card { padding:0 !important; border-right:none !important; text-align:center; }
+    .bb-icon { margin-left:auto; margin-right:auto; }
     .ai-cta-sides { display:none; }
     .ai-cta h2 { white-space:normal; font-size:22px; }
     .ai-cta-inner { padding:0 24px; }}

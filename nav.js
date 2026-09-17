@@ -8,8 +8,10 @@
     { label: 'Home', href: root + 'index.html' },
     { label: 'Consulting', href: '#', children: [
         { label: 'AI Consulting', href: root + 'ai-consulting.html' },
-        { label: 'Digital Nomad', href: root + 'digital-nomad.html' }
+        { label: 'Digital Nomad', href: root + 'digital-nomad.html' },
+        { label: 'Coaching + Conversation', href: root + 'coaching-conversation.html' }
     ]},
+    { label: 'Podcast', href: root + 'podcast.html' },
     { label: 'Interviews', href: root + 'index.html#work' },
     { label: 'Publications', href: '#', children: [
         { label: 'Mind Of Your Own', href: root + 'book.html' },
@@ -750,6 +752,27 @@
           '<div class="cm-status" role="status"></div>' +
         '</div>' +
 
+        // Coaching + Conversation
+        '<div class="cm-form-inner" id="cmf-coaching">' +
+          '<div class="cm-accent-bar cm-accent-blue"></div>' +
+          '<p class="cm-eyebrow">C.T. Holland \u2014 Coaching + Conversation</p>' +
+          '<h2 class="cm-hed">Let\u2019s talk.</h2>' +
+          '<div class="cm-row">' +
+            '<div class="cm-field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>' +
+            '<div class="cm-field"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>' +
+          '</div>' +
+          '<div class="cm-field"><label>I\u2019m interested in</label>' +
+            '<div class="cm-radio-row">' +
+              '<label class="cm-radio"><input type="radio" name="session-type" value="Coaching"> Coaching</label>' +
+              '<label class="cm-radio"><input type="radio" name="session-type" value="Conversation"> Conversation</label>' +
+              '<label class="cm-radio"><input type="radio" name="session-type" value="Not sure yet"> Not sure yet</label>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cm-field"><label>What\u2019s bringing you here?</label><textarea name="message" rows="4" placeholder="No agenda required. Tell me what\u2019s on your mind, or leave this blank."></textarea></div>' +
+          '<button class="cm-submit" type="button" data-cm-submit>Send \u2192</button>' +
+          '<div class="cm-status" role="status"></div>' +
+        '</div>' +
+
       '</div>' +
     '</div>';
 
@@ -764,7 +787,8 @@
     'ai-consulting': ['AI Consulting'],
     'digital-nomad': ['Digital Nomad'],
     'general':       ['General Inquiry'],
-    'book':          ['Book Notification']
+    'book':          ['Book Notification'],
+    'coaching':      ['Coaching Inquiry']
   };
 
   // Netlify form names for email notification
@@ -772,7 +796,8 @@
     'ai-consulting': 'ai-consulting-inquiry',
     'digital-nomad': 'digital-nomad-inquiry',
     'general':       'general-inquiry',
-    'book':          'book-notification'
+    'book':          'book-notification',
+    'coaching':      'coaching-inquiry'
   };
 
   window.openContactModal = function(type) {

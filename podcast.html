@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doing the Work — A Podcast by C.T. Holland</title>
+<meta name="description" content="Doing the Work — a podcast by C.T. Holland. Thinking in public. One mechanism at a time.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --font-display: 'Playfair Display', serif;
+    --font-body:    'Inter', sans-serif;
+    --font-label:   'Oswald', sans-serif;
+    --blue:         #4169E1;
+  }
+  body { margin: 0; background: #000; color: #fff; font-family: var(--font-body); }
+  .dotgrid {
+    background-image: radial-gradient(rgba(140,150,190,0.28) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+  .label { font-family: var(--font-label); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; color: #8fa3e6; text-transform: uppercase; }
+
+  .hero {
+    position: relative; padding: 110px 0 120px;
+    text-align: center; overflow: hidden; min-height: 70vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 900px 600px at 50% 55%, rgba(65,105,225,0.10), transparent 65%);
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 800px; }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700; font-style: normal;
+    font-size: clamp(40px, 6vw, 72px); line-height: 1.06;
+    margin: 22px 0 28px; letter-spacing: -1px;
+  }
+  .hero h1 em { font-style: italic; color: #8fa3e6; }
+  .hero-sub { font-size: 17px; line-height: 1.70; color: rgba(255,255,255,0.60); max-width: 540px; margin: 0 auto 48px; }
+  .hero-attr {
+    font-family: var(--font-label); font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.28);
+  }
+
+  .coming {
+    padding: 90px 0; border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  .coming-box {
+    max-width: 640px; margin: 0 auto;
+    border: 1px solid rgba(65,105,225,0.25); padding: 56px 48px; border-radius: 2px;
+    background: #05050b;
+  }
+  .coming-box h2 {
+    font-family: var(--font-display); font-size: 28px; font-weight: 700;
+    margin: 16px 0 18px; line-height: 1.25;
+  }
+  .coming-box p { font-size: 15px; line-height: 1.72; color: rgba(255,255,255,0.55); margin: 0 0 32px; }
+
+  .concept { padding: 90px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 48px; }
+  .concept h2 { font-family: var(--font-display); font-size: 36px; font-weight: 700; margin: 16px 0 22px; line-height: 1.2; }
+  .concept p { font-size: 15px; line-height: 1.78; color: rgba(255,255,255,0.58); margin: 0 0 16px; }
+  .concept-rule { width: 32px; height: 2px; background: var(--blue); margin-bottom: 18px; }
+
+  .territory { padding: 90px 0; background: #040408; border-top: 1px solid rgba(255,255,255,0.05); }
+  .ep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+  .ep-card {
+    padding: 32px 28px; background: #06060c;
+    border: 1px solid rgba(111,141,237,0.15);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .ep-card:hover { background: #09090f; border-color: rgba(65,105,225,0.35); }
+  .ep-tag { font-family: var(--font-label); font-size: 8.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 14px; display: block; }
+  .ep-card h3 { font-family: var(--font-display); font-style: italic; font-size: 17px; font-weight: 600; color: #fff; margin: 0 0 10px; line-height: 1.3; }
+  .ep-card p { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.45); margin: 0; }
+
+  .notify { padding: 100px 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; position: relative; }
+  .notify::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 700px 400px at 50% 50%, rgba(65,105,225,0.08), transparent 70%);
+  }
+  .notify-inner { position: relative; z-index: 2; max-width: 500px; margin: 0 auto; }
+  .notify h2 { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 38px); font-weight: 700; margin: 16px 0 20px; }
+  .notify p { font-size: 15px; color: rgba(255,255,255,0.55); margin: 0 0 36px; }
+  .btn-fill {
+    display: inline-block; padding: 15px 32px;
+    background: var(--blue); color: #fff; border: 2px solid var(--blue);
+    font-family: var(--font-body); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px;
+    text-decoration: none; transition: background 0.2s, color 0.2s; cursor: pointer;
+  }
+  .btn-fill:hover { background: transparent; color: var(--blue); }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+    .ep-grid { grid-template-columns: 1fr 1fr; }
+    .coming-box { padding: 40px 28px; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 20px; }
+    .ep-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero dotgrid">
+    <div class="wrap">
+      <div class="hero-inner">
+        <p class="label">C.T. Holland</p>
+        <h1><em>Doing the Work</em></h1>
+        <p class="hero-sub">Get what you know out of one nervous system and into forms other people can receive. Thinking in public. One mechanism at a time.</p>
+        <p class="hero-attr">A Podcast &nbsp;&middot;&nbsp; Coming Soon</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section class="coming">
+    <div class="wrap">
+      <div class="coming-box">
+        <p class="label">Status</p>
+        <h2>In development. Episodes coming.</h2>
+        <p>The first episodes are being scripted, rehearsed, and recorded. This is not a content treadmill — it is transmission. Decades of accumulated material getting out of one nervous system and into yours.</p>
+        <a href="#notify" class="btn-fill">Get Notified When It Launches &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section class="concept dotgrid">
+    <div class="wrap">
+      <div class="concept-grid">
+        <div>
+          <div class="concept-rule"></div>
+          <p class="label">What this is</p>
+          <h2>Thinking aloud.<br>Working in public.</h2>
+          <p>The podcast turns work already being done into public thought. One mechanism at a time. One story. One framework. One question that doesn't resolve the way you expect.</p>
+          <p>Not doctrine. Not a five-step program. Something closer to: here is what I've been working on, and here is where it goes when you follow it.</p>
+        </div>
+        <div>
+          <div class="concept-rule"></div>
+          <p class="label">What to expect</p>
+          <h2>Solo to start.<br>Conversations when ready.</h2>
+          <p>Early episodes are scripted enough to be precise, spoken enough to stay alive. Solo. Focused. Audio-first.</p>
+          <p>Over time: researchers, historians, psychologists, writers, technologists, institutional insiders. People worth putting in a room with these ideas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPISODE TERRITORY -->
+  <section class="territory">
+    <div class="wrap">
+      <p class="label" style="display:block; text-align:center;">Episode territory</p>
+      <div style="text-align:center; margin-top:12px; max-width:480px; margin-left:auto; margin-right:auto; margin-bottom:0;">
+        <h2 style="font-family:var(--font-display); font-size:clamp(22px,3vw,34px); font-weight:700; margin:0; line-height:1.22;">Where the first episodes are going.</h2>
+      </div>
+      <div class="ep-grid">
+        <div class="ep-card">
+          <span class="ep-tag">Episode Territory</span>
+          <h3>I Knew What I Was Building. I Did Not Yet Know What Was Holding It Up.</h3>
+          <p>Identity construction, borrowed power, and the social scaffolding you don't see until it shifts.</p>
+        </div>
+        <div class="ep-card">
+          <span class="ep-tag">Episode Territory</span>
+          <h3>At the End of the Day, We&rsquo;re All Still Frogs.</h3>
+          <p>Symbolic elevation, transformation claims, and what remains underneath social designation.</p>
+        </div>
+        <div class="ep-card">
+          <span class="ep-tag">Episode Territory</span>
+          <h3>A Thing Can Be Real and Still Be Held Together by Agreement.</h3>
+          <p>Money, credentials, reputation, institutions — and the distinction between construction and falsity.</p>
+        </div>
+        <div class="ep-card">
+          <span class="ep-tag">Episode Territory</span>
+          <h3>Play the Role. Keep the Author.</h3>
+          <p>Conscious participation. Staying aware while inside a frame. Being useful without being absorbed.</p>
+        </div>
+        <div class="ep-card">
+          <span class="ep-tag">Episode Territory</span>
+          <h3>You Can Stay in the Frame and Still See the Frame.</h3>
+          <p>BreakState without leaving the room. Conscious presence inside an already-running structure.</p>
+        </div>
+        <div class="ep-card">
+          <span class="ep-tag">Episode Territory</span>
+          <h3>When Did a Tool Become an Authority?</h3>
+          <p>Technology, attention, AI, and the structures that borrow their power from human deference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFY -->
+  <section class="notify" id="notify">
+    <div class="wrap">
+      <div class="notify-inner">
+        <p class="label" style="display:block;">Stay in the loop</p>
+        <h2>Get notified when the first episode drops.</h2>
+        <p>No newsletter saturation. One message when it&rsquo;s ready.</p>
+        <a href="#" class="btn-fill" data-contact-modal="general">Notify Me &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="nav.js"></script>
+
+</body>
+</html>
