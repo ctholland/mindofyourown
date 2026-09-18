@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thumbnail Mockup — Before You Thought It</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #111;
+    display: flex; flex-direction: column;
+    align-items: center; padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .label {
+    color: rgba(255,255,255,0.4); font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 16px; font-family: sans-serif;
+  }
+
+  /* ─── THUMBNAIL — exact 16:9 at 1280×720 ─── */
+  .thumb {
+    position: relative; width: 1280px; height: 720px;
+    overflow: hidden; border-radius: 4px;
+    /* scale down for screen preview while maintaining exact ratio */
+    transform-origin: top center;
+    transform: scale(0.72);
+    margin-bottom: -145px; /* compensate for scale */
+  }
+
+  /* Background */
+  .bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #04111f 0%, #070e1c 45%, #050d19 100%);
+  }
+
+  /* Grid texture */
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(62,205,196,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(62,205,196,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Crosshair markers */
+  .crosshairs {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .ch {
+    position: absolute; width: 14px; height: 14px;
+  }
+  .ch::before, .ch::after {
+    content: ''; position: absolute;
+    background: rgba(62,205,196,0.4);
+  }
+  .ch::before { width: 100%; height: 1px; top: 50%; left: 0; }
+  .ch::after  { height: 100%; width: 1px; left: 50%; top: 0; }
+
+  /* Glow orb top right */
+  .orb {
+    position: absolute; right: 340px; top: -60px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(62,205,196,0.18) 0%, rgba(62,205,196,0.06) 45%, transparent 70%);
+  }
+
+  /* Portrait — right side */
+  .portrait {
+    position: absolute; right: 0; bottom: 0; top: 0;
+    width: 52%;
+  }
+  .portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+  }
+  /* Left-side fade so portrait blends into text area */
+  .portrait::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, #060e1b 0%, rgba(6,14,27,0.5) 35%, transparent 65%);
+    z-index: 1;
+  }
+
+  /* Text block — left side */
+  .text {
+    position: absolute; left: 64px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 3; max-width: 600px;
+  }
+  .line1, .line2, .line3 {
+    display: block; font-family: 'Arial Black', 'Impact', sans-serif;
+    font-weight: 900; text-transform: lowercase;
+    color: #fff; letter-spacing: -2px;
+    line-height: 1.0;
+  }
+  .line1 { font-size: 116px; }
+  .line2 {
+    font-size: 116px;
+    background: #3ECFBF;
+    color: #060e1b;
+    padding: 2px 12px;
+    display: inline-block;
+    margin: 6px 0;
+  }
+  .line3 { font-size: 116px; }
+
+  /* MOYO mark bottom left */
+  .moyo-mark {
+    position: absolute; bottom: 32px; left: 64px; z-index: 4;
+    font-family: 'Arial Black', sans-serif; font-size: 24px;
+    font-weight: 900; color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+  }
+
+  /* Series label top left */
+  .series-label {
+    position: absolute; top: 36px; left: 64px; z-index: 4;
+    font-family: 'Arial', sans-serif; font-size: 20px; font-weight: 600;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(62,205,196,0.8);
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(to right, #3ECFBF, #4169E1, transparent);
+    z-index: 4;
+  }
+
+  /* ─── VARIANT THUMBNAILS ─── */
+  .variants {
+    margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;
+    justify-content: center;
+  }
+  .variant-label {
+    color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 12px; text-align: center;
+    font-family: sans-serif;
+  }
+  .mini { width: 320px; height: 180px; position: relative; overflow: hidden; border-radius: 3px; }
+  .mini .bg { background: linear-gradient(135deg, #04111f, #050d19); }
+  .mini .grid { background-size: 24px 24px; }
+  .mini .portrait { width: 50%; }
+  .mini .text { left: 16px; }
+  .mini .line1 { font-size: 29px; letter-spacing: -0.5px; }
+  .mini .line2 { font-size: 29px; margin: 1px 0; padding: 1px 4px; }
+  .mini .line3 { font-size: 29px; }
+  .mini .moyo-mark { bottom: 8px; left: 16px; font-size: 10px; }
+  .mini .series-label { top: 10px; left: 16px; font-size: 8px; letter-spacing: 2px; }
+  .mini .bottom-bar { height: 2px; }
+
+  .note {
+    margin-top: 28px; color: rgba(255,255,255,0.35); font-size: 12px;
+    font-family: sans-serif; text-align: center; max-width: 700px; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<p class="label">YouTube Thumbnail — 1280 × 720 · Actual scale 72%</p>
+
+<!-- MAIN THUMBNAIL -->
+<div class="thumb">
+
+  <!-- Background layers -->
+  <div class="bg"></div>
+  <div class="grid"></div>
+  <div class="orb"></div>
+
+  <!-- Crosshair markers -->
+  <div class="crosshairs">
+    <div class="ch" style="left:48px; top:120px;"></div>
+    <div class="ch" style="left:200px; top:60px;"></div>
+    <div class="ch" style="left:520px; top:80px;"></div>
+    <div class="ch" style="left:380px; top:580px;"></div>
+    <div class="ch" style="left:100px; top:480px;"></div>
+  </div>
+
+  <!-- Portrait -->
+  <div class="portrait">
+    <img src="images/beforeyouthoughit.png" alt="C.T. Holland">
+  </div>
+
+  <!-- Text -->
+  <div class="text">
+    <span class="line1">what</span>
+    <span class="line1">happened</span>
+    <span class="line2">before you</span>
+    <span class="line3">thought it?</span>
+  </div>
+
+  <!-- Series label -->
+  <div class="series-label">Doing the Work</div>
+
+  <!-- MOYO mark -->
+  <div class="moyo-mark">MO'O &nbsp;·&nbsp; mindofyourown.com</div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar"></div>
+
+</div>
+
+<!-- MINI PREVIEWS — how it reads small -->
+<div style="margin-top:24px;">
+  <p class="variant-label">How it reads at small size (YouTube grid, mobile)</p>
+  <div class="variants">
+
+    <div>
+      <div class="mini">
+        <div class="bg"></div><div class="grid"></div>
+        <div class="portrait"><img src="images/beforeyouthoughit.png" alt=""></div>
+        <div class="text">
+          <span class="line1">what</span>
+          <span class="line1">happened</span>
+          <span class="line2">before you</span>
+          <span class="line3">thought it?</span>
+        </div>
+        <div class="moyo-mark">MO'O</div>
+        <div class="series-label">Doing the Work</div>
+        <div class="bottom-bar"></div>
+      </div>
+      <p class="variant-label" style="margin-top:8px;">Ep 1</p>
+    </div>
+
+    <div>
+      <div class="mini">
+        <div class="bg"></div><div class="grid"></div>
+        <div class="portrait"><img src="images/beforeyouthoughit.png" alt=""></div>
+        <div class="text">
+          <span class="line1">who</span>
+          <span class="line1">taught you</span>
+          <span class="line2">what normal</span>
+          <span class="line3">looks like?</span>
+        </div>
+        <div class="moyo-mark">MO'O</div>
+        <div class="series-label">Doing the Work</div>
+        <div class="bottom-bar"></div>
+      </div>
+      <p class="variant-label" style="margin-top:8px;">Ep 2</p>
+    </div>
+
+    <div>
+      <div class="mini">
+        <div class="bg"></div><div class="grid"></div>
+        <div class="portrait"><img src="images/beforeyouthoughit.png" alt=""></div>
+        <div class="text">
+          <span class="line1">when did</span>
+          <span class="line2">a tool</span>
+          <span class="line1">become an</span>
+          <span class="line1" style="font-size:22px; letter-spacing:0">authority?</span>
+        </div>
+        <div class="moyo-mark">MO'O</div>
+        <div class="series-label">Doing the Work</div>
+        <div class="bottom-bar"></div>
+      </div>
+      <p class="variant-label" style="margin-top:8px;">Ep 3</p>
+    </div>
+
+  </div>
+</div>
+
+<p class="note">
+  Place <strong>images/beforeyouthoughit.png</strong> in your images folder to see your portrait in the mockup.<br>
+  Teal highlight bar, crosshair markers, bottom accent rule, "Doing the Work" series label. Swap the question per episode. Same template, different question = instant recognizable series.
+</p>
+
+</body>
+</html>

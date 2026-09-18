@@ -216,7 +216,7 @@
       max-width: 1300px; margin: 20px auto 0; padding-top: 16px;
       font-family: var(--font-body, 'Inter', sans-serif); font-size: 11px; color: rgba(255,255,255,0.3);
     }
-    .sf-ai-disclosure { color: rgba(255,255,255,0.22); font-style: italic; }
+    .sf-ai-disclosure { color: rgba(255,255,255,0.48); font-style: italic; }
 
     @media (max-width: 900px) {
       .sf-grid { flex-direction: column; align-items: flex-start; gap: 22px; }

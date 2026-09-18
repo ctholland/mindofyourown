@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doing the Work — Visual System Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600;1,700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── PALETTE ── */
+  --black:      #050810;
+  --navy:       #08101e;
+  --navy-mid:   #0d1828;
+  --cobalt:     #4169E1;
+  --teal:       #3ECFC3;
+  --amber:      #E8A84C;
+  --white:      #F7F8FA;
+  --white-60:   rgba(247,248,250,0.60);
+  --white-35:   rgba(247,248,250,0.35);
+  --white-15:   rgba(247,248,250,0.15);
+  --white-06:   rgba(247,248,250,0.06);
+  --teal-10:    rgba(62,207,195,0.10);
+  --blue-10:    rgba(65,105,225,0.10);
+
+  /* ── TYPE ── */
+  --ff-display: 'Playfair Display', serif;
+  --ff-body:    'Inter', sans-serif;
+  --ff-label:   'Oswald', sans-serif;
+  --ff-impact:  'Arial Black', 'Impact', sans-serif;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--ff-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle grid texture on body */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(62,207,195,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62,207,195,0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 1; }
+
+/* ── SYSTEM HEADER ── */
+.sys-header {
+  padding: 80px 0 72px;
+  border-bottom: 1px solid var(--white-06);
+  position: relative; overflow: hidden;
+}
+.sys-header::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, var(--teal), var(--cobalt), transparent);
+}
+.sys-header-inner {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: end; gap: 40px;
+}
+.doc-label {
+  font-family: var(--ff-label); font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--teal);
+  margin-bottom: 12px; display: block;
+}
+.sys-title {
+  font-family: var(--ff-display); font-size: 52px; font-weight: 700;
+  line-height: 1.08; color: var(--white);
+}
+.sys-title em { font-style: italic; color: rgba(247,248,250,0.55); }
+.sys-sub { font-size: 16px; line-height: 1.7; color: var(--white-60); max-width: 540px; margin-top: 18px; }
+.sys-meta {
+  text-align: right;
+  font-family: var(--ff-label); font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--white-35); line-height: 2.2;
+}
+
+/* ── SECTION STRUCTURE ── */
+.section { padding: 80px 0; border-bottom: 1px solid var(--white-06); }
+.section:last-child { border-bottom: none; }
+.section-label {
+  font-family: var(--ff-label); font-size: 9px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--cobalt);
+  margin-bottom: 12px; display: block;
+}
+.section-title {
+  font-family: var(--ff-display); font-size: 34px; font-weight: 700;
+  line-height: 1.18; margin-bottom: 40px;
+}
+
+/* ── COLOR SWATCHES ── */
+.palette-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.swatch { border-radius: 3px; overflow: hidden; }
+.swatch-color { height: 80px; }
+.swatch-info { padding: 10px 12px; background: var(--navy-mid); }
+.swatch-name { font-size: 11px; font-weight: 600; color: var(--white); }
+.swatch-hex { font-size: 10px; color: var(--white-35); font-family: monospace; }
+.swatch-role { font-size: 10px; color: var(--white-60); margin-top: 3px; }
+
+/* ── TYPE SPECIMENS ── */
+.type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.type-card {
+  padding: 28px 24px; background: var(--navy);
+  border: 1px solid var(--white-06); border-radius: 2px;
+}
+.type-specimen { margin-bottom: 16px; }
+.type-meta { font-size: 10px; color: var(--white-35); font-family: monospace; line-height: 1.8; }
+
+/* ── ELEMENT GALLERY ── */
+.element-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.element-card {
+  padding: 28px 20px; background: var(--navy);
+  border: 1px solid var(--white-06); border-radius: 2px;
+  text-align: center;
+}
+.element-demo { height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.element-name { font-family: var(--ff-label); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--white-35); }
+
+/* Crosshair element */
+.demo-ch { position: relative; width: 24px; height: 24px; }
+.demo-ch::before { content: ''; position: absolute; width: 100%; height: 1px; top: 50%; left: 0; background: var(--teal); }
+.demo-ch::after { content: ''; position: absolute; height: 100%; width: 1px; left: 50%; top: 0; background: var(--teal); }
+
+/* Highlight bar */
+.demo-highlight { background: var(--teal); color: #060a12; padding: 3px 10px; font-family: var(--ff-impact); font-size: 16px; font-weight: 900; }
+
+/* Glow orb */
+.demo-orb { width: 48px; height: 48px; border-radius: 50%; background: radial-gradient(circle, rgba(62,207,195,0.5) 0%, rgba(62,207,195,0.1) 50%, transparent 75%); }
+
+/* Grid texture demo */
+.demo-grid { width: 60px; height: 48px; background-image: linear-gradient(rgba(62,207,195,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(62,207,195,0.15) 1px, transparent 1px); background-size: 12px 12px; }
+
+/* ── THREE LANES ── */
+.lane-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.lane-card {
+  padding: 36px 28px; min-height: 380px;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.lane-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.lane-core { background: #0b0e14; }
+.lane-core::before { background: var(--amber); }
+.lane-systems { background: #080d10; }
+.lane-systems::before { background: var(--cobalt); }
+.lane-questions { background: #060810; }
+.lane-questions::before { background: var(--teal); }
+
+.lane-num {
+  font-family: var(--ff-display); font-style: italic; font-size: 48px;
+  font-weight: 700; line-height: 1; margin-bottom: 14px;
+}
+.lane-core .lane-num { color: rgba(232,168,76,0.25); }
+.lane-systems .lane-num { color: rgba(65,105,225,0.25); }
+.lane-questions .lane-num { color: rgba(62,207,195,0.25); }
+
+.lane-name {
+  font-family: var(--ff-display); font-size: 20px; font-weight: 700;
+  margin-bottom: 10px; color: var(--white);
+}
+.lane-tagline { font-size: 12px; color: var(--white-35); margin-bottom: 20px; font-style: italic; }
+.lane-desc { font-size: 13px; line-height: 1.7; color: var(--white-60); margin-bottom: 24px; flex-grow: 1; }
+
+.lane-visual-note { font-size: 11px; color: var(--white-35); border-top: 1px solid var(--white-06); padding-top: 16px; }
+.lane-visual-note strong { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+.lane-accent {
+  display: inline-block; width: 24px; height: 2px;
+  margin-bottom: 14px;
+}
+.lane-core .lane-accent { background: var(--amber); }
+.lane-systems .lane-accent { background: var(--cobalt); }
+.lane-questions .lane-accent { background: var(--teal); }
+
+/* ── PLATFORM TEMPLATES ── */
+.platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.platform-block { }
+.platform-name { font-family: var(--ff-label); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--cobalt); margin-bottom: 14px; }
+.platform-spec { font-size: 11px; color: var(--white-35); margin-bottom: 18px; font-family: monospace; }
+
+/* Wireframe diagrams */
+.wireframe {
+  background: var(--navy); border: 1px solid var(--white-06);
+  border-radius: 3px; overflow: hidden; position: relative;
+}
+/* YouTube 16:9 */
+.wf-yt { aspect-ratio: 16/9; }
+/* Square */
+.wf-sq { aspect-ratio: 1/1; }
+/* Portrait 4:5 */
+.wf-portrait { aspect-ratio: 4/5; }
+/* Story 9:16 */
+.wf-story { aspect-ratio: 9/16; }
+
+.wf-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #04111f 0%, #060e1c 100%); }
+.wf-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(62,207,195,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(62,207,195,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.wf-portrait-zone {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+  background: rgba(255,255,255,0.05);
+  border-left: 1px dashed rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+}
+.wf-portrait-label { font-size: 8px; color: var(--white-35); text-align: center; font-family: monospace; }
+.wf-text-zone {
+  position: absolute; left: 6%; top: 50%; transform: translateY(-50%);
+  width: 48%;
+}
+.wf-type-block { display: flex; flex-direction: column; gap: 3px; }
+.wf-line { height: 2px; background: rgba(255,255,255,0.35); border-radius: 1px; }
+.wf-line-accent { height: 2px; border-radius: 1px; }
+.wf-line.short { width: 60%; }
+.wf-line.med { width: 80%; }
+.wf-line.full { width: 95%; }
+.wf-highlight-line { height: 2px; background: var(--teal); border-radius: 1px; width: 75%; margin: 1px 0; }
+
+.wf-label-zone {
+  position: absolute; top: 8%; left: 5%;
+  width: 30%; height: 2px; background: var(--cobalt); opacity: 0.5; border-radius: 1px;
+}
+.wf-brand-zone {
+  position: absolute; bottom: 7%; left: 5%;
+  width: 20%; height: 2px; background: rgba(255,255,255,0.2); border-radius: 1px;
+}
+.wf-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--teal), var(--cobalt), transparent);
+}
+.wf-zone-label {
+  position: absolute; font-size: 7px; color: rgba(255,255,255,0.3);
+  font-family: monospace; letter-spacing: 0.5px;
+}
+
+/* Full-height story zones */
+.wf-portrait-top {
+  position: absolute; left: 0; right: 0; top: 0; height: 58%;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+}
+.wf-text-bottom {
+  position: absolute; left: 8%; right: 8%; bottom: 10%; width: 84%;
+}
+
+/* ── TEMPLATE RECIPE ── */
+.recipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.recipe-steps { counter-reset: step; display: flex; flex-direction: column; gap: 20px; }
+.recipe-step {
+  display: grid; grid-template-columns: 32px 1fr; gap: 16px; align-items: start;
+}
+.step-num {
+  width: 32px; height: 32px; border: 1px solid var(--white-15);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display); font-style: italic; font-size: 14px; color: var(--white-35);
+  flex-shrink: 0; margin-top: 2px;
+}
+.step-content h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.step-content p { font-size: 13px; color: var(--white-60); line-height: 1.6; }
+.step-accent-teal .step-num { border-color: rgba(62,207,195,0.4); color: var(--teal); }
+.step-accent-blue .step-num { border-color: rgba(65,105,225,0.4); color: #8fa3e6; }
+
+/* ── EPISODE BANK ── */
+.episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.episode-card {
+  padding: 22px 20px; background: var(--navy);
+  border: 1px solid var(--white-06); border-radius: 2px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.episode-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+}
+.episode-card:hover { border-color: var(--white-15); }
+.episode-card:hover::before { transform: scaleX(1); }
+.ep-lane {
+  font-family: var(--ff-label); font-size: 8px; letter-spacing: 2.5px;
+  text-transform: uppercase; margin-bottom: 12px; display: flex;
+  align-items: center; gap: 8px;
+}
+.ep-lane-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.ep-question {
+  font-family: var(--ff-display); font-weight: 700; font-style: italic;
+  font-size: 16px; line-height: 1.3; color: var(--white); margin-bottom: 10px;
+}
+.ep-premise { font-size: 12px; line-height: 1.6; color: var(--white-60); }
+.ep-highlight { color: var(--white); font-weight: 500; }
+
+/* Lane-specific accents on cards */
+.ep-core .ep-lane { color: var(--amber); }
+.ep-core .ep-lane-dot { background: var(--amber); }
+.ep-core::before { background: var(--amber); }
+.ep-systems .ep-lane { color: #8fa3e6; }
+.ep-systems .ep-lane-dot { background: var(--cobalt); }
+.ep-systems::before { background: var(--cobalt); }
+.ep-questions .ep-lane { color: var(--teal); }
+.ep-questions .ep-lane-dot { background: var(--teal); }
+.ep-questions::before { background: var(--teal); }
+
+/* ── LAYOUT NOTES ── */
+.note-block {
+  padding: 20px 24px; background: rgba(65,105,225,0.07);
+  border-left: 2px solid rgba(65,105,225,0.4);
+  margin-top: 20px; border-radius: 0 2px 2px 0;
+}
+.note-block p { font-size: 13px; color: var(--white-60); line-height: 1.7; }
+.note-block strong { color: var(--white); }
+
+/* ── RULE DIVIDERS ── */
+.rule { height: 1px; background: var(--white-06); margin: 40px 0; }
+.rule-accent { height: 1px; background: linear-gradient(to right, var(--teal), transparent); margin: 40px 0; }
+
+/* ── FOOTER ── */
+.sys-footer {
+  padding: 40px 0; text-align: center;
+  font-family: var(--ff-label); font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--white-35);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .wrap { padding: 0 24px; }
+  .palette-grid { grid-template-columns: repeat(3, 1fr); }
+  .type-grid, .lane-grid, .platform-grid, .recipe-grid { grid-template-columns: 1fr; }
+  .episode-grid { grid-template-columns: 1fr 1fr; }
+  .element-grid { grid-template-columns: repeat(2, 1fr); }
+  .sys-header-inner { grid-template-columns: 1fr; }
+  .sys-title { font-size: 36px; }
+}
+@media (max-width: 600px) {
+  .episode-grid { grid-template-columns: 1fr; }
+  .palette-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+════════════════════════════════════════ -->
+<section class="sys-header">
+  <div class="wrap">
+    <div class="sys-header-inner">
+      <div>
+        <span class="doc-label">Doing the Work · Mind Of Your Own® · Visual System Reference</span>
+        <h1 class="sys-title">The<br>Visual<br><em>System.</em></h1>
+        <p class="sys-sub">A repeatable design language for podcast, YouTube, Instagram, and website assets. One system. Every platform. Every episode.</p>
+      </div>
+      <div class="sys-meta">
+        Version 1.0<br>
+        September 2026<br>
+        C.T. Holland<br>
+        mindofyourown.com<br>
+        ──<br>
+        Doing the Work<br>
+        Podcast Layer
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     1. CORE INGREDIENTS
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <span class="section-label">01 — Core Ingredients</span>
+    <h2 class="section-title">What the system is made of.</h2>
+
+    <!-- PALETTE -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white-35); font-family:var(--ff-label); margin-bottom:16px;">Color Palette</p>
+    <div class="palette-grid" style="margin-bottom:48px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#050810;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Black</div>
+          <div class="swatch-hex">#050810</div>
+          <div class="swatch-role">Background / field</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0d1828;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Navy</div>
+          <div class="swatch-hex">#0d1828</div>
+          <div class="swatch-role">Cards / panels</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4169E1;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cobalt</div>
+          <div class="swatch-hex">#4169E1</div>
+          <div class="swatch-role">System / labels</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3ECFC3;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Teal</div>
+          <div class="swatch-hex">#3ECFC3</div>
+          <div class="swatch-role">Highlight bar / accent</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E8A84C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amber</div>
+          <div class="swatch-hex">#E8A84C</div>
+          <div class="swatch-role">CORE lane only</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F7F8FA;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Off-White</div>
+          <div class="swatch-hex">#F7F8FA</div>
+          <div class="swatch-role">Primary text</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white-35); font-family:var(--ff-label); margin-bottom:16px;">Typography</p>
+    <div class="type-grid" style="margin-bottom:48px;">
+      <div class="type-card">
+        <div class="type-specimen">
+          <div style="font-family:'Arial Black',Impact,sans-serif; font-size:36px; font-weight:900; text-transform:lowercase; letter-spacing:-1px; line-height:1.0; color:var(--white);">what happened<br><span style="background:var(--teal); color:#060a12; padding:0 6px;">before you</span><br>thought it?</div>
+        </div>
+        <div class="type-meta">
+          Role: THUMBNAIL HEADLINE<br>
+          Font: Arial Black / Impact (system)<br>
+          Weight: 900 · Lowercase · Tight tracking<br>
+          Use: YouTube, Instagram, Story covers
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-specimen">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; font-style:italic; line-height:1.2; color:var(--white);">"Sometimes you need a coach.<br>Sometimes you just need<br>someone worth talking to."</div>
+        </div>
+        <div class="type-meta">
+          Role: EDITORIAL / PAGE DISPLAY<br>
+          Font: Playfair Display Italic<br>
+          Weight: 700 · Sentence case<br>
+          Use: Website pages, quotes, blockquotes
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-specimen">
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:6px;">Doing the Work · Episode 1</div>
+          <div style="font-family:'Inter',sans-serif; font-size:14px; color:rgba(247,248,250,0.6); line-height:1.6;">Most of what you call "yourself" was assembled before you had the capacity to examine it. The question is not whether you were shaped. It's whether you know by what.</div>
+        </div>
+        <div class="type-meta">
+          Oswald: Labels, episode tags, platform labels<br>
+          Inter: Body copy, descriptions, captions<br>
+          Use: All supporting text at any size
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-specimen" style="display:flex; align-items:center; gap:12px; height:60px;">
+          <div style="font-family:'Arial Black',sans-serif; font-size:28px; font-weight:900; color:var(--white);">MO'O</div>
+          <div style="width:1px; height:36px; background:var(--white-15);"></div>
+          <div>
+            <div style="font-family:'Inter',sans-serif; font-size:13px; font-weight:600; color:var(--white);">MIND OF YOUR OWN®</div>
+            <div style="font-family:'Oswald',sans-serif; font-size:9px; letter-spacing:2px; color:var(--white-35); text-transform:uppercase;">mindofyourown.com</div>
+          </div>
+        </div>
+        <div class="type-meta">
+          Role: BRAND MARK<br>
+          MO'O: Condensed, heavy, always small<br>
+          Never the hero — present but quiet<br>
+          Bottom-left placement standard
+        </div>
+      </div>
+    </div>
+
+    <!-- GRAPHIC ELEMENTS -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white-35); font-family:var(--ff-label); margin-bottom:16px;">Graphic Elements</p>
+    <div class="element-grid">
+      <div class="element-card">
+        <div class="element-demo"><div class="demo-highlight">before you</div></div>
+        <div class="element-name">Teal Highlight Bar</div>
+      </div>
+      <div class="element-card">
+        <div class="element-demo"><div class="demo-ch"></div></div>
+        <div class="element-name">Crosshair / Star Marker</div>
+      </div>
+      <div class="element-card">
+        <div class="element-demo"><div class="demo-orb"></div></div>
+        <div class="element-name">Glow / Orb</div>
+      </div>
+      <div class="element-card">
+        <div class="element-demo"><div class="demo-grid"></div></div>
+        <div class="element-name">Field Grid Texture</div>
+      </div>
+    </div>
+
+    <div class="note-block">
+      <p><strong>Rule of one:</strong> Each asset gets ONE teal highlight bar — the phrase that carries the most tension or surprise. Not every word. Not alternating bars. One. The restraint is what gives it power.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     2. THREE LANES
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <span class="section-label">02 — Content Lanes</span>
+    <h2 class="section-title">Three lanes. One family.</h2>
+
+    <div class="lane-grid">
+
+      <div class="lane-card lane-core">
+        <div class="lane-num">01</div>
+        <div class="lane-accent"></div>
+        <div class="lane-name">MOYO Core</div>
+        <div class="lane-tagline">Identity · Authorship · Human Potential</div>
+        <div class="lane-desc">The deepest layer. Who you are, how you think, what you can become. NLP, consciousness, language, the self as construction. Intimate. Warm. Portrait-forward. This is the personal transmission.</div>
+        <div class="lane-visual-note">
+          <strong>Visual signature</strong>
+          Amber accent — warmer and more human than the other lanes. Portrait close and direct. Playfair Display more present. Background: dark navy, slightly warmer than SYSTEMS.
+        </div>
+      </div>
+
+      <div class="lane-card lane-systems">
+        <div class="lane-num">02</div>
+        <div class="lane-accent"></div>
+        <div class="lane-name">Systems / Democracy</div>
+        <div class="lane-tagline">Institutions · Power · Civic Literacy</div>
+        <div class="lane-desc">The structural layer. Understand the systems, see the patterns, participate more effectively. Civic literacy, media, money, institutions, power structures. More architectural than personal.</div>
+        <div class="lane-visual-note">
+          <strong>Visual signature</strong>
+          Cobalt blue accent. Geometric, monumental imagery — architecture, newspapers, infrastructure. Feels like looking at a structure from the outside. Cooler. More analytical.
+        </div>
+      </div>
+
+      <div class="lane-card lane-questions">
+        <div class="lane-num">03</div>
+        <div class="lane-accent"></div>
+        <div class="lane-name">Questions / Broadcast</div>
+        <div class="lane-tagline">Provocation · Awareness · Shareable Ideas</div>
+        <div class="lane-desc">The signal layer. Questions that interrupt, open minds, and start better conversations. Most minimal. Most immediate. Designed to stop a scroll. The question IS the product.</div>
+        <div class="lane-visual-note">
+          <strong>Visual signature</strong>
+          Teal accent (primary). Darkest background. Boldest type. Most space around the question. Portrait appears less frequently — sometimes the question alone. Highest contrast of the three.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-block" style="margin-top:24px;">
+      <p><strong>How they differ while staying in family:</strong> Same black foundation, same grid texture, same portrait treatment, same type families. The accent color shifts (amber / cobalt / teal) and the image treatment shifts (intimate / architectural / minimal). That's it. One dial at a time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     3. PLATFORM TEMPLATES
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <span class="section-label">03 — Platform Templates</span>
+    <h2 class="section-title">Layout logic, format by format.</h2>
+
+    <div class="platform-grid">
+
+      <!-- YOUTUBE -->
+      <div class="platform-block">
+        <div class="platform-name">YouTube Thumbnail</div>
+        <div class="platform-spec">1280 × 720px · 16:9 · JPG/PNG · &lt;2MB</div>
+        <div class="wireframe wf-yt">
+          <div class="wf-bg"></div><div class="wf-grid"></div>
+          <div class="wf-portrait-zone"><div class="wf-portrait-label">PORTRAIT<br>right 45%<br>object-fit: cover</div></div>
+          <div class="wf-label-zone"></div>
+          <div class="wf-text-zone">
+            <div class="wf-type-block">
+              <div class="wf-line med"></div>
+              <div class="wf-line full"></div>
+              <div class="wf-highlight-line"></div>
+              <div class="wf-line med"></div>
+            </div>
+          </div>
+          <div class="wf-brand-zone"></div>
+          <div class="wf-bar"></div>
+          <div class="wf-zone-label" style="top:8%; left:3%;">SERIES LABEL</div>
+          <div class="wf-zone-label" style="bottom:9%; left:3%;">MO'O MARK</div>
+          <div class="wf-zone-label" style="bottom:9%; right:5%;">EP NUMBER</div>
+        </div>
+        <div class="note-block" style="margin-top:14px;">
+          <p><strong>Layout:</strong> Type left 55% / Portrait right 45%. Question is the hero. Portrait reads the question. Series label top-left. MO'O bottom-left. Bottom accent bar full-width. One teal bar on the key phrase.</p>
+        </div>
+      </div>
+
+      <!-- INSTAGRAM SQUARE -->
+      <div class="platform-block">
+        <div class="platform-name">Instagram Square</div>
+        <div class="platform-spec">1080 × 1080px · 1:1 · JPG · Feed post</div>
+        <div class="wireframe wf-sq">
+          <div class="wf-bg"></div><div class="wf-grid"></div>
+          <div class="wf-portrait-zone" style="width:42%; height:70%; top:15%; bottom:15%;"><div class="wf-portrait-label">PORTRAIT<br>optional</div></div>
+          <div class="wf-text-zone" style="width:50%; top:20%; transform:none;">
+            <div class="wf-type-block">
+              <div class="wf-line med"></div>
+              <div class="wf-line full"></div>
+              <div class="wf-highlight-line"></div>
+              <div class="wf-line med"></div>
+            </div>
+          </div>
+          <div class="wf-label-zone" style="top:8%; left:5%; width:25%;"></div>
+          <div class="wf-brand-zone" style="bottom:8%;"></div>
+          <div class="wf-bar"></div>
+          <div class="wf-zone-label" style="top:8%; left:3%;">SERIES LABEL</div>
+          <div class="wf-zone-label" style="bottom:9%; left:3%;">MO'O</div>
+        </div>
+        <div class="note-block" style="margin-top:14px;">
+          <p><strong>Layout:</strong> More breathing room than YouTube. Portrait is optional — some episodes type-only. Question can be larger. Works well as a pull-quote card without portrait.</p>
+        </div>
+      </div>
+
+      <!-- INSTAGRAM PORTRAIT -->
+      <div class="platform-block">
+        <div class="platform-name">Instagram Portrait / Post</div>
+        <div class="platform-spec">1080 × 1350px · 4:5 · JPG · Maximum feed size</div>
+        <div class="wireframe wf-portrait">
+          <div class="wf-bg"></div><div class="wf-grid"></div>
+          <div class="wf-portrait-zone" style="width:100%; right:0; top:0; height:55%; border-left:none; border-bottom:1px dashed rgba(255,255,255,0.12);"><div class="wf-portrait-label">PORTRAIT<br>top 55%<br>full-bleed</div></div>
+          <div class="wf-text-zone" style="top:auto; bottom:10%; transform:none; left:7%; width:86%;">
+            <div class="wf-type-block">
+              <div class="wf-line short"></div>
+              <div class="wf-line full"></div>
+              <div class="wf-highlight-line"></div>
+              <div class="wf-line med"></div>
+            </div>
+          </div>
+          <div class="wf-label-zone" style="top:5%; left:5%; width:30%;"></div>
+          <div class="wf-bar"></div>
+          <div class="wf-zone-label" style="top:5%; left:3%;">SERIES</div>
+          <div class="wf-zone-label" style="bottom:4%; right:5%;">MO'O</div>
+        </div>
+        <div class="note-block" style="margin-top:14px;">
+          <p><strong>Layout:</strong> Portrait occupies top 55%, type stacks bottom 45%. Feels like a magazine cover. Portrait fades at bottom into dark field. Text reads clean on solid black.</p>
+        </div>
+      </div>
+
+      <!-- STORY / REEL -->
+      <div class="platform-block">
+        <div class="platform-name">Story / Reel Cover</div>
+        <div class="platform-spec">1080 × 1920px · 9:16 · Safe zone: 250px top/bottom</div>
+        <div class="wireframe wf-story">
+          <div class="wf-bg"></div><div class="wf-grid"></div>
+          <div class="wf-portrait-top"><div class="wf-portrait-label">PORTRAIT<br>top 58%<br>or abstract visual</div></div>
+          <div class="wf-text-bottom" style="bottom:8%;">
+            <div class="wf-type-block">
+              <div class="wf-line short" style="margin-bottom:8px;"></div>
+              <div class="wf-line med"></div>
+              <div class="wf-line full"></div>
+              <div class="wf-highlight-line"></div>
+              <div class="wf-line med"></div>
+            </div>
+          </div>
+          <div class="wf-label-zone" style="top:7%; left:7%; width:35%;"></div>
+          <div class="wf-bar"></div>
+          <div class="wf-zone-label" style="top:7%; left:5%;">SERIES</div>
+          <div class="wf-zone-label" style="bottom:3%; right:5%;">MO'O</div>
+          <div style="position:absolute; top:250px; left:0; right:0; height:1px; background:rgba(255,255,255,0.08);"></div>
+          <div style="position:absolute; bottom:250px; left:0; right:0; height:1px; background:rgba(255,255,255,0.08);"></div>
+          <div class="wf-zone-label" style="top:250px; right:5%; transform:none;">safe zone ↑</div>
+          <div class="wf-zone-label" style="bottom:250px; right:5%; transform:none;">safe zone ↓</div>
+        </div>
+        <div class="note-block" style="margin-top:14px;">
+          <p><strong>Layout:</strong> Visual/portrait top 58%, type bottom 42%. Keep all critical text and logo inside the safe zone (inside the UI chrome). Question legible at phone size.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     4. TEMPLATE RECIPE
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <span class="section-label">04 — Template Recipe</span>
+    <h2 class="section-title">How to build one episode's assets.</h2>
+
+    <div class="recipe-grid">
+      <div>
+        <p style="font-size:14px; color:var(--white-60); margin-bottom:32px; line-height:1.7;">Same inputs every time. Swap the question, the portrait, and the highlight phrase. Everything else stays fixed. That's how a recognizable series works.</p>
+        <div class="recipe-steps">
+          <div class="recipe-step step-accent-teal">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>The Question</h4>
+              <p>The episode's central question or provocation, in bold lowercase. 3–8 words. The thing that makes someone pause.</p>
+            </div>
+          </div>
+          <div class="recipe-step step-accent-teal">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>The Highlight</h4>
+              <p>One phrase gets the teal bar. Usually the most unexpected 2–3 words. Never the whole question. The bar tells the eye where to look.</p>
+            </div>
+          </div>
+          <div class="recipe-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>The Portrait</h4>
+              <p>Right-side anchor. Clean background. Facing slightly toward the type. Expression: thoughtful, direct, not performing. Not every episode needs the portrait — Question-only works for the strongest lines.</p>
+            </div>
+          </div>
+          <div class="recipe-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Series Label</h4>
+              <p>"Doing the Work" in Oswald at 10–11px, top-left, cobalt or white at 40% opacity. Present but not competing.</p>
+            </div>
+          </div>
+          <div class="recipe-step step-accent-blue">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>Field Texture</h4>
+              <p>Subtle grid lines. 1–3 crosshair markers. Optional glow/orb behind portrait or top-right. All at low opacity. Atmospheric, not decorative.</p>
+            </div>
+          </div>
+          <div class="recipe-step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>Bottom Bar + MO'O</h4>
+              <p>Teal-to-blue gradient bar, full-width, 3–4px. MO'O mark bottom-left. Episode number bottom-right if applicable. Never prominent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Live example of the recipe -->
+        <div style="background:#06060e; border:1px solid rgba(255,255,255,0.06); padding:32px 28px; border-radius:2px; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right, var(--teal), var(--cobalt));"></div>
+          <div style="position:absolute; inset:0; background-image:linear-gradient(rgba(62,207,195,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(62,207,195,0.04) 1px, transparent 1px); background-size:24px 24px; pointer-events:none;"></div>
+          <div style="position:relative; z-index:1;">
+            <div style="font-family:var(--ff-label); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(65,105,225,0.8); margin-bottom:24px;">Step-by-step in action ↓</div>
+            <div style="margin-bottom:8px;"><span style="font-size:10px; color:var(--teal); font-family:var(--ff-label); letter-spacing:2px; text-transform:uppercase;">① QUESTION</span></div>
+            <div style="font-family:'Arial Black',Impact,sans-serif; font-size:28px; font-weight:900; text-transform:lowercase; letter-spacing:-1px; line-height:1.08; color:var(--white); margin-bottom:20px;">what happened<br><span style="background:var(--teal); color:#060a12; padding:1px 8px;">before you</span><br>thought it?</div>
+            <div style="display:flex; gap:12px; align-items:center; margin-bottom:20px;">
+              <div style="width:16px; height:16px; border-radius:50%; background:radial-gradient(circle, rgba(62,207,195,0.6), transparent 70%);"></div>
+              <div style="font-size:10px; color:var(--white-35); font-family:var(--ff-label); letter-spacing:1.5px; text-transform:uppercase;">② teal on "before you"</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border:1px dashed rgba(255,255,255,0.12); height:80px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; border-radius:2px;">
+              <span style="font-size:10px; color:var(--white-35); font-family:monospace;">③ PORTRAIT → right zone</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+              <div>
+                <div style="font-family:var(--ff-label); font-size:8px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(65,105,225,0.7); margin-bottom:4px;">④ Doing the Work</div>
+                <div style="font-family:'Arial Black',sans-serif; font-size:14px; font-weight:900; color:rgba(255,255,255,0.3);">MO'O</div>
+              </div>
+              <div style="font-family:var(--ff-label); font-size:8px; color:var(--white-35); letter-spacing:1px;">Ep 01</div>
+            </div>
+            <div style="height:3px; background:linear-gradient(to right, var(--teal), var(--cobalt), transparent); margin-top:16px; border-radius:1px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     5. EPISODE BANK
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <span class="section-label">05 — Episode Concept Bank</span>
+    <h2 class="section-title">12 concepts. Three lanes.<br>Ready to build.</h2>
+
+    <div class="episode-grid">
+
+      <!-- CORE LANE -->
+      <div class="episode-card ep-core">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Core / Identity</div>
+        <div class="ep-question">What happened before you thought it?</div>
+        <div class="ep-premise">Most of what you call "yourself" was assembled <span class="ep-highlight">before conscious authorship arrived.</span> The question makes the construction visible — so real choice can begin.</div>
+      </div>
+
+      <div class="episode-card ep-core">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Core / Identity</div>
+        <div class="ep-question">You didn't choose your first self.</div>
+        <div class="ep-premise">Family, language, culture, nervous system — all of it arrived before you could evaluate any of it. That's not a problem. <span class="ep-highlight">It's the starting condition.</span></div>
+      </div>
+
+      <div class="episode-card ep-core">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Core / Identity</div>
+        <div class="ep-question">Play the role. Keep the author.</div>
+        <div class="ep-premise">How to participate fully in any system — social, professional, cultural — while <span class="ep-highlight">retaining the part of you that knows it's participating.</span></div>
+      </div>
+
+      <div class="episode-card ep-core">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Core / Identity</div>
+        <div class="ep-question">A thing can be real and still be held together by agreement.</div>
+        <div class="ep-premise">Money, credentials, reputation. Real in effect. But <span class="ep-highlight">constructed by collective belief,</span> not by nature. The distinction changes everything.</div>
+      </div>
+
+      <!-- SYSTEMS LANE -->
+      <div class="episode-card ep-systems">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Systems / Democracy</div>
+        <div class="ep-question">The system is a story.</div>
+        <div class="ep-premise">Every institution runs on a narrative — about who belongs, what matters, <span class="ep-highlight">what is and isn't possible.</span> Seeing the story doesn't dissolve the system. But it changes your relationship to it.</div>
+      </div>
+
+      <div class="episode-card ep-systems">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Systems / Democracy</div>
+        <div class="ep-question">Information isn't neutral.</div>
+        <div class="ep-premise">Every story has a structure. Every structure has incentives. <span class="ep-highlight">Every incentive shapes what gets told,</span> what gets left out, and how you feel when it's over.</div>
+      </div>
+
+      <div class="episode-card ep-systems">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Systems / Democracy</div>
+        <div class="ep-question">Democracy doesn't fail overnight.</div>
+        <div class="ep-premise">It erodes in ordinary moments. The mundane decisions. The <span class="ep-highlight">incremental normalizations.</span> By the time it looks like a crisis, most of it already happened.</div>
+      </div>
+
+      <!-- QUESTIONS LANE -->
+      <div class="episode-card ep-questions">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-question">Who taught you what normal looks like?</div>
+        <div class="ep-premise">Not as accusation. As genuine inquiry. The answer reveals the map <span class="ep-highlight">you didn't know you were using.</span></div>
+      </div>
+
+      <div class="episode-card ep-questions">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-question">When did a tool become an authority?</div>
+        <div class="ep-premise">Technology, AI, institutions, media — the moment deference replaces evaluation is <span class="ep-highlight">the moment the tool starts thinking for you.</span></div>
+      </div>
+
+      <div class="episode-card ep-questions">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-question">You can stay in the frame and still see the frame.</div>
+        <div class="ep-premise">You don't have to leave to gain perspective. Conscious presence inside a running structure <span class="ep-highlight">is itself a form of BreakState.</span></div>
+      </div>
+
+      <div class="episode-card ep-questions">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-question">Perception precedes truth.</div>
+        <div class="ep-premise">We don't receive reality — we construct it from pattern, memory, expectation, and context. <span class="ep-highlight">Look closer</span> is not a cliché. It is a methodology.</div>
+      </div>
+
+      <div class="episode-card ep-questions">
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-question">Same humanity. Higher conversations.</div>
+        <div class="ep-premise">The material of human experience is the same across all of us. What changes is <span class="ep-highlight">the altitude from which we examine it.</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<div style="border-top:1px solid var(--white-06);">
+  <div class="sys-footer wrap">
+    Doing the Work &nbsp;·&nbsp; Mind Of Your Own® &nbsp;·&nbsp; Visual System v1.0 &nbsp;·&nbsp; September 2026
+    &nbsp;·&nbsp; <em style="font-style:italic; color:rgba(247,248,250,0.22);">AI-augmented imagery. Human-authored ideas.</em>
+  </div>
+</div>
+
+</body>
+</html>

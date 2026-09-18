@@ -24,14 +24,22 @@
 
   .hero {
     position: relative; padding: 110px 0 120px;
-    text-align: center; overflow: hidden; min-height: 70vh;
+    overflow: hidden; min-height: 70vh;
     display: flex; align-items: center; justify-content: center;
   }
   .hero::before {
     content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(ellipse 900px 600px at 50% 55%, rgba(65,105,225,0.10), transparent 65%);
+    background: radial-gradient(ellipse 900px 600px at 35% 55%, rgba(65,105,225,0.10), transparent 65%);
   }
-  .hero-inner { position: relative; z-index: 2; max-width: 800px; }
+  /* Blueface composited with screen blend — white dissolves into dark bg */
+  .hero-face {
+    position: absolute; right: -60px; top: -40px; bottom: -40px;
+    width: 55%; pointer-events: none; z-index: 1;
+    mix-blend-mode: screen; opacity: 0.65;
+    display: flex; align-items: center;
+  }
+  .hero-face img { width: 100%; height: 100%; object-fit: contain; object-position: right center; }
+  .hero-inner { position: relative; z-index: 2; max-width: 700px; }
   .hero h1 {
     font-family: var(--font-display); font-weight: 700; font-style: normal;
     font-size: clamp(40px, 6vw, 72px); line-height: 1.06;
@@ -110,7 +118,10 @@
 
   <!-- HERO -->
   <section class="hero dotgrid">
-    <div class="wrap">
+    <div class="wrap" style="position:relative; width:100%;">
+      <div class="hero-face">
+        <img src="images/blueface.png" alt="">
+      </div>
       <div class="hero-inner">
         <p class="label">C.T. Holland</p>
         <h1><em>Doing the Work</em></h1>
