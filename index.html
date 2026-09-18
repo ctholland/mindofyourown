@@ -166,17 +166,25 @@
         @media (max-width: 600px) {
             /* ── HERO MOBILE ── */
             .hero-photo-full { height: 100vh; min-height: unset; max-height: unset; }
-            /* Shift image to show the cleaner portion of interviewchairs.png */
-            .hero-photo-full img { object-position: center 25%; }
-            /* Much darker solid-ish scrim — hides baked-in image text */
-            .hero-scrim { background: rgba(0,0,0,0.78); }
-            /* Hide HTML eyebrow — image already carries this message, collision gone */
+            /* Show upper portion of image where "Better conversations" text lives */
+            .hero-photo-full img { object-position: center 10%; }
+            /* Light at top (shows wall text clearly), dark at bottom (HTML text readable) */
+            .hero-scrim {
+                background: linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.18) 0%,
+                    rgba(0,0,0,0.22) 35%,
+                    rgba(0,0,0,0.88) 62%,
+                    rgba(0,0,0,0.97) 100%
+                );
+            }
+            /* Hide HTML eyebrow — image carries this message */
             .hero-eyebrow { display: none; }
-            /* Center content vertically, clear the fixed nav (≈64px) */
+            /* Push HTML content to bottom, clear the fixed nav */
             .hero-text {
-                justify-content: center;
+                justify-content: flex-end;
                 align-items: flex-start;
-                padding: 88px 24px 60px;
+                padding: 0 24px 60px;
             }
             .hero h1 { font-size: 30px; margin-bottom: 18px; }
             .hero-desc { font-size: 15px; max-width: 100%; margin-bottom: 28px; }
