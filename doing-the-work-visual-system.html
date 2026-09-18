@@ -149,9 +149,14 @@ body::before {
 .lane-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
 .lane-core { background: #0b0e14; }
 .lane-core::before { background: var(--amber); }
-.lane-systems { background: #080d10; }
+.lane-systems { background: #eef1f6; }
 .lane-systems::before { background: var(--cobalt); }
-.lane-questions { background: #060810; }
+.lane-systems .lane-name { color: #0d1828; }
+.lane-systems .lane-tagline { color: rgba(13,24,40,0.55); }
+.lane-systems .lane-desc { color: rgba(13,24,40,0.72); }
+.lane-systems .lane-visual-note { color: rgba(13,24,40,0.55); border-top-color: rgba(13,24,40,0.12); }
+.lane-systems .lane-visual-note strong { color: rgba(13,24,40,0.85); }
+.lane-questions { background: #030509; }
 .lane-questions::before { background: var(--teal); }
 
 .lane-num {
@@ -159,8 +164,8 @@ body::before {
   font-weight: 700; line-height: 1; margin-bottom: 14px;
 }
 .lane-core .lane-num { color: rgba(232,168,76,0.25); }
-.lane-systems .lane-num { color: rgba(65,105,225,0.25); }
-.lane-questions .lane-num { color: rgba(62,207,195,0.25); }
+.lane-systems .lane-num { color: rgba(65,105,225,0.35); }
+.lane-questions .lane-num { color: rgba(62,207,195,0.3); }
 
 .lane-name {
   font-family: var(--ff-display); font-size: 20px; font-weight: 700;
@@ -291,7 +296,7 @@ body::before {
 }
 .ep-lane-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .ep-question {
-  font-family: var(--ff-display); font-weight: 700; font-style: italic;
+  font-family: var(--ff-display); font-weight: 700;
   font-size: 16px; line-height: 1.3; color: var(--white); margin-bottom: 10px;
 }
 .ep-premise { font-size: 12px; line-height: 1.6; color: var(--white-60); }
@@ -469,7 +474,7 @@ body::before {
       </div>
       <div class="type-card">
         <div class="type-specimen" style="display:flex; align-items:center; gap:12px; height:60px;">
-          <div style="font-family:'Arial Black',sans-serif; font-size:28px; font-weight:900; color:var(--white);">MO'O</div>
+          <div style="font-family:var(--ff-label); font-size:14px; font-weight:600; letter-spacing:2px; color:var(--white);">MOYO</div>
           <div style="width:1px; height:36px; background:var(--white-15);"></div>
           <div>
             <div style="font-family:'Inter',sans-serif; font-size:13px; font-weight:600; color:var(--white);">MIND OF YOUR OWN®</div>
@@ -478,7 +483,7 @@ body::before {
         </div>
         <div class="type-meta">
           Role: BRAND MARK<br>
-          MO'O: Condensed, heavy, always small<br>
+          MOYO wordmark, Oswald, condensed, always small<br>
           Never the hero — present but quiet<br>
           Bottom-left placement standard
         </div>
@@ -549,7 +554,7 @@ body::before {
       <div class="lane-card lane-questions">
         <div class="lane-num">03</div>
         <div class="lane-accent"></div>
-        <div class="lane-name">Questions / Broadcast</div>
+        <div class="lane-name">Questions / Signal</div>
         <div class="lane-tagline">Provocation · Awareness · Shareable Ideas</div>
         <div class="lane-desc">The signal layer. Questions that interrupt, open minds, and start better conversations. Most minimal. Most immediate. Designed to stop a scroll. The question IS the product.</div>
         <div class="lane-visual-note">
@@ -561,7 +566,11 @@ body::before {
     </div>
 
     <div class="note-block" style="margin-top:24px;">
-      <p><strong>How they differ while staying in family:</strong> Same black foundation, same grid texture, same portrait treatment, same type families. The accent color shifts (amber / cobalt / teal) and the image treatment shifts (intimate / architectural / minimal). That's it. One dial at a time.</p>
+      <p><strong>How they differ while staying in family:</strong> MOYO Core and Questions / Signal share the dark foundation, grid texture, and portrait treatment, with the accent shifting amber → teal and the image treatment moving from intimate to minimal. Systems / Democracy is allowed to break the dark field — it runs in the existing light, civic/editorial world, with cobalt as the connective thread back to the rest of the system.</p>
+    </div>
+
+    <div class="note-block" style="margin-top:16px; border-left-color: rgba(62,207,195,0.4); background: var(--teal-10);">
+      <p><strong>Podcast is a delivery layer, not a fourth lane.</strong> Every episode still belongs to one of the three lanes above — Core, Systems, or Questions — and inherits that lane's accent and image treatment. The podcast frame (series label, episode number, brand mark, bottom bar) stays constant across all three; what changes episode to episode is which lane it's speaking from.</p>
     </div>
   </div>
 </section>
@@ -595,11 +604,11 @@ body::before {
           <div class="wf-brand-zone"></div>
           <div class="wf-bar"></div>
           <div class="wf-zone-label" style="top:8%; left:3%;">SERIES LABEL</div>
-          <div class="wf-zone-label" style="bottom:9%; left:3%;">MO'O MARK</div>
+          <div class="wf-zone-label" style="bottom:9%; left:3%;">BRAND MARK</div>
           <div class="wf-zone-label" style="bottom:9%; right:5%;">EP NUMBER</div>
         </div>
         <div class="note-block" style="margin-top:14px;">
-          <p><strong>Layout:</strong> Type left 55% / Portrait right 45%. Question is the hero. Portrait reads the question. Series label top-left. MO'O bottom-left. Bottom accent bar full-width. One teal bar on the key phrase.</p>
+          <p><strong>Layout:</strong> Type left 55% / Portrait right 45%. Question is the hero. Portrait reads the question. Series label top-left. Brand mark bottom-left. Bottom accent bar full-width. One teal bar on the key phrase.</p>
         </div>
       </div>
 
@@ -622,7 +631,7 @@ body::before {
           <div class="wf-brand-zone" style="bottom:8%;"></div>
           <div class="wf-bar"></div>
           <div class="wf-zone-label" style="top:8%; left:3%;">SERIES LABEL</div>
-          <div class="wf-zone-label" style="bottom:9%; left:3%;">MO'O</div>
+          <div class="wf-zone-label" style="bottom:9%; left:3%;">BRAND</div>
         </div>
         <div class="note-block" style="margin-top:14px;">
           <p><strong>Layout:</strong> More breathing room than YouTube. Portrait is optional — some episodes type-only. Question can be larger. Works well as a pull-quote card without portrait.</p>
@@ -647,7 +656,7 @@ body::before {
           <div class="wf-label-zone" style="top:5%; left:5%; width:30%;"></div>
           <div class="wf-bar"></div>
           <div class="wf-zone-label" style="top:5%; left:3%;">SERIES</div>
-          <div class="wf-zone-label" style="bottom:4%; right:5%;">MO'O</div>
+          <div class="wf-zone-label" style="bottom:4%; right:5%;">BRAND</div>
         </div>
         <div class="note-block" style="margin-top:14px;">
           <p><strong>Layout:</strong> Portrait occupies top 55%, type stacks bottom 45%. Feels like a magazine cover. Portrait fades at bottom into dark field. Text reads clean on solid black.</p>
@@ -673,7 +682,7 @@ body::before {
           <div class="wf-label-zone" style="top:7%; left:7%; width:35%;"></div>
           <div class="wf-bar"></div>
           <div class="wf-zone-label" style="top:7%; left:5%;">SERIES</div>
-          <div class="wf-zone-label" style="bottom:3%; right:5%;">MO'O</div>
+          <div class="wf-zone-label" style="bottom:3%; right:5%;">BRAND</div>
           <div style="position:absolute; top:250px; left:0; right:0; height:1px; background:rgba(255,255,255,0.08);"></div>
           <div style="position:absolute; bottom:250px; left:0; right:0; height:1px; background:rgba(255,255,255,0.08);"></div>
           <div class="wf-zone-label" style="top:250px; right:5%; transform:none;">safe zone ↑</div>
@@ -738,8 +747,8 @@ body::before {
           <div class="recipe-step">
             <div class="step-num">6</div>
             <div class="step-content">
-              <h4>Bottom Bar + MO'O</h4>
-              <p>Teal-to-blue gradient bar, full-width, 3–4px. MO'O mark bottom-left. Episode number bottom-right if applicable. Never prominent.</p>
+              <h4>Bottom Bar + Brand Mark</h4>
+              <p>Teal-to-blue gradient bar, full-width, 3–4px. Brand mark bottom-left. Episode number bottom-right if applicable. Never prominent.</p>
             </div>
           </div>
         </div>
@@ -764,7 +773,7 @@ body::before {
             <div style="display:flex; justify-content:space-between; align-items:flex-end;">
               <div>
                 <div style="font-family:var(--ff-label); font-size:8px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(65,105,225,0.7); margin-bottom:4px;">④ Doing the Work</div>
-                <div style="font-family:'Arial Black',sans-serif; font-size:14px; font-weight:900; color:rgba(255,255,255,0.3);">MO'O</div>
+                <div style="font-family:var(--ff-label); font-size:11px; font-weight:600; letter-spacing:2px; color:rgba(255,255,255,0.35);">MOYO</div>
               </div>
               <div style="font-family:var(--ff-label); font-size:8px; color:var(--white-35); letter-spacing:1px;">Ep 01</div>
             </div>
@@ -832,31 +841,31 @@ body::before {
 
       <!-- QUESTIONS LANE -->
       <div class="episode-card ep-questions">
-        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Signal</div>
         <div class="ep-question">Who taught you what normal looks like?</div>
         <div class="ep-premise">Not as accusation. As genuine inquiry. The answer reveals the map <span class="ep-highlight">you didn't know you were using.</span></div>
       </div>
 
       <div class="episode-card ep-questions">
-        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Signal</div>
         <div class="ep-question">When did a tool become an authority?</div>
         <div class="ep-premise">Technology, AI, institutions, media — the moment deference replaces evaluation is <span class="ep-highlight">the moment the tool starts thinking for you.</span></div>
       </div>
 
       <div class="episode-card ep-questions">
-        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Signal</div>
         <div class="ep-question">You can stay in the frame and still see the frame.</div>
         <div class="ep-premise">You don't have to leave to gain perspective. Conscious presence inside a running structure <span class="ep-highlight">is itself a form of BreakState.</span></div>
       </div>
 
       <div class="episode-card ep-questions">
-        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Signal</div>
         <div class="ep-question">Perception precedes truth.</div>
         <div class="ep-premise">We don't receive reality — we construct it from pattern, memory, expectation, and context. <span class="ep-highlight">Look closer</span> is not a cliché. It is a methodology.</div>
       </div>
 
       <div class="episode-card ep-questions">
-        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Broadcast</div>
+        <div class="ep-lane"><div class="ep-lane-dot"></div> Questions / Signal</div>
         <div class="ep-question">Same humanity. Higher conversations.</div>
         <div class="ep-premise">The material of human experience is the same across all of us. What changes is <span class="ep-highlight">the altitude from which we examine it.</span></div>
       </div>
