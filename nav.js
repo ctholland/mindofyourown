@@ -100,7 +100,7 @@
     .dn-chevron { font-size: 0.6em; opacity: 0.6; margin-left: 2px; vertical-align: middle; }
     /* Desktop dropdown bullets */
     .dn-dd-link {
-      display: block; padding: 6px 18px 6px 14px;
+      display: block; padding: 6px 18px 6px 4px;
       color: rgba(255,255,255,0.75); text-decoration: none;
       font-family: var(--font-body, 'Inter', sans-serif);
       font-size: 13px; font-weight: 500;
