@@ -84,7 +84,7 @@
     .ch-parent-link { font-weight: 600; }
     .ch-chevron { font-size: 0.65em; opacity: 0.55; margin-left: 3px; }
     .ch-link.ch-sub-link {
-      padding-left: 16px;
+      padding-left: 0;
       padding-top: 4px;
       padding-bottom: 4px;
       font-size: 0.78rem;
