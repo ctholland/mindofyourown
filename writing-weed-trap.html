@@ -32,14 +32,58 @@
     font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4.5vw, 42px);
     line-height: 1.15; margin: 0 0 18px;
   }
-  .art-dek { font-family: var(--font-display); font-style: italic; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.7); margin: 0 0 22px; }
+  .art-dek { font-family: var(--font-display); font-style: italic; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.7); margin: 0 0 12px; }
+  .art-scope-note {
+    font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,0.5);
+    border-left: 2px solid rgba(62,205,196,0.4); padding-left: 14px; margin: 0 0 22px;
+  }
   .art-meta { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .art-meta-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .pdf-link {
+    font-family: var(--font-label); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal); text-decoration: none; border: 1px solid rgba(62,205,196,0.4);
+    padding: 7px 14px; border-radius: 30px; display: inline-flex; align-items: center; gap: 6px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .pdf-link:hover { background: var(--teal); color: #000; }
 
-  .art-body { padding: 40px 0 72px; font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.85); }
+  .art-body { padding: 40px 0 24px; font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.85); }
   .art-body p { margin: 0 0 24px; }
   .art-body p:first-of-type::first-letter {
     font-family: var(--font-display); font-weight: 700; font-size: 46px; float: left; line-height: 0.85;
     margin: 8px 10px 0 0; color: var(--cobalt);
+  }
+  .art-body sup.fn { font-size: 10px; color: var(--teal); margin-left: 1px; }
+  .art-body sup.fn a { color: inherit; text-decoration: none; }
+  .art-body sup.fn a:hover { text-decoration: underline; }
+
+  .art-table-wrap { margin: 8px 0 32px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; }
+  .art-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 620px; }
+  .art-table th {
+    font-family: var(--font-label); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal); text-align: left; padding: 12px 14px; background: #0a0a12;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .art-table td {
+    padding: 12px 14px; vertical-align: top; color: rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.06); line-height: 1.55;
+  }
+  .art-table tr:last-child td { border-bottom: none; }
+  .art-table td:first-child { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  .sources { padding: 8px 0 56px; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 8px; }
+  .sources h2 {
+    font-family: var(--font-label); font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); margin: 32px 0 16px;
+  }
+  .sources ol { margin: 0; padding-left: 22px; }
+  .sources li { font-size: 11.5px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+  .sources li a { color: var(--cobalt); text-decoration: none; word-break: break-word; }
+  .sources li a:hover { text-decoration: underline; }
+
+  .art-bio {
+    margin-top: 8px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.5); padding-bottom: 8px;
   }
 
   @media (max-width: 600px) {
@@ -58,65 +102,116 @@
       <div class="art-lane label"><span class="dot"></span>Systems &amp; Democracy</div>
       <h1>The Weed Trap</h1>
       <p class="art-dek">What happens when millions of Americans have been taught that something is legal—and government quietly redraws the line?</p>
-      <p class="art-meta">C.T. Holland &nbsp;&middot;&nbsp; 2026</p>
+      <p class="art-scope-note">This article distinguishes between documented legal changes, documented historical enforcement patterns, and unresolved inferences about future use. It argues for scrutiny of emerging enforcement architecture.</p>
+      <div class="art-meta-row">
+        <p class="art-meta">C.T. Holland &nbsp;&middot;&nbsp; 2026</p>
+        <a href="writing/The_Weed_Trap_CT_Holland.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">&darr; Download as PDF</a>
+      </div>
     </header>
 
     <article class="art-body">
-      <p>For almost a decade, Americans have been receiving a fairly clear cultural message about cannabis: the war is ending. States legalized it. Stores opened. Products appeared everywhere. Billboards went up. Tax revenue rolled in. Cannabis moved from the back alley to the shopping district.</p>
+      <p>For almost a decade, Americans have been receiving a fairly clear cultural message about cannabis: the war is ending. States legalized it. Stores opened. Products appeared everywhere. Billboards went up. Tax revenue rolled in. Cannabis moved from the back alley to the main street.</p>
 
-      <p>People adjusted. That matters, because once millions of people reorganize their behavior around something government has permitted, changing the legal boundary does something very different from prohibiting the behavior in the first place. It creates a population that may not realize the boundary moved. And right now, some of those boundaries are moving.</p>
+      <p>Government permitted it. Businesses normalized it. Millions of Americans began treating it as part of ordinary life. That matters, because when people reorganize their behavior around something government has permitted, changing the legal boundary does something very different from prohibiting the behavior in the first place. It creates a population that may not realize the boundary moved. And right now, some of those boundaries are moving.</p>
 
-      <p>Congress changed the federal definition of hemp in 2025. The new standard counts total THC rather than simply delta-9 THC and creates a federal limit of 0.4 milligrams of covered THC per container for many finished hemp-derived cannabinoid products. The change was originally scheduled to take effect November 12, 2026; Congress has temporarily pushed most of the implementation to December 11.</p>
+      <p>Congress enacted a new federal hemp definition in late 2025. The law retained a 0.3 percent total-THC dry-weight standard for hemp plant material, but it also added new exclusions for intermediate and finished hemp-derived cannabinoid products. For many finished products, a limit of 0.4 milligrams of total THC per retail container became central to whether the product remained within the federal hemp definition.<sup class="fn"><a href="#src1">1</a></sup></p>
 
-      <p>That sounds like agricultural regulation. It isn't merely agricultural regulation.</p>
+      <p>Much of that change was initially set to take effect on November 12, 2026. Congress later delayed much of the implementation until December 11, 2026, although the transition is not identical for every category of cannabinoid product.<sup class="fn"><a href="#src2">2</a></sup></p>
 
-      <p>Under federal law, the definition of hemp determines whether cannabis material sits outside the Controlled Substances Act or crosses back into federally controlled marijuana or THC territory. The distinction can therefore separate an ordinary commercial product from controlled-substance exposure.</p>
+      <p>That sounds like agricultural regulation. It is also a change in who can be treated as a criminal.</p>
 
-      <p>Meanwhile, another strange legal split has emerged. In April, the Justice Department placed FDA-approved marijuana products and marijuana regulated under qualifying state medical licenses into Schedule III. But that order did not grant the same federal treatment to ordinary recreational marijuana. DOJ simultaneously continued the broader administrative proceeding over marijuana's federal scheduling.</p>
+      <p>Under federal law, the definition of hemp helps determine whether cannabis material sits outside the Controlled Substances Act or crosses back into federally controlled marijuana or THC territory. The distinction can therefore separate an ordinary commercial product from controlled-substance exposure.<sup class="fn"><a href="#src3">3</a></sup></p>
 
-      <p>So follow the architecture. Medical cannabis receives one federal lane. Recreational cannabis remains in another. Hemp products can move across the legal boundary based upon chemistry, source, formulation and packaging. States add their own rules governing quantity, potency, purchase location, public use and legal sourcing.</p>
+      <p>Meanwhile, another unusual legal split has emerged. On April 22, 2026, DOJ and DEA placed FDA-approved products containing marijuana and marijuana regulated under qualifying state medical licenses into Schedule III. The order did not give ordinary state-legal adult-use marijuana the same treatment, and it opened an expedited administrative hearing process over the broader question of marijuana&rsquo;s federal scheduling.<sup class="fn"><a href="#src4">4</a></sup></p>
 
-      <p>A person can therefore believe, quite reasonably, that they are participating in America's newly legal cannabis culture while still occupying a remarkably complicated legal landscape.</p>
+      <p>That is not full federal legalization. It is a limited federal lane for specified medical products and qualifying state medical programs, while the legal position of adult-use marijuana remains materially different.<sup class="fn"><a href="#src5">5</a></sup></p>
 
-      <p>That is where my interest begins.</p>
+      <p>So follow the architecture. Medical cannabis receives one federal lane. Recreational cannabis remains in another. Hemp products can move across the legal boundary based upon chemistry, source, formulation, packaging, and product category. States add their own rules governing quantity, potency, purchase location, public use, and legal sourcing.</p>
+
+      <p>A person can therefore believe, quite reasonably, that they are participating in America&rsquo;s newly legal cannabis culture while still occupying a remarkably complicated legal landscape. State legality is real; it is simply incomplete and jurisdiction-specific.</p>
+
+      <p>That is where the concern begins.</p>
 
       <p>Because American history gives us a reason to pay very close attention whenever broadly practiced behavior becomes selectively enforceable. Cannabis enforcement has never fallen evenly across the population.</p>
 
-      <p>The ACLU's national study found Black Americans 3.64 times more likely than white Americans to be arrested for marijuana possession despite comparable usage rates. Legalization dramatically reduced arrests in many jurisdictions, but racial disparities persisted.</p>
+      <p>The ACLU found Black Americans 3.64 times more likely than white Americans to be arrested for marijuana possession despite comparable usage rates. Legalization dramatically reduced arrests in many jurisdictions, but racial disparities persisted.<sup class="fn"><a href="#src6">6</a></sup></p>
 
-      <p>New York provides an especially instructive example. For years, possession of small amounts of marijuana had technically been decriminalized when kept private. But marijuana displayed in public remained arrestable. Police could order someone to empty their pockets, transforming private possession into public view. More than 80 percent of those arrested for marijuana possession in New York during the period examined were Black or Latino.</p>
+      <p>New York provides an especially instructive example. For years, possession of a small amount of marijuana was treated differently depending on whether it was kept private or placed in public view. Critics documented a practice in which police stopped people, directed or pressured them to empty their pockets, and then arrested them once marijuana became visible in public. More than 80 percent of the people arrested for marijuana possession in the period examined were Black or Latino.<sup class="fn"><a href="#src7">7</a></sup></p>
 
-      <p>The statute didn't have to say arrest minorities.</p>
+      <p>The statute did not have to say: arrest minorities.</p>
 
       <p>The architecture did the sorting.</p>
 
-      <p>That distinction matters now. The dangerous power of a law does not necessarily come from prosecuting everyone who violates it. Sometimes its power comes from leaving enormous numbers of people technically exposed while deciding who gets noticed, who gets stopped, who gets searched, whose package gets examined, whose product came from the wrong source, who was using it in the wrong place, who possessed the wrong quantity, who is on probation, who has an immigration proceeding, who has something else the government wants.</p>
+      <p>That distinction matters now. The dangerous power of a law does not necessarily come from prosecuting everyone who violates it. Sometimes its power comes from leaving enormous numbers of people technically exposed while deciding who gets noticed, who gets stopped, who gets searched, whose package gets examined, whose product came from the wrong source, who was using it in the wrong place, who possessed the wrong quantity, who is on probation, who has an immigration proceeding, or who has something else the government wants.</p>
+
+      <h2 style="font-family:var(--font-display); font-weight:600; font-size:19px; margin:8px 0 16px; color:#fff;">What is documented&mdash;and what is not</h2>
+
+      <div class="art-table-wrap">
+        <table class="art-table">
+          <thead>
+            <tr>
+              <th>Documented condition</th>
+              <th>Why it creates a civil-liberties concern</th>
+              <th>What has not been established</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>The federal hemp definition is narrowing, including product-based THC restrictions.<sup class="fn"><a href="#src8">8</a></sup></td>
+              <td>Products understood as legal may enter a more uncertain federal status</td>
+              <td>A federal plan to prosecute ordinary consumers en masse</td>
+            </tr>
+            <tr>
+              <td>Medical and adult-use marijuana receive different federal treatment.<sup class="fn"><a href="#src9">9</a></sup></td>
+              <td>People can misunderstand which cannabis activity receives limited federal accommodation</td>
+              <td>A directive targeting adult-use customers</td>
+            </tr>
+            <tr>
+              <td>Cannabis arrests have historically been racially unequal.<sup class="fn"><a href="#src10">10</a></sup></td>
+              <td>Technically neutral rules may be enforced unevenly</td>
+              <td>That future enforcement will necessarily reproduce prior patterns</td>
+            </tr>
+            <tr>
+              <td>State-legal marijuana conduct can still create immigration problems.<sup class="fn"><a href="#src11">11</a></sup></td>
+              <td>Noncitizens face exposure beyond the criminal penalties facing citizens</td>
+              <td>A documented program using marijuana allegations to expand detention</td>
+            </tr>
+            <tr>
+              <td>Immigration-detention capacity is expanding and public reporting has described goals above 100,000 beds.<sup class="fn"><a href="#src12">12</a></sup></td>
+              <td>Enforcement capacity can magnify the effect of any expanded legal vulnerability</td>
+              <td>Evidence that detention expansion is intended for cannabis enforcement</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <p>That possibility becomes more consequential because something else is happening simultaneously. The United States is building an extraordinary amount of detention capacity.</p>
 
-      <p>The principal documented purpose is immigration enforcement—not cannabis enforcement—and those systems must not be casually conflated. But the 2025 reconciliation law supplied roughly $45 billion for immigration detention capacity and tens of billions more for ICE enforcement, while plans have contemplated capacity exceeding 100,000 detainees. This piece treats that as a separate system while asking the more important institutional question: what capacities are being constructed, and how might their uses evolve?</p>
+      <p>The principal documented purpose is immigration enforcement&mdash;not cannabis enforcement&mdash;and those systems should not be casually conflated. But the 2025 reconciliation law provided roughly $45 billion for immigration detention capacity and tens of billions more for ICE enforcement, while public reporting and advocacy research have described an administration goal of expanding detention capacity beyond 100,000 beds.<sup class="fn"><a href="#src13">13</a></sup></p>
 
-      <p>For noncitizens, the cannabis and immigration systems already have a bridge. Federal immigration policy can treat marijuana conduct as controlled-substance activity even where the conduct was legal under state law. Cannabis-related admissions, employment, arrests or convictions can therefore produce immigration consequences that American citizens do not face in the same way.</p>
+      <p>The institutional question is not whether those beds were built for cannabis enforcement. They were not. The question is what new enforcement capacity means when other legal categories become broader, more technical, or more discretionary.</p>
 
-      <p>That should get our attention. It does not prove that somebody in Washington designed the hemp law as the opening move in a secret plan to sweep marijuana users into detention camps. I looked for that evidence. I haven't found it.</p>
+      <p>For noncitizens, the cannabis and immigration systems already have a bridge. Federal immigration policy can treat marijuana conduct as controlled-substance activity even where the conduct was legal under state law. Cannabis-related admissions, employment, arrests, or convictions can therefore produce immigration consequences that American citizens do not face in the same way.<sup class="fn"><a href="#src14">14</a></sup></p>
+
+      <p>That should get our attention. It does not prove that somebody in Washington designed the hemp law as the opening move in a secret plan to sweep marijuana users into detention camps. The public record reviewed for this article does not establish such a program.</p>
 
       <p>No identified directive. No quota. No procurement document. No interagency memorandum. No detention contract connecting these pieces into such a program.</p>
 
-      <p>But democracy does not require us to wait for the memorandum marked Sinister Plan before examining what government has made possible. Systems matter. Capacity matters. Discretion matters. History matters. And technical illegality matters enormously when enforcement is selective.</p>
+      <p>But democracy does not require the public to wait for the memorandum marked <em>Sinister Plan</em> before examining what government has made possible. Systems matter. Capacity matters. Discretion matters. History matters. And technical illegality matters enormously when enforcement is selective.</p>
 
-      <p>This is where the conversation about hemp becomes much larger than hemp. A society can spend years normalizing behavior, building an industry around it, collecting taxes from it, advertising it and allowing citizens to arrange their lives around it. Then the line moves.</p>
+      <p>This is where the conversation about hemp becomes much larger than hemp. A society can spend years normalizing behavior, building an industry around it, collecting taxes from it, advertising it, and allowing citizens to arrange their lives around it. Then the line moves.</p>
 
       <p>Maybe the package is wrong. Maybe the THC concentration is wrong. Maybe the source is wrong. Maybe the location is wrong. Maybe federal law and state law disagree.</p>
 
       <p>Suddenly government possesses something it had partially surrendered:</p>
 
-      <p>a reason to look.</p>
+      <p>A reason to look. &#128065;</p>
 
-      <p>That may be the civil-liberties issue hiding underneath the cannabis debate. Not whether every marijuana user is about to be arrested. They won't be. Selective systems do not require everyone to be arrested.</p>
+      <p>That may be the civil-liberties issue hiding underneath the cannabis debate. Not whether every marijuana user is about to be arrested. They will not be. Selective systems do not require everyone to be arrested.</p>
 
       <p>They require enough law to create discretion, enough discretion to choose targets, enough information to find them, and enough infrastructure to process the people selected.</p>
 
-      <p>The unresolved question is whether the current cannabis rollback remains primarily a regulatory battle over an unruly hemp marketplace—or becomes another piece of a much larger American reconstruction of enforcement power.</p>
+      <p>The unresolved question is whether the current cannabis rollback remains primarily a regulatory battle over an unruly hemp marketplace&mdash;or becomes another piece of a much larger American reconstruction of enforcement power.</p>
 
       <p>There is evidence for the first. There is reason to watch the second.</p>
 
@@ -124,6 +219,30 @@
 
       <p>It is who gets punished for crossing it.</p>
     </article>
+
+    <section class="sources">
+      <h2>Sources</h2>
+      <ol>
+        <li id="src1">Congressional Research Service, <em>Changes to the Statutory Definition of Hemp and Implications for Regulated Products</em>, August 16, 2026. <a href="https://www.congress.gov/crs-product/IF13136" target="_blank" rel="noopener noreferrer">congress.gov/crs-product/IF13136</a></li>
+        <li id="src2">Akerman LLP, &ldquo;Federal Intoxicating Hemp Ban Changes Pushed Back Until December 11, 2026,&rdquo; September 8, 2026. <a href="https://www.cannabis-law-blog.com/federal-intoxicating-hemp-ban-changes-pushed-back-until-december-11-2026/" target="_blank" rel="noopener noreferrer">cannabis-law-blog.com</a>; Brewers Association, &ldquo;Hemp on the Hill: Congress Buys More Time,&rdquo; August 10, 2026. <a href="https://www.brewersassociation.org/government-affairs-updates/hemp-on-the-hill-congress-buys-more-time/" target="_blank" rel="noopener noreferrer">brewersassociation.org</a></li>
+        <li id="src3">Congressional Research Service, <em>Changes to the Statutory Definition of Hemp and Implications for Regulated Products</em>, August 16, 2026. <a href="https://www.congress.gov/crs-product/IF13136" target="_blank" rel="noopener noreferrer">congress.gov/crs-product/IF13136</a></li>
+        <li id="src4">U.S. Department of Justice, &ldquo;Justice Department Places FDA-Approved Marijuana Products and Products Containing Marijuana Regulated Under State Medical Marijuana Laws in Schedule III,&rdquo; April 22, 2026. <a href="https://www.justice.gov/opa/pr/justice-department-places-fda-approved-marijuana-products-and-products-containing-marijuana" target="_blank" rel="noopener noreferrer">justice.gov</a>; Sheppard Mullin, &ldquo;DOJ&rsquo;s April 2026 Cannabis Order: What It Does and What It Does Not Do,&rdquo; April 22, 2026. <a href="https://www.sheppard.com/insights/blogs/dojs-april-2026-cannabis-order-what-it-does-and-what-it-does-not-do" target="_blank" rel="noopener noreferrer">sheppard.com</a></li>
+        <li id="src5">U.S. Department of Justice, Schedule III order, April 22, 2026 (see above); Sheppard Mullin analysis (see above).</li>
+        <li id="src6">American Civil Liberties Union, &ldquo;New ACLU Report: Despite Marijuana Legalization Black People Are Still Almost Four Times More Likely to Be Arrested for Possession,&rdquo; April 17, 2020. <a href="https://www.aclu.org/press-releases/new-aclu-report-despite-marijuana-legalization-black-people-still-almost-four-times" target="_blank" rel="noopener noreferrer">aclu.org</a>; ACLU, <em>Extreme Racial Disparities Persist in Marijuana Arrests</em>. <a href="https://graphics.aclu.org/marijuana-arrest-report/" target="_blank" rel="noopener noreferrer">graphics.aclu.org</a></li>
+        <li id="src7">ACLU, &ldquo;Could New York Be the Next State to Legalize Marijuana?,&rdquo; May 28, 2018. <a href="https://www.aclu.org/news/smart-justice/could-new-york-be-next-state-legalize-marijuana" target="_blank" rel="noopener noreferrer">aclu.org</a>; ACLU, &ldquo;NYPD Pot Arrests Habit Proves Tough to Break,&rdquo; December 7, 2011. <a href="https://www.aclu.org/news/smart-justice/nypd-pot-arrests-habit-proves-tough-break" target="_blank" rel="noopener noreferrer">aclu.org</a>; The New York Times, &ldquo;Marijuana Arrests Rose in 2011, Despite Police Directive,&rdquo; January 31, 2012. <a href="https://cityroom.blogs.nytimes.com/2012/02/01/low-level-marijuana-arrests-rise-for-seventh-straight-year/" target="_blank" rel="noopener noreferrer">nytimes.com</a></li>
+        <li id="src8">Congressional Research Service (see source 1); Akerman LLP (see source 2).</li>
+        <li id="src9">U.S. Department of Justice, Schedule III order, April 22, 2026 (see source 4).</li>
+        <li id="src10">American Civil Liberties Union, racial disparity reporting (see source 6).</li>
+        <li id="src11">U.S. Citizenship and Immigration Services, &ldquo;USCIS Issues Policy Guidance Clarifying How Federal Controlled Substances Law Applies to Certain Naturalization Cases,&rdquo; April 18, 2019. <a href="https://www.uscis.gov/archive/uscis-issues-policy-guidance-clarifying-how-federal-controlled-substances-law-applies-to" target="_blank" rel="noopener noreferrer">uscis.gov</a>; Greenberg Traurig, &ldquo;The &lsquo;Schedule III&rsquo; Shift: What Federal Cannabis Reform Means for U.S. Immigration,&rdquo; May 3, 2026. <a href="https://www.gmlaw.com/news/the-schedule-iii-shift-what-federal-cannabis-reform-means-for-u-s-immigration/" target="_blank" rel="noopener noreferrer">gmlaw.com</a></li>
+        <li id="src12">Public reporting summarized in prior research on immigration detention expansion and public discussion of 100,000-plus bed capacity goals.</li>
+        <li id="src13">Public reporting summarized in prior research on immigration detention expansion, including discussion of the 2025 reconciliation law and 100,000-plus detention-capacity goals.</li>
+        <li id="src14">USCIS and Greenberg Traurig (see source 11).</li>
+      </ol>
+    </section>
+
+    <div class="art-bio">
+      Press and research inquiries: <a href="mailto:ctholland@mindofyourown.com" style="color:var(--teal); text-decoration:none;">ctholland@mindofyourown.com</a>
+    </div>
 
     <a href="writing.html" class="back-link" style="margin-bottom:60px;">&larr; All Writing</a>
   </div>
