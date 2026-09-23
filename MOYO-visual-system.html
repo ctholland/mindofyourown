@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doing the Work — Visual System Reference</title>
+<title>Mind Of Your Own® — Visual System Reference</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600;1,700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -148,7 +148,7 @@ body::before {
 }
 .lane-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
 .lane-core { background: #0b0e14; }
-.lane-core::before { background: var(--amber); }
+.lane-core::before { background: var(--teal); }
 .lane-systems { background: #eef1f6; }
 .lane-systems::before { background: var(--cobalt); }
 .lane-systems .lane-name { color: #0d1828; }
@@ -163,7 +163,7 @@ body::before {
   font-family: var(--ff-display); font-style: italic; font-size: 48px;
   font-weight: 700; line-height: 1; margin-bottom: 14px;
 }
-.lane-core .lane-num { color: rgba(232,168,76,0.25); }
+.lane-core .lane-num { color: rgba(62,207,195,0.22); }
 .lane-systems .lane-num { color: rgba(65,105,225,0.35); }
 .lane-questions .lane-num { color: rgba(62,207,195,0.3); }
 
@@ -181,7 +181,7 @@ body::before {
   display: inline-block; width: 24px; height: 2px;
   margin-bottom: 14px;
 }
-.lane-core .lane-accent { background: var(--amber); }
+.lane-core .lane-accent { background: var(--teal); }
 .lane-systems .lane-accent { background: var(--cobalt); }
 .lane-questions .lane-accent { background: var(--teal); }
 
@@ -296,19 +296,23 @@ body::before {
 }
 .ep-lane-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .ep-question {
-  font-family: var(--ff-display); font-weight: 700;
-  font-size: 16px; line-height: 1.3; color: var(--white); margin-bottom: 10px;
+  font-family: var(--ff-impact); font-weight: 900; text-transform: lowercase; letter-spacing: -0.3px;
+  font-size: 17px; line-height: 1.25; color: var(--white); margin-bottom: 10px;
 }
 .ep-premise { font-size: 12px; line-height: 1.6; color: var(--white-60); }
 .ep-highlight { color: var(--white); font-weight: 500; }
 
 /* Lane-specific accents on cards */
-.ep-core .ep-lane { color: var(--amber); }
-.ep-core .ep-lane-dot { background: var(--amber); }
-.ep-core::before { background: var(--amber); }
+.ep-core .ep-lane { color: var(--teal); }
+.ep-core .ep-lane-dot { background: var(--teal); }
+.ep-core::before { background: var(--teal); }
 .ep-systems .ep-lane { color: #8fa3e6; }
 .ep-systems .ep-lane-dot { background: var(--cobalt); }
 .ep-systems::before { background: var(--cobalt); }
+.ep-systems .ep-question {
+  font-family: var(--ff-display); font-weight: 700; text-transform: none; letter-spacing: normal;
+  font-size: 16px; line-height: 1.3;
+}
 .ep-questions .ep-lane { color: var(--teal); }
 .ep-questions .ep-lane-dot { background: var(--teal); }
 .ep-questions::before { background: var(--teal); }
@@ -358,9 +362,9 @@ body::before {
   <div class="wrap">
     <div class="sys-header-inner">
       <div>
-        <span class="doc-label">Doing the Work · Mind Of Your Own® · Visual System Reference</span>
+        <span class="doc-label">Mind Of Your Own® · Visual System Reference</span>
         <h1 class="sys-title">The<br>Visual<br><em>System.</em></h1>
-        <p class="sys-sub">A repeatable design language for podcast, YouTube, Instagram, and website assets. One system. Every platform. Every episode.</p>
+        <p class="sys-sub">A repeatable design language for podcast, YouTube, Instagram, Stories/Reels/Shorts, website episode cards, and broader MOYO media assets. One system. Every platform. Every episode.</p>
       </div>
       <div class="sys-meta">
         Version 1.0<br>
@@ -368,8 +372,7 @@ body::before {
         C.T. Holland<br>
         mindofyourown.com<br>
         ──<br>
-        Doing the Work<br>
-        Podcast Layer
+        Podcast · Social · Web
       </div>
     </div>
   </div>
@@ -423,7 +426,7 @@ body::before {
         <div class="swatch-info">
           <div class="swatch-name">Amber</div>
           <div class="swatch-hex">#E8A84C</div>
-          <div class="swatch-role">CORE lane only</div>
+          <div class="swatch-role">Warm environmental accent / photography</div>
         </div>
       </div>
       <div class="swatch">
@@ -458,12 +461,13 @@ body::before {
           Role: EDITORIAL / PAGE DISPLAY<br>
           Font: Playfair Display Italic<br>
           Weight: 700 · Sentence case<br>
-          Use: Website pages, quotes, blockquotes
+          Use: Website pages, quotes, blockquotes, Systems / Democracy where appropriate<br>
+          Not the dominant headline font for MOYO Core or Questions / Signal social assets
         </div>
       </div>
       <div class="type-card">
         <div class="type-specimen">
-          <div style="font-family:'Oswald',sans-serif; font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:6px;">Doing the Work · Episode 1</div>
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:6px;">Podcast · Episode 01</div>
           <div style="font-family:'Inter',sans-serif; font-size:14px; color:rgba(247,248,250,0.6); line-height:1.6;">Most of what you call "yourself" was assembled before you had the capacity to examine it. The question is not whether you were shaped. It's whether you know by what.</div>
         </div>
         <div class="type-meta">
@@ -474,7 +478,7 @@ body::before {
       </div>
       <div class="type-card">
         <div class="type-specimen" style="display:flex; align-items:center; gap:12px; height:60px;">
-          <div style="font-family:var(--ff-label); font-size:14px; font-weight:600; letter-spacing:2px; color:var(--white);">MOYO</div>
+          <div style="width:44px; height:44px; border:1px dashed rgba(255,255,255,0.25); border-radius:2px; display:flex; align-items:center; justify-content:center; font-family:monospace; font-size:8px; color:var(--white-35); text-align:center; line-height:1.3;">ACTUAL<br>LOGO</div>
           <div style="width:1px; height:36px; background:var(--white-15);"></div>
           <div>
             <div style="font-family:'Inter',sans-serif; font-size:13px; font-weight:600; color:var(--white);">MIND OF YOUR OWN®</div>
@@ -482,10 +486,10 @@ body::before {
           </div>
         </div>
         <div class="type-meta">
-          Role: BRAND MARK<br>
-          MOYO wordmark, Oswald, condensed, always small<br>
-          Never the hero — present but quiet<br>
-          Bottom-left placement standard
+          Role: BRAND MARK — THE LOGO IS STABLE. THE LANE CHANGES AROUND IT.<br>
+          Use the actual supplied Mind Of Your Own® logo asset — never a redrawn or invented wordmark<br>
+          Do not recolor it per lane. Do not treat it as a decorative graphic element<br>
+          Never the hero — present but quiet. Bottom-left placement standard
         </div>
       </div>
     </div>
@@ -512,7 +516,15 @@ body::before {
     </div>
 
     <div class="note-block">
-      <p><strong>Rule of one:</strong> Each asset gets ONE teal highlight bar — the phrase that carries the most tension or surprise. Not every word. Not alternating bars. One. The restraint is what gives it power.</p>
+      <p><strong>Rule of one:</strong> Use one primary emphasis treatment per asset. For MOYO Core and Questions / Signal, that may be the teal/cyan highlight bar. For Systems / Democracy, use one restrained cobalt emphasis treatment — blue type, italic emphasis, a rule, or other Guide-compatible device. Not every word. Not alternating accents. One. Do not scatter multiple competing treatments through one composition — the restraint is what gives it power.</p>
+    </div>
+
+    <div class="note-block" style="margin-top:16px; border-left-color: rgba(232,168,76,0.5); background: rgba(232,168,76,0.06);">
+      <p><strong>Portrait / identity rule — approved assets only:</strong> C.T. Holland's approved supplied photographs and cutouts are fixed source assets. Do not regenerate his face, reconstruct his head, alter skull shape, reinterpret facial geometry, or create a substitute AI portrait when an approved portrait already exists. For production: select from the approved portrait library, then crop, scale, position, color-grade, mask/cut out, or add background lighting or glow around the portrait if needed — but preserve the actual supplied face/head geometry. "Using an approved portrait asset" and "generating a new portrait" are different things. Only the former is part of the standard workflow.</p>
+    </div>
+
+    <div class="note-block" style="margin-top:16px;">
+      <p><strong>The logo is stable. The lane changes around it.</strong> Across all three lanes, use the actual Mind Of Your Own® logo asset — do not redraw it, invent a replacement wordmark, recolor it to match each lane, or treat it as a decorative graphic element. Lane differentiation comes from typography, imagery, palette, background treatment, and composition. The identity mark itself does not change. Placement may adapt to format while remaining consistent and subordinate.</p>
     </div>
   </div>
 </section>
@@ -535,7 +547,7 @@ body::before {
         <div class="lane-desc">The deepest layer. Who you are, how you think, what you can become. NLP, consciousness, language, the self as construction. Intimate. Warm. Portrait-forward. This is the personal transmission.</div>
         <div class="lane-visual-note">
           <strong>Visual signature</strong>
-          Amber accent — warmer and more human than the other lanes. Portrait close and direct. Playfair Display more present. Background: dark navy, slightly warmer than SYSTEMS.
+          Dark navy / near-black foundation. Bold white sans headline — same family as Questions / Signal. Teal/cyan accent, used sparingly as a highlight bar. Warmth comes from environmental lighting, wood, lamps, skin tone, books, interiors — not from a formal amber graphic accent. Human, editorial, direct, authored.
         </div>
       </div>
 
@@ -566,7 +578,7 @@ body::before {
     </div>
 
     <div class="note-block" style="margin-top:24px;">
-      <p><strong>How they differ while staying in family:</strong> MOYO Core and Questions / Signal share the dark foundation, grid texture, and portrait treatment, with the accent shifting amber → teal and the image treatment moving from intimate to minimal. Systems / Democracy is allowed to break the dark field — it runs in the existing light, civic/editorial world, with cobalt as the connective thread back to the rest of the system.</p>
+      <p><strong>How they differ while staying in family:</strong> MOYO Core and Questions / Signal share the dark foundation, grid texture, bold sans headline treatment, and teal accent family — Core reads warmer and more intimate through its photography and environmental lighting, Questions reads starker and more minimal through contrast and restraint, not through a different accent color. Systems / Democracy is allowed to break the dark field — it runs in the existing light, civic/editorial world, with cobalt as the connective thread back to the rest of the system.</p>
     </div>
 
     <div class="note-block" style="margin-top:16px; border-left-color: rgba(62,207,195,0.4); background: var(--teal-10);">
@@ -608,7 +620,7 @@ body::before {
           <div class="wf-zone-label" style="bottom:9%; right:5%;">EP NUMBER</div>
         </div>
         <div class="note-block" style="margin-top:14px;">
-          <p><strong>Layout:</strong> Type left 55% / Portrait right 45%. Question is the hero. Portrait reads the question. Series label top-left. Brand mark bottom-left. Bottom accent bar full-width. One teal bar on the key phrase.</p>
+          <p><strong>Layout:</strong> Type left 55% / Portrait right 45%. Question is the hero. Portrait reads the question. Series label top-left. Brand mark bottom-left. Bottom accent bar full-width. One lane-appropriate emphasis treatment on the key phrase.</p>
         </div>
       </div>
 
@@ -707,7 +719,7 @@ body::before {
 
     <div class="recipe-grid">
       <div>
-        <p style="font-size:14px; color:var(--white-60); margin-bottom:32px; line-height:1.7;">Same inputs every time. Swap the question, the portrait, and the highlight phrase. Everything else stays fixed. That's how a recognizable series works.</p>
+        <p style="font-size:14px; color:var(--white-60); margin-bottom:32px; line-height:1.7;">Same inputs every time. Swap the question and the highlight phrase, select an approved portrait from the library. Everything else stays fixed. That's how a recognizable series works.</p>
         <div class="recipe-steps">
           <div class="recipe-step step-accent-teal">
             <div class="step-num">1</div>
@@ -720,21 +732,21 @@ body::before {
             <div class="step-num">2</div>
             <div class="step-content">
               <h4>The Highlight</h4>
-              <p>One phrase gets the teal bar. Usually the most unexpected 2–3 words. Never the whole question. The bar tells the eye where to look.</p>
+              <p>One phrase gets the emphasis treatment. Core and Questions / Signal: teal bar — Questions gets the strongest use of it. Systems / Democracy: cobalt emphasis instead (blue type, italic, or a rule), no requirement for a teal rectangle. Usually the most unexpected 2–3 words. Never the whole question. It tells the eye where to look.</p>
             </div>
           </div>
           <div class="recipe-step">
             <div class="step-num">3</div>
             <div class="step-content">
               <h4>The Portrait</h4>
-              <p>Right-side anchor. Clean background. Facing slightly toward the type. Expression: thoughtful, direct, not performing. Not every episode needs the portrait — Question-only works for the strongest lines.</p>
+              <p>Right-side anchor. SELECT an approved portrait from the C.T. Holland portrait library — do not generate a new one. Clean background. Facing slightly toward the type. Crop, scale, position, and color-grade as needed, but preserve the actual supplied face/head geometry. Not every episode needs the portrait — Question-only works for the strongest lines.</p>
             </div>
           </div>
           <div class="recipe-step">
             <div class="step-num">4</div>
             <div class="step-content">
               <h4>Series Label</h4>
-              <p>"Doing the Work" in Oswald at 10–11px, top-left, cobalt or white at 40% opacity. Present but not competing.</p>
+              <p>The label reflects which lane the episode belongs to — "MOYO Core," "Systems / Democracy," or "Questions / Signal" — or simply "Podcast" as a neutral default. Not a fixed show title. Oswald at 10–11px, top-left, cobalt or white at 40% opacity. Present but not competing.</p>
             </div>
           </div>
           <div class="recipe-step step-accent-blue">
@@ -748,7 +760,7 @@ body::before {
             <div class="step-num">6</div>
             <div class="step-content">
               <h4>Bottom Bar + Brand Mark</h4>
-              <p>Teal-to-blue gradient bar, full-width, 3–4px. Brand mark bottom-left. Episode number bottom-right if applicable. Never prominent.</p>
+              <p>Accent bar, full-width, 3–4px — teal/cyan for Core and Questions / Signal, cobalt/blue for Systems / Democracy. The actual Mind Of Your Own® logo bottom-left — never redrawn or recolored. Episode number bottom-right if applicable. Never prominent.</p>
             </div>
           </div>
         </div>
@@ -772,8 +784,8 @@ body::before {
             </div>
             <div style="display:flex; justify-content:space-between; align-items:flex-end;">
               <div>
-                <div style="font-family:var(--ff-label); font-size:8px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(65,105,225,0.7); margin-bottom:4px;">④ Doing the Work</div>
-                <div style="font-family:var(--ff-label); font-size:11px; font-weight:600; letter-spacing:2px; color:rgba(255,255,255,0.35);">MOYO</div>
+                <div style="font-family:var(--ff-label); font-size:8px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(65,105,225,0.7); margin-bottom:4px;">④ MOYO Core</div>
+                <div style="font-family:monospace; font-size:8px; letter-spacing:1px; color:rgba(255,255,255,0.3); border:1px dashed rgba(255,255,255,0.2); padding:2px 6px; display:inline-block;">[ACTUAL LOGO]</div>
               </div>
               <div style="font-family:var(--ff-label); font-size:8px; color:var(--white-35); letter-spacing:1px;">Ep 01</div>
             </div>
@@ -879,7 +891,7 @@ body::before {
 ════════════════════════════════════════ -->
 <div style="border-top:1px solid var(--white-06);">
   <div class="sys-footer wrap">
-    Doing the Work &nbsp;·&nbsp; Mind Of Your Own® &nbsp;·&nbsp; Visual System v1.0 &nbsp;·&nbsp; September 2026
+    Mind Of Your Own® &nbsp;·&nbsp; C.T. Holland &nbsp;·&nbsp; Visual System v1.0 &nbsp;·&nbsp; September 2026
     &nbsp;·&nbsp; <em style="font-style:italic; color:rgba(247,248,250,0.22);">AI-augmented imagery. Human-authored ideas.</em>
   </div>
 </div>

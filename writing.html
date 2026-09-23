@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing — Mind Of Your Own&reg;</title>
+<meta name="description" content="Essays and papers from C.T. Holland — organized across MOYO Core, Systems &amp; Democracy, and Questions &amp; Signal.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --font-display: 'Playfair Display', serif;
+    --font-body:    'Inter', sans-serif;
+    --font-label:   'Oswald', sans-serif;
+    --blue:  #4169E1;
+    --teal:  #3ecdc4;
+    --cobalt: #8fa3e6;
+    --max: 1360px;
+  }
+  body { margin: 0; background: #000; color: #fff; font-family: var(--font-body); }
+  .dotgrid { background-image: radial-gradient(rgba(140,150,190,0.28) 1px, transparent 1px); background-size: 26px 26px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 48px; }
+  .label { font-family: var(--font-label); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; color: var(--blue); text-transform: uppercase; }
+
+  /* ── HERO ── */
+  .hero { padding: 56px 0 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.08; margin: 12px 0 16px; letter-spacing: -0.5px;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero p { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0; }
+
+  /* ── LANE FILTER ── */
+  .filters { padding: 24px 0; display: flex; gap: 10px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .filter-chip {
+    font-family: var(--font-label); font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 9px 16px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.6); background: transparent; cursor: pointer; transition: all 0.2s;
+  }
+  .filter-chip .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 7px; }
+  .filter-chip[data-lane="all"] .dot { display: none; }
+  .filter-chip.is-active, .filter-chip:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+  .filter-chip[data-lane="core"] .dot, .filter-chip[data-lane="questions"] .dot { background: var(--teal); }
+  .filter-chip[data-lane="systems"] .dot { background: var(--cobalt); }
+
+  /* ── ARTICLE GRID ── */
+  .archive { padding: 40px 0 72px; }
+  .article-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .article-card {
+    display: block; text-decoration: none; padding: 26px 26px 24px;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; background: #06060c;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .article-card:hover { background: #0a0a12; }
+  .article-card[data-lane="core"], .article-card[data-lane="questions"] { border-left: 2px solid var(--teal); }
+  .article-card[data-lane="systems"] { border-left: 2px solid var(--cobalt); }
+  .article-lane {
+    display: flex; align-items: center; gap: 7px; font-family: var(--font-label); font-size: 9.5px;
+    font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .article-card[data-lane="core"] .article-lane, .article-card[data-lane="questions"] .article-lane { color: var(--teal); }
+  .article-card[data-lane="systems"] .article-lane { color: var(--cobalt); }
+  .article-lane .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .article-card h2 {
+    font-family: var(--font-display); font-weight: 700; font-size: 21px; color: #fff;
+    margin: 0 0 10px; line-height: 1.28;
+  }
+  .article-card p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.6); margin: 0 0 16px; }
+  .article-foot { display: flex; justify-content: space-between; align-items: center; }
+  .article-date { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .article-read { font-family: var(--font-label); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 24px; }
+    .article-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <section class="hero dotgrid">
+    <div class="wrap">
+      <p class="label">Publications</p>
+      <h1>Writing.</h1>
+      <p>Essays and papers on identity, institutions, and the systems shaping how people think, choose, and participate — organized across MOYO Core, Systems &amp; Democracy, and Questions &amp; Signal.</p>
+    </div>
+  </section>
+
+  <section class="filters">
+    <div class="wrap" style="display:flex; gap:10px; flex-wrap:wrap;">
+      <button type="button" class="filter-chip is-active" data-lane="all">All Writing</button>
+      <button type="button" class="filter-chip" data-lane="core"><span class="dot"></span>MOYO Core</button>
+      <button type="button" class="filter-chip" data-lane="systems"><span class="dot"></span>Systems &amp; Democracy</button>
+      <button type="button" class="filter-chip" data-lane="questions"><span class="dot"></span>Questions &amp; Signal</button>
+    </div>
+  </section>
+
+  <section class="archive">
+    <div class="wrap">
+      <div class="article-grid">
+
+        <a href="writing-weed-trap.html" class="article-card" data-lane="systems">
+          <div class="article-lane"><span class="dot"></span>Systems &amp; Democracy</div>
+          <h2>The Weed Trap</h2>
+          <p>What happens when millions of Americans have been taught that something is legal — and government quietly redraws the line?</p>
+          <div class="article-foot">
+            <span class="article-date">2026</span>
+            <span class="article-read">Read &rarr;</span>
+          </div>
+        </a>
+
+        <a href="writing-ats-screening.html" class="article-card" data-lane="systems">
+          <div class="article-lane"><span class="dot"></span>Systems &amp; Democracy</div>
+          <h2>Applicant Screening: ATS and Institutional Neglect</h2>
+          <p>How modern hiring technology fails job seekers — and the companies looking for talent.</p>
+          <div class="article-foot">
+            <span class="article-date">Aug 15, 2026</span>
+            <span class="article-read">Read &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.querySelectorAll('.filter-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      var lane = chip.dataset.lane;
+      document.querySelectorAll('.article-card').forEach(function (card) {
+        card.style.display = (lane === 'all' || card.dataset.lane === lane) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+  <script src="nav.js"></script>
+
+</body>
+</html>
