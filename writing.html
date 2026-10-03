@@ -136,16 +136,28 @@
 </main>
 
 <script>
-  document.querySelectorAll('.filter-chip').forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      document.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('is-active'); });
-      chip.classList.add('is-active');
-      var lane = chip.dataset.lane;
-      document.querySelectorAll('.article-card').forEach(function (card) {
-        card.style.display = (lane === 'all' || card.dataset.lane === lane) ? '' : 'none';
-      });
+  function applyLaneFilter(lane) {
+    document.querySelectorAll('.filter-chip').forEach(function (c) {
+      c.classList.toggle('is-active', c.dataset.lane === lane);
     });
+    document.querySelectorAll('.article-card').forEach(function (card) {
+      card.style.display = (lane === 'all' || card.dataset.lane === lane) ? '' : 'none';
+    });
+  }
+
+  document.querySelectorAll('.filter-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () { applyLaneFilter(chip.dataset.lane); });
   });
+
+  // Deep-link support: writing.html?lane=systems lands pre-filtered
+  // (also accepts ?lane=systems-democracy / ?lane=democracy as aliases)
+  var requestedLane = new URLSearchParams(window.location.search).get('lane');
+  var laneAliases = { 'systems-democracy': 'systems', 'democracy': 'systems', 'guide': 'systems' };
+  if (requestedLane) {
+    requestedLane = laneAliases[requestedLane] || requestedLane;
+    var validLanes = ['core', 'systems', 'questions'];
+    if (validLanes.indexOf(requestedLane) !== -1) applyLaneFilter(requestedLane);
+  }
 </script>
 
   <script src="nav.js"></script>

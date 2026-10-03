@@ -15,7 +15,7 @@
     { label: 'Interviews', href: root + 'index.html#work' },
     { label: 'Publications', href: '#', children: [
         { label: 'Mind Of Your Own', href: root + 'book.html' },
-        { label: 'Survival Guide for Democracy', href: root + 'guide.html' },
+        { label: 'Survival Guide for Democracy', href: root + 'writing.html?lane=systems' },
         { label: 'Writing', href: root + 'writing.html' }
     ]},
     { label: 'NLP & Influences', href: root + 'about.html' },
